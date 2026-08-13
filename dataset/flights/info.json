@@ -1,0 +1,235 @@
+{
+    "name": "flights",
+    "source": null,
+    "task": "regression",
+    "target": "ARR_DELAY",
+    "features_by_order": [
+        "YEAR",
+        "MONTH",
+        "DAY",
+        "AIRLINE",
+        "AIRLINE_CODE",
+        "ORIGIN",
+        "ORIGIN_CITY",
+        "DEST",
+        "DEST_CITY",
+        "CRS_DEP_TIME_UTC_MIN",
+        "DEP_TIME_UTC_MIN",
+        "DEP_DELAY",
+        "TAXI_OUT",
+        "WHEELS_OFF_UTC_MIN",
+        "WHEELS_ON_UTC_MIN",
+        "TAXI_IN",
+        "CRS_ARR_TIME_UTC_MIN",
+        "ARR_TIME_UTC_MIN",
+        "CRS_ELAPSED_TIME",
+        "ELAPSED_TIME",
+        "AIR_TIME",
+        "DISTANCE",
+        "ARR_DELAY"
+    ],
+    "shape": [
+        60000,
+        23
+    ],
+    "col_types": {
+        "YEAR": {
+            "type": "cat",
+            "unique_values": 5,
+            "missing_values": 0
+        },
+        "MONTH": {
+            "type": "cat",
+            "unique_values": 12,
+            "missing_values": 0
+        },
+        "DAY": {
+            "type": "cat",
+            "unique_values": 31,
+            "missing_values": 0
+        },
+        "AIRLINE": {
+            "type": "cat",
+            "unique_values": 18,
+            "missing_values": 0
+        },
+        "AIRLINE_CODE": {
+            "type": "cat",
+            "unique_values": 18,
+            "missing_values": 0
+        },
+        "ORIGIN": {
+            "type": "cat",
+            "unique_values": 100,
+            "missing_values": 0
+        },
+        "ORIGIN_CITY": {
+            "type": "cat",
+            "unique_values": 96,
+            "missing_values": 0
+        },
+        "DEST": {
+            "type": "cat",
+            "unique_values": 100,
+            "missing_values": 0
+        },
+        "DEST_CITY": {
+            "type": "cat",
+            "unique_values": 96,
+            "missing_values": 0
+        },
+        "CRS_DEP_TIME_UTC_MIN": {
+            "type": "num",
+            "unique_values": 1380,
+            "missing_values": 0
+        },
+        "DEP_TIME_UTC_MIN": {
+            "type": "num",
+            "unique_values": 1432,
+            "missing_values": 0
+        },
+        "DEP_DELAY": {
+            "type": "num",
+            "unique_values": 500,
+            "missing_values": 0
+        },
+        "TAXI_OUT": {
+            "type": "num",
+            "unique_values": 126,
+            "missing_values": 0
+        },
+        "WHEELS_OFF_UTC_MIN": {
+            "type": "num",
+            "unique_values": 1435,
+            "missing_values": 0
+        },
+        "WHEELS_ON_UTC_MIN": {
+            "type": "num",
+            "unique_values": 1438,
+            "missing_values": 0
+        },
+        "TAXI_IN": {
+            "type": "num",
+            "unique_values": 98,
+            "missing_values": 0
+        },
+        "CRS_ARR_TIME_UTC_MIN": {
+            "type": "num",
+            "unique_values": 1421,
+            "missing_values": 0
+        },
+        "ARR_TIME_UTC_MIN": {
+            "type": "num",
+            "unique_values": 1438,
+            "missing_values": 0
+        },
+        "CRS_ELAPSED_TIME": {
+            "type": "num",
+            "unique_values": 475,
+            "missing_values": 0
+        },
+        "ELAPSED_TIME": {
+            "type": "num",
+            "unique_values": 487,
+            "missing_values": 0
+        },
+        "AIR_TIME": {
+            "type": "num",
+            "unique_values": 463,
+            "missing_values": 0
+        },
+        "DISTANCE": {
+            "type": "num",
+            "unique_values": 1290,
+            "missing_values": 0
+        },
+        "ARR_DELAY": {
+            "type": "num",
+            "unique_values": 528,
+            "missing_values": 0
+        }
+    },
+    "sdv_metadata": {
+        "tables": {
+            "table": {
+                "columns": {
+                    "YEAR": {
+                        "datetime_format": "%Y",
+                        "sdtype": "datetime"
+                    },
+                    "MONTH": {
+                        "sdtype": "numerical"
+                    },
+                    "DAY": {
+                        "sdtype": "numerical"
+                    },
+                    "AIRLINE": {
+                        "sdtype": "categorical"
+                    },
+                    "AIRLINE_CODE": {
+                        "sdtype": "categorical"
+                    },
+                    "ORIGIN": {
+                        "sdtype": "categorical"
+                    },
+                    "ORIGIN_CITY": {
+                        "pii": true,
+                        "sdtype": "city"
+                    },
+                    "DEST": {
+                        "sdtype": "categorical"
+                    },
+                    "DEST_CITY": {
+                        "pii": true,
+                        "sdtype": "city"
+                    },
+                    "CRS_DEP_TIME_UTC_MIN": {
+                        "sdtype": "numerical"
+                    },
+                    "DEP_TIME_UTC_MIN": {
+                        "sdtype": "numerical"
+                    },
+                    "DEP_DELAY": {
+                        "sdtype": "numerical"
+                    },
+                    "TAXI_OUT": {
+                        "sdtype": "numerical"
+                    },
+                    "WHEELS_OFF_UTC_MIN": {
+                        "sdtype": "numerical"
+                    },
+                    "WHEELS_ON_UTC_MIN": {
+                        "sdtype": "numerical"
+                    },
+                    "TAXI_IN": {
+                        "sdtype": "numerical"
+                    },
+                    "CRS_ARR_TIME_UTC_MIN": {
+                        "sdtype": "numerical"
+                    },
+                    "ARR_TIME_UTC_MIN": {
+                        "sdtype": "numerical"
+                    },
+                    "CRS_ELAPSED_TIME": {
+                        "sdtype": "numerical"
+                    },
+                    "ELAPSED_TIME": {
+                        "sdtype": "numerical"
+                    },
+                    "AIR_TIME": {
+                        "sdtype": "numerical"
+                    },
+                    "DISTANCE": {
+                        "sdtype": "numerical"
+                    },
+                    "ARR_DELAY": {
+                        "sdtype": "numerical"
+                    }
+                }
+            }
+        },
+        "relationships": [],
+        "METADATA_SPEC_VERSION": "V1"
+    },
+    "preprocessing_note": "Removed cancelled/diverted flights, retained only rows whose origin/destination airport and city were among the top 100 values, removed missing/invalid clock or timezone rows, and converted local flight times into UTC minute-of-day values. FL_DATE became categorical year/month/day."
+}

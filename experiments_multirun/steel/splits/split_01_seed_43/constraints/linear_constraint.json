@@ -1,0 +1,380 @@
+[
+  {
+    "id": "usage_covers_scaled_co2",
+    "description": "Active energy is at least 100 times the reported CO2 quantity.",
+    "formula": "Usage_kWh - 100*CO2(tCO2) >= 0",
+    "columns": [
+      "Usage_kWh",
+      "CO2(tCO2)"
+    ],
+    "coefficients": {
+      "Usage_kWh": 1,
+      "CO2(tCO2)": -100
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "Usage_kWh",
+      "CO2(tCO2)"
+    ],
+    "explanation": "CO2 is an emissions estimate derived from electricity use, and the reported units and rounding place the emissions quantity well below active energy on this scale.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_and_usage_nonnegative",
+    "description": "Elapsed seconds since midnight plus active energy is nonnegative.",
+    "formula": "NSM + Usage_kWh >= 0",
+    "columns": [
+      "NSM",
+      "Usage_kWh"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Usage_kWh": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Usage_kWh"
+    ],
+    "explanation": "NSM is a nonnegative daily-clock quantity and active energy is a nonnegative consumption quantity.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_upper_bound_with_reactive_energy",
+    "description": "The daily-clock upper bound plus lagging reactive energy is at least NSM.",
+    "formula": "Lagging_Current_Reactive_Power_kVarh - NSM >= -86399",
+    "columns": [
+      "Lagging_Current_Reactive_Power_kVarh",
+      "NSM"
+    ],
+    "coefficients": {
+      "Lagging_Current_Reactive_Power_kVarh": 1,
+      "NSM": -1
+    },
+    "sense": ">=",
+    "rhs": -86399,
+    "mutable_columns": [
+      "Lagging_Current_Reactive_Power_kVarh",
+      "NSM"
+    ],
+    "explanation": "NSM is defined on the daily clock through 86399 seconds; lagging reactive energy is nonnegative, so adding it cannot violate the stated clock upper bound.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_upper_bound_with_leading_reactive_energy",
+    "description": "The daily-clock upper bound plus leading reactive energy is at least NSM.",
+    "formula": "Leading_Current_Reactive_Power_kVarh - NSM >= -86399",
+    "columns": [
+      "Leading_Current_Reactive_Power_kVarh",
+      "NSM"
+    ],
+    "coefficients": {
+      "Leading_Current_Reactive_Power_kVarh": 1,
+      "NSM": -1
+    },
+    "sense": ">=",
+    "rhs": -86399,
+    "mutable_columns": [
+      "Leading_Current_Reactive_Power_kVarh",
+      "NSM"
+    ],
+    "explanation": "NSM is defined on the daily clock through 86399 seconds; leading reactive energy is nonnegative, so adding it cannot violate the stated clock upper bound.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "energy_and_emissions_nonnegative",
+    "description": "Active energy plus estimated emissions is nonnegative.",
+    "formula": "Usage_kWh + CO2(tCO2) >= 0",
+    "columns": [
+      "Usage_kWh",
+      "CO2(tCO2)"
+    ],
+    "coefficients": {
+      "Usage_kWh": 1,
+      "CO2(tCO2)": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "Usage_kWh",
+      "CO2(tCO2)"
+    ],
+    "explanation": "Both active electricity consumption and estimated emissions represent nonnegative interval quantities.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "nsm_with_co2_nonnegative",
+    "description": "Elapsed seconds since midnight plus estimated emissions is nonnegative.",
+    "formula": "NSM + CO2(tCO2) >= 0",
+    "columns": [
+      "NSM",
+      "CO2(tCO2)"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "CO2(tCO2)": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "CO2(tCO2)"
+    ],
+    "explanation": "Both NSM and the emissions estimate are nonnegative interval quantities by definition.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "nsm_with_lagging_power_factor_nonnegative",
+    "description": "Elapsed seconds since midnight plus lagging power factor is nonnegative.",
+    "formula": "NSM + Lagging_Current_Power_Factor >= 0",
+    "columns": [
+      "NSM",
+      "Lagging_Current_Power_Factor"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Lagging_Current_Power_Factor": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Lagging_Current_Power_Factor"
+    ],
+    "explanation": "NSM is a nonnegative daily-clock value and lagging power factor is expressed on a nonnegative percentage scale.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "nsm_with_leading_power_factor_nonnegative",
+    "description": "Elapsed seconds since midnight plus leading power factor is nonnegative.",
+    "formula": "NSM + Leading_Current_Power_Factor >= 0",
+    "columns": [
+      "NSM",
+      "Leading_Current_Power_Factor"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Leading_Current_Power_Factor": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Leading_Current_Power_Factor"
+    ],
+    "explanation": "NSM is a nonnegative daily-clock value and leading power factor is expressed on a nonnegative percentage scale.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "co2_with_lagging_reactive_nonnegative",
+    "description": "Estimated emissions plus lagging reactive energy is nonnegative.",
+    "formula": "CO2(tCO2) + Lagging_Current_Reactive_Power_kVarh >= 0",
+    "columns": [
+      "CO2(tCO2)",
+      "Lagging_Current_Reactive_Power_kVarh"
+    ],
+    "coefficients": {
+      "CO2(tCO2)": 1,
+      "Lagging_Current_Reactive_Power_kVarh": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "CO2(tCO2)",
+      "Lagging_Current_Reactive_Power_kVarh"
+    ],
+    "explanation": "Both estimated emissions and lagging reactive energy are nonnegative interval magnitudes.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "co2_with_leading_reactive_nonnegative",
+    "description": "Estimated emissions plus leading reactive energy is nonnegative.",
+    "formula": "CO2(tCO2) + Leading_Current_Reactive_Power_kVarh >= 0",
+    "columns": [
+      "CO2(tCO2)",
+      "Leading_Current_Reactive_Power_kVarh"
+    ],
+    "coefficients": {
+      "CO2(tCO2)": 1,
+      "Leading_Current_Reactive_Power_kVarh": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "CO2(tCO2)",
+      "Leading_Current_Reactive_Power_kVarh"
+    ],
+    "explanation": "Both estimated emissions and leading reactive energy are nonnegative interval magnitudes.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "daily_clock_upper_bound_with_co2",
+    "description": "The daily-clock upper bound plus estimated emissions is at least NSM.",
+    "formula": "CO2(tCO2) - NSM >= -86399",
+    "columns": [
+      "CO2(tCO2)",
+      "NSM"
+    ],
+    "coefficients": {
+      "CO2(tCO2)": 1,
+      "NSM": -1
+    },
+    "sense": ">=",
+    "rhs": -86399,
+    "mutable_columns": [
+      "CO2(tCO2)",
+      "NSM"
+    ],
+    "explanation": "NSM is at most 86399 seconds and estimated emissions are nonnegative.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "daily_clock_upper_bound_with_usage",
+    "description": "The daily-clock upper bound plus active energy is at least NSM.",
+    "formula": "Usage_kWh - NSM >= -86399",
+    "columns": [
+      "Usage_kWh",
+      "NSM"
+    ],
+    "coefficients": {
+      "Usage_kWh": 1,
+      "NSM": -1
+    },
+    "sense": ">=",
+    "rhs": -86399,
+    "mutable_columns": [
+      "Usage_kWh",
+      "NSM"
+    ],
+    "explanation": "NSM is at most 86399 seconds and active interval consumption is nonnegative.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "daily_clock_upper_bound_with_lagging_power_factor",
+    "description": "The daily-clock upper bound plus lagging power factor is at least NSM.",
+    "formula": "Lagging_Current_Power_Factor - NSM >= -86399",
+    "columns": [
+      "Lagging_Current_Power_Factor",
+      "NSM"
+    ],
+    "coefficients": {
+      "Lagging_Current_Power_Factor": 1,
+      "NSM": -1
+    },
+    "sense": ">=",
+    "rhs": -86399,
+    "mutable_columns": [
+      "Lagging_Current_Power_Factor",
+      "NSM"
+    ],
+    "explanation": "NSM is at most 86399 seconds and lagging power factor is nonnegative.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "daily_clock_upper_bound_with_leading_power_factor",
+    "description": "The daily-clock upper bound plus leading power factor is at least NSM.",
+    "formula": "Leading_Current_Power_Factor - NSM >= -86399",
+    "columns": [
+      "Leading_Current_Power_Factor",
+      "NSM"
+    ],
+    "coefficients": {
+      "Leading_Current_Power_Factor": 1,
+      "NSM": -1
+    },
+    "sense": ">=",
+    "rhs": -86399,
+    "mutable_columns": [
+      "Leading_Current_Power_Factor",
+      "NSM"
+    ],
+    "explanation": "NSM is at most 86399 seconds and leading power factor is nonnegative.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "nsm_with_lagging_reactive_nonnegative",
+    "description": "Elapsed seconds since midnight plus lagging reactive energy is nonnegative.",
+    "formula": "NSM + Lagging_Current_Reactive_Power_kVarh >= 0",
+    "columns": [
+      "NSM",
+      "Lagging_Current_Reactive_Power_kVarh"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Lagging_Current_Reactive_Power_kVarh": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Lagging_Current_Reactive_Power_kVarh"
+    ],
+    "explanation": "NSM is a nonnegative daily-clock quantity and lagging reactive energy is a nonnegative interval magnitude.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "nsm_with_leading_reactive_nonnegative",
+    "description": "Elapsed seconds since midnight plus leading reactive energy is nonnegative.",
+    "formula": "NSM + Leading_Current_Reactive_Power_kVarh >= 0",
+    "columns": [
+      "NSM",
+      "Leading_Current_Reactive_Power_kVarh"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Leading_Current_Reactive_Power_kVarh": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Leading_Current_Reactive_Power_kVarh"
+    ],
+    "explanation": "NSM is nonnegative by its daily-clock definition and leading reactive energy is a nonnegative interval magnitude.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "co2_with_lagging_power_factor_nonnegative",
+    "description": "Estimated emissions plus lagging power factor is nonnegative.",
+    "formula": "CO2(tCO2) + Lagging_Current_Power_Factor >= 0",
+    "columns": [
+      "CO2(tCO2)",
+      "Lagging_Current_Power_Factor"
+    ],
+    "coefficients": {
+      "CO2(tCO2)": 1,
+      "Lagging_Current_Power_Factor": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "CO2(tCO2)",
+      "Lagging_Current_Power_Factor"
+    ],
+    "explanation": "The emissions estimate is a nonnegative interval quantity and the lagging power factor is reported on a nonnegative percentage scale.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "co2_with_leading_power_factor_nonnegative",
+    "description": "Estimated emissions plus leading power factor is nonnegative.",
+    "formula": "CO2(tCO2) + Leading_Current_Power_Factor >= 0",
+    "columns": [
+      "CO2(tCO2)",
+      "Leading_Current_Power_Factor"
+    ],
+    "coefficients": {
+      "CO2(tCO2)": 1,
+      "Leading_Current_Power_Factor": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "CO2(tCO2)",
+      "Leading_Current_Power_Factor"
+    ],
+    "explanation": "The emissions estimate is nonnegative and the leading power factor is expressed as a nonnegative percentage measurement.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

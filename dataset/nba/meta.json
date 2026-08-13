@@ -1,0 +1,31 @@
+{
+    "dataset_description": "A 14,062-row dataset of NBA regular-season player scoring rates spanning the 1996-97 through 2025-26 seasons. Each row describes one player-season using offensive statistics normalized per 100 offensive possessions, including two- and three-point field-goal volume and accuracy, free-throw points, assisted versus unassisted scoring splits, shot-mix and efficiency rates, putback points, blocked-attempt rates, and usage. Volume counts from the pbpstats totals API are scaled to a per-100-possessions rate basis; player name, team, games, minutes, and possession totals are dropped after preprocessing. The dataset supports usage regression and tabular synthetic-data experiments in which realistic semantic relationships among scoring variables should be preserved.",
+    "column_descriptions": {
+        "Points": "Total points scored per 100 offensive possessions from field goals and free throws.",
+        "FG2M": "Two-point field goals made per 100 offensive possessions.",
+        "FG2A": "Two-point field goals attempted per 100 offensive possessions.",
+        "Fg2Pct": "Two-point field-goal percentage on a 0-to-1 scale.",
+        "FG3M": "Three-point field goals made per 100 offensive possessions.",
+        "FG3A": "Three-point field goals attempted per 100 offensive possessions.",
+        "Fg3Pct": "Three-point field-goal percentage on a 0-to-1 scale.",
+        "NonHeaveFg3Pct": "Three-point field-goal percentage excluding heave attempts, on a 0-to-1 scale.",
+        "FtPoints": "Points scored from free throws per 100 offensive possessions.",
+        "PtsAssisted2s": "Points from assisted two-point field goals per 100 offensive possessions.",
+        "PtsUnassisted2s": "Points from unassisted two-point field goals per 100 offensive possessions, including putbacks.",
+        "PtsAssisted3s": "Points from assisted three-point field goals per 100 offensive possessions.",
+        "PtsUnassisted3s": "Points from unassisted three-point field goals per 100 offensive possessions.",
+        "Assisted2sPct": "Fraction of two-point field-goal points that were assisted, on a 0-to-1 scale.",
+        "NonPutbacksAssisted2sPct": "Fraction of non-putback two-point field-goal points that were assisted, on a 0-to-1 scale.",
+        "Assisted3sPct": "Fraction of three-point field-goal points that were assisted, on a 0-to-1 scale.",
+        "FG3APct": "Share of all field-goal attempts that are three-point attempts, on a 0-to-1 scale.",
+        "ShotQualityAvg": "Average estimated make probability of the player's field-goal attempts, summarizing how open or difficult the shot diet was. Values lie between 0 and 1.",
+        "EfgPct": "Effective field-goal percentage, which credits three-point makes more than two-point makes. Values can exceed 1 and are bounded above by 1.5 in this table.",
+        "TsPct": "True shooting percentage, a points-per-possession efficiency measure that incorporates field goals and free throws. Values can exceed 1 and are bounded above by 1.5 in this table.",
+        "PtsPutbacks": "Points scored on putback field goals per 100 offensive possessions.",
+        "Fg2aBlocked": "Two-point field-goal attempts that were blocked, expressed per 100 offensive possessions.",
+        "FG2APctBlocked": "Fraction of two-point field-goal attempts that were blocked, on a 0-to-1 scale.",
+        "Fg3aBlocked": "Three-point field-goal attempts that were blocked, expressed per 100 offensive possessions.",
+        "FG3APctBlocked": "Fraction of three-point field-goal attempts that were blocked, on a 0-to-1 scale.",
+        "Usage": "Player usage rate: the percentage of team possessions ending with the player's field-goal attempt, free-throw trip, or turnover while on the floor. Values lie between 0 and 100. This is the regression target."
+    }
+}

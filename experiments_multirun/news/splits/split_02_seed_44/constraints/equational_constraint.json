@@ -1,0 +1,97 @@
+[
+  {
+    "id": "lda_topic_weight_normalization",
+    "description": "The five LDA topic membership weights sum to one for each article.",
+    "rationale": "The metadata defines LDA_00 through LDA_04 as a complete five-topic probability distribution, whose row-wise normalization is one.",
+    "columns": [
+      "LDA_00",
+      "LDA_01",
+      "LDA_02",
+      "LDA_03",
+      "LDA_04"
+    ],
+    "check_code": "def check(df):\n    total = df[\"LDA_00\"] + df[\"LDA_01\"] + df[\"LDA_02\"] + df[\"LDA_03\"] + df[\"LDA_04\"]\n    return pd.Series(np.isclose(total, 1.0, rtol=1e-7, atol=1e-10), index=df.index)",
+    "fix_code": [
+      {
+        "column": "LDA_00",
+        "code": "def fix(df):\n    return 1.0 - (df['LDA_01'] + df['LDA_02'] + df['LDA_03'] + df['LDA_04'])"
+      },
+      {
+        "column": "LDA_01",
+        "code": "def fix(df):\n    return 1.0 - df['LDA_00'] - df['LDA_02'] - df['LDA_03'] - df['LDA_04']"
+      },
+      {
+        "column": "LDA_02",
+        "code": "def fix(df):\n    return 1.0 - df['LDA_00'] - df['LDA_01'] - df['LDA_03'] - df['LDA_04']"
+      },
+      {
+        "column": "LDA_03",
+        "code": "def fix(df):\n    return 1.0 - df['LDA_00'] - df['LDA_01'] - df['LDA_02'] - df['LDA_04']"
+      },
+      {
+        "column": "LDA_04",
+        "code": "def fix(df):\n    return 1.0 - (df['LDA_00'] + df['LDA_01'] + df['LDA_02'] + df['LDA_03'])"
+      }
+    ]
+  },
+  {
+    "id": "sentiment_rate_partition",
+    "description": "The positive and negative sentiment-word rates among sentiment-bearing words sum to one.",
+    "rationale": "These two columns partition sentiment-bearing words into positive and negative categories, and the metadata states that their sum equals one after zero-sentiment rows are removed.",
+    "columns": [
+      "rate_positive_words",
+      "rate_negative_words"
+    ],
+    "check_code": "def check(df):\n    total = df[\"rate_positive_words\"] + df[\"rate_negative_words\"]\n    return pd.Series(np.isclose(total, 1.0, rtol=1e-7, atol=1e-10), index=df.index)",
+    "fix_code": [
+      {
+        "column": "rate_positive_words",
+        "code": "def fix(df):\n    return 1.0 - df['rate_negative_words']"
+      },
+      {
+        "column": "rate_negative_words",
+        "code": "def fix(df):\n    return 1.0 - df['rate_positive_words']"
+      }
+    ]
+  },
+  {
+    "id": "title_subjectivity_distance",
+    "description": "Absolute title subjectivity equals the absolute distance of title subjectivity from the neutral midpoint 0.5.",
+    "rationale": "The processed feature is explicitly defined as the title subjectivity's distance from the neutral midpoint, rather than as its absolute value.",
+    "columns": [
+      "title_subjectivity",
+      "abs_title_subjectivity"
+    ],
+    "check_code": "def check(df):\n    expected = (df[\"title_subjectivity\"] - 0.5).abs()\n    return pd.Series(np.isclose(df[\"abs_title_subjectivity\"], expected, rtol=1e-7, atol=1e-10), index=df.index)",
+    "fix_code": [
+      {
+        "column": "title_subjectivity",
+        "code": null
+      },
+      {
+        "column": "abs_title_subjectivity",
+        "code": "def fix(df):\n    return (df['title_subjectivity'] - 0.5).abs()"
+      }
+    ]
+  },
+  {
+    "id": "title_polarity_magnitude",
+    "description": "Absolute title sentiment polarity equals the magnitude of title sentiment polarity.",
+    "rationale": "The processed magnitude feature is defined as the absolute value of the signed title sentiment-polarity score, discarding only its direction.",
+    "columns": [
+      "title_sentiment_polarity",
+      "abs_title_sentiment_polarity"
+    ],
+    "check_code": "def check(df):\n    expected = df[\"title_sentiment_polarity\"].abs()\n    return pd.Series(np.isclose(df[\"abs_title_sentiment_polarity\"], expected, rtol=1e-7, atol=1e-10), index=df.index)",
+    "fix_code": [
+      {
+        "column": "title_sentiment_polarity",
+        "code": null
+      },
+      {
+        "column": "abs_title_sentiment_polarity",
+        "code": "def fix(df):\n    return df['title_sentiment_polarity'].abs()"
+      }
+    ]
+  }
+]

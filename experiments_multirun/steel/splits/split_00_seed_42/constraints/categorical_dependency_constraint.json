@@ -1,0 +1,43 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "day_of_week_determines_week_status",
+      "description": "Calendar day determines whether the interval is on a weekday or weekend.",
+      "rationale": "Day_of_week is the named local calendar day, so Monday through Friday are Weekday and Saturday/Sunday are Weekend.",
+      "determinants": [
+        "Day_of_week"
+      ],
+      "dependent": "WeekStatus",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              "Friday",
+              "Monday",
+              "Thursday",
+              "Tuesday",
+              "Wednesday"
+            ]
+          ],
+          "dependent_values": [
+            "Weekday"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "Saturday",
+              "Sunday"
+            ]
+          ],
+          "dependent_values": [
+            "Weekend"
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    }
+  ]
+}

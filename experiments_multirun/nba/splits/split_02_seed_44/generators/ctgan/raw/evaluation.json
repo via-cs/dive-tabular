@@ -1,0 +1,344 @@
+{
+  "paths": {
+    "experiment_dir": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw",
+    "synthetic_files": [
+      "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_0.csv",
+      "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_1.csv",
+      "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_2.csv"
+    ],
+    "metrics": [
+      "constraint",
+      "quality",
+      "utility"
+    ],
+    "constraints_expert": "experiments_multirun/nba/splits/split_02_seed_44/constraints",
+    "utility_regimes": [
+      "trtr",
+      "tstr"
+    ]
+  },
+  "per_file": [
+    {
+      "path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_0.csv",
+      "quality": {
+        "score": 0.9070380593488498,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8789924897818833
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9350836289158164
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.7457817727906013,
+              "rmse": 2.6386415042103692
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.504752013466959,
+              "rmse": 3.6828871005631716
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_0.csv",
+        "rows": 9843,
+        "average_r2_consistency": -0.10276663679691114,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.954393985573504,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.37732398658945443,
+        "linear_scvc": 0.03430218059904131,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.22872272613231773
+      }
+    },
+    {
+      "path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_1.csv",
+      "quality": {
+        "score": 0.9069270318975209,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8790706398143153
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9347834239807264
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.7375383004070771,
+              "rmse": 2.6810814930868716
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.4871935949533117,
+              "rmse": 3.7476046306159123
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_1.csv",
+        "rows": 9843,
+        "average_r2_consistency": -0.07897444008166642,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9550340343391243,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.3820989535710657,
+        "linear_scvc": 0.03473626850646052,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.2317248393816956
+      }
+    },
+    {
+      "path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_2.csv",
+      "quality": {
+        "score": 0.907529616405643,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8796098750380981
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9354493577731879
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.7135389791283354,
+              "rmse": 2.800978750436164
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.47121555794841596,
+              "rmse": 3.805540785632172
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_2.csv",
+        "rows": 9843,
+        "average_r2_consistency": -0.09003597240209794,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9558163161637712,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.3853499949202479,
+        "linear_scvc": 0.035031817720022534,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.22774453606089168
+      }
+    }
+  ],
+  "utility_columns": {
+    "target": "Usage",
+    "categorical_feature_columns": [],
+    "numerical_feature_columns": [
+      "Points",
+      "FG2M",
+      "FG2A",
+      "Fg2Pct",
+      "FG3M",
+      "FG3A",
+      "Fg3Pct",
+      "NonHeaveFg3Pct",
+      "FtPoints",
+      "PtsAssisted2s",
+      "PtsUnassisted2s",
+      "PtsAssisted3s",
+      "PtsUnassisted3s",
+      "Assisted2sPct",
+      "NonPutbacksAssisted2sPct",
+      "Assisted3sPct",
+      "FG3APct",
+      "ShotQualityAvg",
+      "EfgPct",
+      "TsPct",
+      "PtsPutbacks",
+      "Fg2aBlocked",
+      "FG2APctBlocked",
+      "Fg3aBlocked",
+      "FG3APctBlocked"
+    ]
+  },
+  "quality": {
+    "score": [
+      0.9070380593488498,
+      0.9069270318975209,
+      0.907529616405643
+    ],
+    "properties": [
+      {
+        "Property": "Column Shapes",
+        "Score": [
+          0.8789924897818833,
+          0.8790706398143153,
+          0.8796098750380981
+        ]
+      },
+      {
+        "Property": "Column Pair Trends",
+        "Score": [
+          0.9350836289158164,
+          0.9347834239807264,
+          0.9354493577731879
+        ]
+      }
+    ]
+  },
+  "utility": {
+    "task": "regression",
+    "models": {
+      "linear_regression": {
+        "trtr": {
+          "r2": 0.9516882330259574,
+          "rmse": 1.150279837350931
+        },
+        "tstr": {
+          "r2": [
+            0.7457817727906013,
+            0.7375383004070771,
+            0.7135389791283354
+          ],
+          "rmse": [
+            2.6386415042103692,
+            2.6810814930868716,
+            2.800978750436164
+          ]
+        }
+      },
+      "xgboost": {
+        "trtr": {
+          "r2": 0.9248587265453934,
+          "rmse": 1.4345520879599432
+        },
+        "tstr": {
+          "r2": [
+            0.504752013466959,
+            0.4871935949533117,
+            0.47121555794841596
+          ],
+          "rmse": [
+            3.6828871005631716,
+            3.7476046306159123,
+            3.805540785632172
+          ]
+        }
+      }
+    }
+  },
+  "constraint": {
+    "available_families": [
+      "categorical_dependency",
+      "equational",
+      "linear"
+    ],
+    "real_train": {
+      "path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/train.csv",
+      "rows": 9843,
+      "average_r2_consistency": 1.0,
+      "equational_cvr": 0.0,
+      "equational_scvc": 0.0,
+      "categorical_dependency_cvr": 0.0,
+      "categorical_dependency_scvc": null,
+      "linear_cvr": 0.0,
+      "linear_scvc": 0.0,
+      "family_status": {
+        "equational": "evaluated",
+        "categorical_dependency": "evaluated",
+        "linear": "evaluated"
+      },
+      "linear_feasibility_distance": 0.0
+    },
+    "synthetic": [
+      {
+        "path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_0.csv",
+        "rows": 9843,
+        "average_r2_consistency": -0.10276663679691114,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.954393985573504,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.37732398658945443,
+        "linear_scvc": 0.03430218059904131,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.22872272613231773
+      },
+      {
+        "path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_1.csv",
+        "rows": 9843,
+        "average_r2_consistency": -0.07897444008166642,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9550340343391243,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.3820989535710657,
+        "linear_scvc": 0.03473626850646052,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.2317248393816956
+      },
+      {
+        "path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/synthetic/synthetic_2.csv",
+        "rows": 9843,
+        "average_r2_consistency": -0.09003597240209794,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9558163161637712,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.3853499949202479,
+        "linear_scvc": 0.035031817720022534,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.22774453606089168
+      }
+    ],
+    "details_path": "experiments_multirun/nba/splits/split_02_seed_44/generators/ctgan/raw/constraint_evaluation_details.json"
+  }
+}

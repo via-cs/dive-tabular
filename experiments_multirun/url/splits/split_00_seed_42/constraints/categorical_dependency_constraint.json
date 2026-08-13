@@ -1,0 +1,79 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "empty_title_excludes_domain_match",
+      "description": "A page with an empty title cannot contain the URL domain in its title.",
+      "rationale": "The domain-in-title indicator is inverted: an empty title necessarily lacks the registered-domain label, so empty_title=1 implies domain_in_title=1; nonempty titles may or may not contain the domain.",
+      "determinants": [
+        "empty_title"
+      ],
+      "dependent": "domain_in_title",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              0
+            ]
+          ],
+          "dependent_values": [
+            0,
+            1
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            1
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "external_redirects_subset_total",
+      "description": "External redirects are a subset of total redirects.",
+      "rationale": "By definition, nb_external_redirection counts redirects to a different registered domain and therefore can occur only when at least one total redirect occurred; zero external redirects permits any observed total redirect count.",
+      "determinants": [
+        "nb_external_redirection"
+      ],
+      "dependent": "nb_redirection",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              0
+            ]
+          ],
+          "dependent_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            1,
+            2
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    }
+  ]
+}

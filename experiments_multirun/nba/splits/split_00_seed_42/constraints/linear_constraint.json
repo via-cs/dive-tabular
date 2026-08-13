@@ -1,0 +1,128 @@
+[
+  {
+    "id": "nonheave_three_point_percentage_covers_overall_three_point_percentage",
+    "description": "The sum of non-heave and overall three-point percentages is nonnegative.",
+    "formula": "NonHeaveFg3Pct + Fg3Pct >= 0",
+    "columns": [
+      "NonHeaveFg3Pct",
+      "Fg3Pct"
+    ],
+    "coefficients": {
+      "NonHeaveFg3Pct": 1,
+      "Fg3Pct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NonHeaveFg3Pct",
+      "Fg3Pct"
+    ],
+    "explanation": "Both columns are percentages on a 0-to-1 scale, so each is intrinsically nonnegative; unlike an ordering claim, this bound remains valid when the overall rate is slightly above the non-heave rate due to the heave-inclusive denominator and finite shot outcomes.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "shot_quality_and_true_shooting_nonnegative",
+    "description": "Average shot quality and true-shooting percentage have a nonnegative sum.",
+    "formula": "ShotQualityAvg + TsPct >= 0",
+    "columns": [
+      "ShotQualityAvg",
+      "TsPct"
+    ],
+    "coefficients": {
+      "ShotQualityAvg": 1,
+      "TsPct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "ShotQualityAvg",
+      "TsPct"
+    ],
+    "explanation": "Both are efficiency or probability-style rates reported on nonnegative scales.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "effective_and_true_shooting_nonnegative",
+    "description": "Effective field-goal percentage and true-shooting percentage have a nonnegative sum.",
+    "formula": "EfgPct + TsPct >= 0",
+    "columns": [
+      "EfgPct",
+      "TsPct"
+    ],
+    "coefficients": {
+      "EfgPct": 1,
+      "TsPct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "EfgPct",
+      "TsPct"
+    ],
+    "explanation": "Both efficiency percentages are nonnegative measures of scoring conversion.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "points_and_usage_nonnegative",
+    "description": "Total points rate and usage rate have a nonnegative sum.",
+    "formula": "Points + Usage >= 0",
+    "columns": [
+      "Points",
+      "Usage"
+    ],
+    "coefficients": {
+      "Points": 1,
+      "Usage": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "Points",
+      "Usage"
+    ],
+    "explanation": "Both are nonnegative rate statistics: points cannot be negative and usage is a percentage of possessions.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "free_throw_points_and_usage_nonnegative",
+    "description": "Free-throw points rate and usage rate have a nonnegative sum.",
+    "formula": "FtPoints + Usage >= 0",
+    "columns": [
+      "FtPoints",
+      "Usage"
+    ],
+    "coefficients": {
+      "FtPoints": 1,
+      "Usage": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "FtPoints",
+      "Usage"
+    ],
+    "explanation": "Free-throw scoring and usage are both nonnegative possession-normalized quantities.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "putback_points_and_usage_nonnegative",
+    "description": "Putback points rate and usage rate have a nonnegative sum.",
+    "formula": "PtsPutbacks + Usage >= 0",
+    "columns": [
+      "PtsPutbacks",
+      "Usage"
+    ],
+    "coefficients": {
+      "PtsPutbacks": 1,
+      "Usage": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "PtsPutbacks",
+      "Usage"
+    ],
+    "explanation": "Putback scoring is a nonnegative scoring rate and usage is a nonnegative percentage.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

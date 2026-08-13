@@ -1,0 +1,115 @@
+{
+  "name": "steel",
+  "source": "https://www.kaggle.com/datasets/csafrit2/steel-industry-energy-consumption",
+  "task": "regression",
+  "target": "Usage_kWh",
+  "features_by_order": [
+    "Lagging_Current_Reactive_Power_kVarh",
+    "Leading_Current_Reactive_Power_kVarh",
+    "CO2(tCO2)",
+    "Lagging_Current_Power_Factor",
+    "Leading_Current_Power_Factor",
+    "NSM",
+    "WeekStatus",
+    "Day_of_week",
+    "Load_Type",
+    "Usage_kWh"
+  ],
+  "shape": [
+    34993,
+    10
+  ],
+  "col_types": {
+    "Lagging_Current_Reactive_Power_kVarh": {
+      "type": "num",
+      "unique_values": 1951,
+      "missing_values": 0
+    },
+    "Leading_Current_Reactive_Power_kVarh": {
+      "type": "num",
+      "unique_values": 768,
+      "missing_values": 0
+    },
+    "CO2(tCO2)": {
+      "type": "num",
+      "unique_values": 8,
+      "missing_values": 0
+    },
+    "Lagging_Current_Power_Factor": {
+      "type": "num",
+      "unique_values": 5079,
+      "missing_values": 0
+    },
+    "Leading_Current_Power_Factor": {
+      "type": "num",
+      "unique_values": 3364,
+      "missing_values": 0
+    },
+    "NSM": {
+      "type": "num",
+      "unique_values": 96,
+      "missing_values": 0
+    },
+    "WeekStatus": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Day_of_week": {
+      "type": "cat",
+      "unique_values": 7,
+      "missing_values": 0
+    },
+    "Load_Type": {
+      "type": "cat",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "Usage_kWh": {
+      "type": "num",
+      "unique_values": 3334,
+      "missing_values": 0
+    }
+  },
+  "sdv_metadata": {
+    "tables": {
+      "table": {
+        "columns": {
+          "Lagging_Current_Reactive_Power_kVarh": {
+            "sdtype": "numerical"
+          },
+          "Leading_Current_Reactive_Power_kVarh": {
+            "sdtype": "numerical"
+          },
+          "CO2(tCO2)": {
+            "sdtype": "numerical"
+          },
+          "Lagging_Current_Power_Factor": {
+            "sdtype": "numerical"
+          },
+          "Leading_Current_Power_Factor": {
+            "sdtype": "numerical"
+          },
+          "NSM": {
+            "sdtype": "numerical"
+          },
+          "WeekStatus": {
+            "sdtype": "categorical"
+          },
+          "Day_of_week": {
+            "sdtype": "categorical"
+          },
+          "Load_Type": {
+            "sdtype": "categorical"
+          },
+          "Usage_kWh": {
+            "sdtype": "numerical"
+          }
+        }
+      }
+    },
+    "relationships": [],
+    "METADATA_SPEC_VERSION": "V1"
+  },
+  "preprocessing_note": "Removed rows violating CO2(tCO2) == round(Usage_kWh * 0.0004585, 2), then dropped the unique date column. NSM, Day_of_week, and WeekStatus retain modelable temporal information. See raw/preprocessing_info.json for the full audit."
+}

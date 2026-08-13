@@ -1,0 +1,332 @@
+{
+  "paths": {
+    "experiment_dir": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw",
+    "synthetic_files": [
+      "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_0.csv",
+      "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_1.csv",
+      "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_2.csv"
+    ],
+    "metrics": [
+      "constraint",
+      "quality",
+      "utility"
+    ],
+    "constraints_expert": "experiments_multirun/taxi/splits/split_01_seed_43/constraints",
+    "utility_regimes": [
+      "trtr",
+      "tstr"
+    ]
+  },
+  "per_file": [
+    {
+      "path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_0.csv",
+      "quality": {
+        "score": 0.8669272465192959,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8928278426814036
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.841026650357188
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": -0.6658671108770451,
+              "rmse": 14.794208836758672
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.5939760804120455,
+              "rmse": 7.303774861753354
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_0.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.7566276150732358,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.4688668238207491,
+        "categorical_dependency_scvc": 0.2444341262471129,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      }
+    },
+    {
+      "path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_1.csv",
+      "quality": {
+        "score": 0.8660557673470564,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8918028776947273
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.8403086569993855
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": -0.7044656761452366,
+              "rmse": 14.964620164412661
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.5912972155985033,
+              "rmse": 7.327829674432509
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_1.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.7625766186395219,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.4672952829964045,
+        "categorical_dependency_scvc": 0.2437078838964688,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      }
+    },
+    {
+      "path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_2.csv",
+      "quality": {
+        "score": 0.8664750590490184,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8926957986176501
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.8402543194803866
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": -0.6068771183721244,
+              "rmse": 14.529909229693455
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.577242114522868,
+              "rmse": 7.452764985333204
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_2.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.758106882751109,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.4687477676976927,
+        "categorical_dependency_scvc": 0.24457699359478058,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      }
+    }
+  ],
+  "utility_columns": {
+    "target": "total_amount",
+    "categorical_feature_columns": [
+      "store_and_fwd_flag",
+      "passenger_count",
+      "trip_type",
+      "pickup_day_of_week",
+      "is_weekend"
+    ],
+    "numerical_feature_columns": [
+      "pickup_longitude",
+      "pickup_latitude",
+      "dropoff_longitude",
+      "dropoff_latitude",
+      "trip_distance",
+      "pickup_minute_of_day",
+      "dropoff_minute_of_day",
+      "duration"
+    ]
+  },
+  "quality": {
+    "score": [
+      0.8669272465192959,
+      0.8660557673470564,
+      0.8664750590490184
+    ],
+    "properties": [
+      {
+        "Property": "Column Shapes",
+        "Score": [
+          0.8928278426814036,
+          0.8918028776947273,
+          0.8926957986176501
+        ]
+      },
+      {
+        "Property": "Column Pair Trends",
+        "Score": [
+          0.841026650357188,
+          0.8403086569993855,
+          0.8402543194803866
+        ]
+      }
+    ]
+  },
+  "utility": {
+    "task": "regression",
+    "models": {
+      "linear_regression": {
+        "trtr": {
+          "r2": 0.42389360576139734,
+          "rmse": 8.700073381039418
+        },
+        "tstr": {
+          "r2": [
+            -0.6658671108770451,
+            -0.7044656761452366,
+            -0.6068771183721244
+          ],
+          "rmse": [
+            14.794208836758672,
+            14.964620164412661,
+            14.529909229693455
+          ]
+        }
+      },
+      "xgboost": {
+        "trtr": {
+          "r2": 0.7962736897845426,
+          "rmse": 5.173627158303619
+        },
+        "tstr": {
+          "r2": [
+            0.5939760804120455,
+            0.5912972155985033,
+            0.577242114522868
+          ],
+          "rmse": [
+            7.303774861753354,
+            7.327829674432509,
+            7.452764985333204
+          ]
+        }
+      }
+    }
+  },
+  "constraint": {
+    "available_families": [
+      "categorical_dependency",
+      "equational"
+    ],
+    "real_train": {
+      "path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/train.csv",
+      "rows": 41997,
+      "average_r2_consistency": 1.0,
+      "equational_cvr": 2.381122461128176e-05,
+      "equational_scvc": 1.190561230564088e-05,
+      "categorical_dependency_cvr": 0.0007381479629497345,
+      "categorical_dependency_scvc": 0.00036907398147486723,
+      "linear_cvr": null,
+      "linear_scvc": null,
+      "family_status": {
+        "equational": "evaluated",
+        "categorical_dependency": "evaluated",
+        "linear": "not_available"
+      },
+      "linear_feasibility_distance": null
+    },
+    "synthetic": [
+      {
+        "path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_0.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.7566276150732358,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.4688668238207491,
+        "categorical_dependency_scvc": 0.2444341262471129,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      },
+      {
+        "path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_1.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.7625766186395219,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.4672952829964045,
+        "categorical_dependency_scvc": 0.2437078838964688,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      },
+      {
+        "path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/synthetic/synthetic_2.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.758106882751109,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.4687477676976927,
+        "categorical_dependency_scvc": 0.24457699359478058,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      }
+    ],
+    "details_path": "experiments_multirun/taxi/splits/split_01_seed_43/generators/gaussian_copula/raw/constraint_evaluation_details.json"
+  }
+}

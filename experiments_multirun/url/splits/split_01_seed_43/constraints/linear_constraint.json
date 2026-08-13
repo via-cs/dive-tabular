@@ -1,0 +1,380 @@
+[
+  {
+    "id": "url_length_covers_counted_punctuation",
+    "description": "The complete URL length is at least the total number of occurrences of all listed URL punctuation characters.",
+    "formula": "length_url - nb_dots - nb_hyphens - nb_and - nb_eq - nb_underscore - nb_percent - nb_slash - nb_semicolumn >= 0",
+    "columns": [
+      "length_url",
+      "nb_dots",
+      "nb_hyphens",
+      "nb_and",
+      "nb_eq",
+      "nb_underscore",
+      "nb_percent",
+      "nb_slash",
+      "nb_semicolumn"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "nb_dots": -1,
+      "nb_hyphens": -1,
+      "nb_and": -1,
+      "nb_eq": -1,
+      "nb_underscore": -1,
+      "nb_percent": -1,
+      "nb_slash": -1,
+      "nb_semicolumn": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "nb_dots",
+      "nb_hyphens",
+      "nb_and",
+      "nb_eq",
+      "nb_underscore",
+      "nb_percent",
+      "nb_slash",
+      "nb_semicolumn"
+    ],
+    "explanation": "The counted character categories are distinct characters occurring in the complete URL, so their combined count cannot exceed the URL's character count.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "hostname_length_not_over_url_length",
+    "description": "The parsed hostname length does not exceed the complete URL length.",
+    "formula": "length_url - length_hostname >= 0",
+    "columns": [
+      "length_url",
+      "length_hostname"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "length_hostname": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "length_hostname"
+    ],
+    "explanation": "The hostname is a substring/component of the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_longest_raw_word",
+    "description": "The complete URL length is at least the longest raw URL-token length.",
+    "formula": "length_url - longest_words_raw >= 0",
+    "columns": [
+      "length_url",
+      "longest_words_raw"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "longest_words_raw": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "longest_words_raw"
+    ],
+    "explanation": "Every raw token is extracted from the complete URL, so no token can be longer than the containing URL string.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_longest_path_word",
+    "description": "The complete URL length is at least the longest path-token length.",
+    "formula": "length_url - longest_word_path >= 0",
+    "columns": [
+      "length_url",
+      "longest_word_path"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "longest_word_path": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "longest_word_path"
+    ],
+    "explanation": "A path token is a substring of the complete URL; when no path token exists its recorded length is zero.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "hostname_length_covers_longest_host_word",
+    "description": "The hostname length is at least the longest host-token length.",
+    "formula": "length_hostname - longest_word_host >= 0",
+    "columns": [
+      "length_hostname",
+      "longest_word_host"
+    ],
+    "coefficients": {
+      "length_hostname": 1,
+      "longest_word_host": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_hostname",
+      "longest_word_host"
+    ],
+    "explanation": "Host tokens are components extracted from the hostname, and therefore cannot exceed the hostname's total character length.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "raw_average_at_least_raw_shortest",
+    "description": "The average raw URL-token length is at least the shortest raw-token length.",
+    "formula": "avg_words_raw - shortest_words_raw >= 0",
+    "columns": [
+      "avg_words_raw",
+      "shortest_words_raw"
+    ],
+    "coefficients": {
+      "avg_words_raw": 1,
+      "shortest_words_raw": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "avg_words_raw",
+      "shortest_words_raw"
+    ],
+    "explanation": "An arithmetic mean of nonempty token lengths cannot be below their minimum.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "raw_longest_at_least_raw_average",
+    "description": "The longest raw URL-token length is at least the average raw-token length.",
+    "formula": "longest_words_raw - avg_words_raw >= 0",
+    "columns": [
+      "longest_words_raw",
+      "avg_words_raw"
+    ],
+    "coefficients": {
+      "longest_words_raw": 1,
+      "avg_words_raw": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "longest_words_raw",
+      "avg_words_raw"
+    ],
+    "explanation": "An arithmetic mean of token lengths cannot exceed their maximum.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "host_average_at_least_host_shortest",
+    "description": "The average host-token length is at least the shortest host-token length.",
+    "formula": "avg_word_host - shortest_word_host >= 0",
+    "columns": [
+      "avg_word_host",
+      "shortest_word_host"
+    ],
+    "coefficients": {
+      "avg_word_host": 1,
+      "shortest_word_host": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "avg_word_host",
+      "shortest_word_host"
+    ],
+    "explanation": "The host average is an arithmetic mean over the host-token lengths.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "host_longest_at_least_host_average",
+    "description": "The longest host-token length is at least the average host-token length.",
+    "formula": "longest_word_host - avg_word_host >= 0",
+    "columns": [
+      "longest_word_host",
+      "avg_word_host"
+    ],
+    "coefficients": {
+      "longest_word_host": 1,
+      "avg_word_host": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "longest_word_host",
+      "avg_word_host"
+    ],
+    "explanation": "The host average cannot exceed the maximum host-token length.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "path_average_at_least_path_shortest",
+    "description": "The average path-token length is at least the shortest path-token length.",
+    "formula": "avg_word_path - shortest_word_path >= 0",
+    "columns": [
+      "avg_word_path",
+      "shortest_word_path"
+    ],
+    "coefficients": {
+      "avg_word_path": 1,
+      "shortest_word_path": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "avg_word_path",
+      "shortest_word_path"
+    ],
+    "explanation": "When path tokens exist this is the mean-versus-minimum property; when none exist the recorded shortest and average values are both zero.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "path_longest_at_least_path_average",
+    "description": "The longest path-token length is at least the average path-token length.",
+    "formula": "longest_word_path - avg_word_path >= 0",
+    "columns": [
+      "longest_word_path",
+      "avg_word_path"
+    ],
+    "coefficients": {
+      "longest_word_path": 1,
+      "avg_word_path": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "longest_word_path",
+      "avg_word_path"
+    ],
+    "explanation": "When path tokens exist an average cannot exceed the maximum, and the no-token encoding sets both relevant extrema to zero.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "hyperlink_count_covers_external_css",
+    "description": "The total extracted hyperlink/resource count is at least the external CSS-link count.",
+    "formula": "nb_hyperlinks - nb_extCSS >= 0",
+    "columns": [
+      "nb_hyperlinks",
+      "nb_extCSS"
+    ],
+    "coefficients": {
+      "nb_hyperlinks": 1,
+      "nb_extCSS": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nb_hyperlinks",
+      "nb_extCSS"
+    ],
+    "explanation": "External CSS links are a subset of linked resources extracted from href and src attributes.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_longest_host_word",
+    "description": "The complete URL length is at least the longest host-token length.",
+    "formula": "length_url - longest_word_host >= 0",
+    "columns": [
+      "length_url",
+      "longest_word_host"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "longest_word_host": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "longest_word_host"
+    ],
+    "explanation": "Host tokens are extracted from a hostname that is itself contained in the complete URL, so no host token can exceed the complete URL length.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "hostname_length_covers_shortest_host_word",
+    "description": "The hostname length is at least the shortest host-token length.",
+    "formula": "length_hostname - shortest_word_host >= 0",
+    "columns": [
+      "length_hostname",
+      "shortest_word_host"
+    ],
+    "coefficients": {
+      "length_hostname": 1,
+      "shortest_word_host": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_hostname",
+      "shortest_word_host"
+    ],
+    "explanation": "The shortest host token is a nonempty component of the parsed hostname, and therefore cannot be longer than the hostname.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "hostname_length_covers_shortest_raw_word",
+    "description": "The hostname length is at least the shortest raw URL-token length.",
+    "formula": "length_hostname - shortest_words_raw >= 0",
+    "columns": [
+      "length_hostname",
+      "shortest_words_raw"
+    ],
+    "coefficients": {
+      "length_hostname": 1,
+      "shortest_words_raw": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_hostname",
+      "shortest_words_raw"
+    ],
+    "explanation": "The hostname contains nonempty host tokens, while the raw-token minimum cannot exceed the length of any host token; consequently it cannot exceed the hostname length.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_shortest_raw_word",
+    "description": "The complete URL length is at least the shortest raw URL-token length.",
+    "formula": "length_url - shortest_words_raw >= 0",
+    "columns": [
+      "length_url",
+      "shortest_words_raw"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "shortest_words_raw": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "shortest_words_raw"
+    ],
+    "explanation": "Every raw URL token is extracted from the complete URL, so even the shortest nonempty token cannot be longer than the containing URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_shortest_path_word",
+    "description": "The complete URL length is at least the shortest path-token length.",
+    "formula": "length_url - shortest_word_path >= 0",
+    "columns": [
+      "length_url",
+      "shortest_word_path"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "shortest_word_path": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "shortest_word_path"
+    ],
+    "explanation": "A nonempty path token is a component of the complete URL, and the no-path encoding gives the shortest path length as zero.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

@@ -1,0 +1,223 @@
+{
+  "name": "taxi",
+  "source": "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page",
+  "task": "regression",
+  "target": "total_amount",
+  "features_by_order": [
+    "pickup_longitude",
+    "pickup_latitude",
+    "dropoff_longitude",
+    "dropoff_latitude",
+    "trip_distance",
+    "fare_amount",
+    "extra",
+    "mta_tax",
+    "tip_amount",
+    "tolls_amount",
+    "improvement_surcharge",
+    "pickup_minute_of_day",
+    "dropoff_minute_of_day",
+    "duration",
+    "store_and_fwd_flag",
+    "rate_code",
+    "passenger_count",
+    "payment_type",
+    "trip_type",
+    "pickup_day_of_week",
+    "is_weekend",
+    "total_amount"
+  ],
+  "shape": [
+    59996,
+    22
+  ],
+  "col_types": {
+    "pickup_longitude": {
+      "type": "num",
+      "unique_values": 17071,
+      "missing_values": 0
+    },
+    "pickup_latitude": {
+      "type": "num",
+      "unique_values": 30711,
+      "missing_values": 0
+    },
+    "dropoff_longitude": {
+      "type": "num",
+      "unique_values": 21719,
+      "missing_values": 0
+    },
+    "dropoff_latitude": {
+      "type": "num",
+      "unique_values": 35892,
+      "missing_values": 0
+    },
+    "trip_distance": {
+      "type": "num",
+      "unique_values": 1800,
+      "missing_values": 0
+    },
+    "fare_amount": {
+      "type": "num",
+      "unique_values": 237,
+      "missing_values": 0
+    },
+    "extra": {
+      "type": "num",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "mta_tax": {
+      "type": "num",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "tip_amount": {
+      "type": "num",
+      "unique_values": 818,
+      "missing_values": 0
+    },
+    "tolls_amount": {
+      "type": "num",
+      "unique_values": 34,
+      "missing_values": 0
+    },
+    "improvement_surcharge": {
+      "type": "num",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "pickup_minute_of_day": {
+      "type": "num",
+      "unique_values": 41758,
+      "missing_values": 0
+    },
+    "dropoff_minute_of_day": {
+      "type": "num",
+      "unique_values": 46847,
+      "missing_values": 0
+    },
+    "duration": {
+      "type": "num",
+      "unique_values": 3507,
+      "missing_values": 0
+    },
+    "store_and_fwd_flag": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "rate_code": {
+      "type": "cat",
+      "unique_values": 6,
+      "missing_values": 0
+    },
+    "passenger_count": {
+      "type": "cat",
+      "unique_values": 8,
+      "missing_values": 0
+    },
+    "payment_type": {
+      "type": "cat",
+      "unique_values": 5,
+      "missing_values": 0
+    },
+    "trip_type": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "pickup_day_of_week": {
+      "type": "cat",
+      "unique_values": 7,
+      "missing_values": 0
+    },
+    "is_weekend": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "total_amount": {
+      "type": "num",
+      "unique_values": 1714,
+      "missing_values": 0
+    }
+  },
+  "sdv_metadata": {
+    "tables": {
+      "table": {
+        "columns": {
+          "pickup_longitude": {
+            "sdtype": "numerical"
+          },
+          "pickup_latitude": {
+            "sdtype": "numerical"
+          },
+          "dropoff_longitude": {
+            "sdtype": "numerical"
+          },
+          "dropoff_latitude": {
+            "sdtype": "numerical"
+          },
+          "trip_distance": {
+            "sdtype": "numerical"
+          },
+          "fare_amount": {
+            "sdtype": "numerical"
+          },
+          "extra": {
+            "sdtype": "numerical"
+          },
+          "mta_tax": {
+            "sdtype": "numerical"
+          },
+          "tip_amount": {
+            "sdtype": "numerical"
+          },
+          "tolls_amount": {
+            "sdtype": "numerical"
+          },
+          "improvement_surcharge": {
+            "sdtype": "numerical"
+          },
+          "pickup_minute_of_day": {
+            "sdtype": "numerical"
+          },
+          "dropoff_minute_of_day": {
+            "sdtype": "numerical"
+          },
+          "duration": {
+            "sdtype": "numerical"
+          },
+          "store_and_fwd_flag": {
+            "sdtype": "categorical"
+          },
+          "rate_code": {
+            "sdtype": "categorical"
+          },
+          "passenger_count": {
+            "sdtype": "categorical"
+          },
+          "payment_type": {
+            "sdtype": "categorical"
+          },
+          "trip_type": {
+            "sdtype": "categorical"
+          },
+          "pickup_day_of_week": {
+            "sdtype": "categorical"
+          },
+          "is_weekend": {
+            "sdtype": "categorical"
+          },
+          "total_amount": {
+            "sdtype": "numerical"
+          }
+        }
+      }
+    },
+    "relationships": [],
+    "METADATA_SPEC_VERSION": "V1"
+  },
+  "preprocessing_note": "Dropped the unnamed identifier, vendorid, Ehail_fee, and source timestamps; added pickup weekday, fractional minute-of-day fields, duration in minutes, and Saturday/Sunday is_weekend. Removed missing and invalid-duration rows and rebuilt total_amount from retained payment components. See raw/preprocessing_info.json for the full audit."
+}

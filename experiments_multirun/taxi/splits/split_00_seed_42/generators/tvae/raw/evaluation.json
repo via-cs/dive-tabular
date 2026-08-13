@@ -1,0 +1,332 @@
+{
+  "paths": {
+    "experiment_dir": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw",
+    "synthetic_files": [
+      "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_0.csv",
+      "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_1.csv",
+      "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_2.csv"
+    ],
+    "metrics": [
+      "constraint",
+      "quality",
+      "utility"
+    ],
+    "constraints_expert": "experiments_multirun/taxi/splits/split_00_seed_42/constraints",
+    "utility_regimes": [
+      "trtr",
+      "tstr"
+    ]
+  },
+  "per_file": [
+    {
+      "path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_0.csv",
+      "quality": {
+        "score": 0.9008568625772605,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9643221269051686
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.8373915982493524
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": -2.3395435412280516,
+              "rmse": 19.82258295885556
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.7619826470423937,
+              "rmse": 5.292014183236556
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_0.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.6453744447413434,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.066171393194752,
+        "categorical_dependency_scvc": 0.03331190323118318,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      }
+    },
+    {
+      "path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_1.csv",
+      "quality": {
+        "score": 0.898875089383707,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9616163059266138
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.8361338728408002
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": -2.227009913134124,
+              "rmse": 19.485737097925174
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.7668554105093114,
+              "rmse": 5.237564203009057
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_1.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.6454594883096525,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.06314736766911923,
+        "categorical_dependency_scvc": 0.031740362406838585,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      }
+    },
+    {
+      "path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_2.csv",
+      "quality": {
+        "score": 0.8984512414155276,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9614442157123776
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.8354582671186775
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": -2.2739682555874383,
+              "rmse": 19.626999936398676
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.7653137370045882,
+              "rmse": 5.254852422181724
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_2.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.6419205944521647,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.0640760054289592,
+        "categorical_dependency_scvc": 0.03222849251136986,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      }
+    }
+  ],
+  "utility_columns": {
+    "target": "total_amount",
+    "categorical_feature_columns": [
+      "store_and_fwd_flag",
+      "passenger_count",
+      "trip_type",
+      "pickup_day_of_week",
+      "is_weekend"
+    ],
+    "numerical_feature_columns": [
+      "pickup_longitude",
+      "pickup_latitude",
+      "dropoff_longitude",
+      "dropoff_latitude",
+      "trip_distance",
+      "pickup_minute_of_day",
+      "dropoff_minute_of_day",
+      "duration"
+    ]
+  },
+  "quality": {
+    "score": [
+      0.9008568625772605,
+      0.898875089383707,
+      0.8984512414155276
+    ],
+    "properties": [
+      {
+        "Property": "Column Shapes",
+        "Score": [
+          0.9643221269051686,
+          0.9616163059266138,
+          0.9614442157123776
+        ]
+      },
+      {
+        "Property": "Column Pair Trends",
+        "Score": [
+          0.8373915982493524,
+          0.8361338728408002,
+          0.8354582671186775
+        ]
+      }
+    ]
+  },
+  "utility": {
+    "task": "regression",
+    "models": {
+      "linear_regression": {
+        "trtr": {
+          "r2": 0.46457094850804526,
+          "rmse": 7.937206050509896
+        },
+        "tstr": {
+          "r2": [
+            -2.3395435412280516,
+            -2.227009913134124,
+            -2.2739682555874383
+          ],
+          "rmse": [
+            19.82258295885556,
+            19.485737097925174,
+            19.626999936398676
+          ]
+        }
+      },
+      "xgboost": {
+        "trtr": {
+          "r2": 0.8020394172527544,
+          "rmse": 4.826208173010555
+        },
+        "tstr": {
+          "r2": [
+            0.7619826470423937,
+            0.7668554105093114,
+            0.7653137370045882
+          ],
+          "rmse": [
+            5.292014183236556,
+            5.237564203009057,
+            5.254852422181724
+          ]
+        }
+      }
+    }
+  },
+  "constraint": {
+    "available_families": [
+      "categorical_dependency",
+      "equational"
+    ],
+    "real_train": {
+      "path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/train.csv",
+      "rows": 41997,
+      "average_r2_consistency": 1.0,
+      "equational_cvr": 7.143367383384528e-05,
+      "equational_scvc": 3.571683691692264e-05,
+      "categorical_dependency_cvr": 0.0008572040860061433,
+      "categorical_dependency_scvc": 0.00042860204300307163,
+      "linear_cvr": null,
+      "linear_scvc": null,
+      "family_status": {
+        "equational": "evaluated",
+        "categorical_dependency": "evaluated",
+        "linear": "not_available"
+      },
+      "linear_feasibility_distance": null
+    },
+    "synthetic": [
+      {
+        "path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_0.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.6453744447413434,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.066171393194752,
+        "categorical_dependency_scvc": 0.03331190323118318,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      },
+      {
+        "path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_1.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.6454594883096525,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.06314736766911923,
+        "categorical_dependency_scvc": 0.031740362406838585,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      },
+      {
+        "path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/synthetic/synthetic_2.csv",
+        "rows": 41997,
+        "average_r2_consistency": 0.6419205944521647,
+        "equational_cvr": 1.0,
+        "equational_scvc": 1.0,
+        "categorical_dependency_cvr": 0.0640760054289592,
+        "categorical_dependency_scvc": 0.03222849251136986,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        },
+        "linear_feasibility_distance": null
+      }
+    ],
+    "details_path": "experiments_multirun/taxi/splits/split_00_seed_42/generators/tvae/raw/constraint_evaluation_details.json"
+  }
+}

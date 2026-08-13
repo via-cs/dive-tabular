@@ -1,0 +1,191 @@
+NBA player scoring per 100 possessions
+======================================
+
+Source
+------
+
+API endpoint: https://api.pbpstats.com/get-totals/nba
+Parameters: Season=<YYYY-YY>, SeasonType=Regular Season, Type=Player
+Default seasons: 1996-97 through 2025-26 (30 seasons)
+Processed at: 2026-08-13T04:17:00.019401+00:00
+
+Raw acquisition and normalization
+---------------------------------
+
+Each season is requested separately because a multi-season player request
+aggregates seasons. The API response rows come from multi_row_table_data.
+The raw API volume statistics are counts. The seasonal CSVs convert the
+following fields to rates per 100 offensive possessions:
+
+    per_100_value = 100 * raw_count / OffPoss
+
+    Points, FG2M, FG2A, FG3M, FG3A, FtPoints, PtsAssisted2s, PtsUnassisted2s, PtsAssisted3s, PtsUnassisted3s, PtsPutbacks, Fg2aBlocked
+
+The API does not expose Fg3aBlocked directly, so it is reconstructed as:
+
+    Fg3aBlocked = 100 * FG3APctBlocked * raw_FG3A / OffPoss
+
+Preprocessing
+-------------
+
+1. Read every selected seasonal CSV and validate its exact 31-column schema.
+2. Coerce retained numeric fields to numbers and replace every numeric null
+   with 0. Older API responses use null for many sparse zero-count fields.
+3. Evaluate every equality and inequality listed below using absolute and
+   relative tolerances of 1e-09.
+4. Drop any row violating at least one constraint.
+5. Remove Name, TeamAbbreviation, GamesPlayed, Minutes, and OffPoss.
+6. Concatenate all valid rows without a Season column, shuffle the complete
+   table with pandas random_state=42, and reset the row index.
+7. Keep Usage as the final column for downstream regression.
+
+Enforced constraints
+--------------------
+
+* all retained numeric values are finite
+* all retained numeric values are nonnegative
+* GamesPlayed >= 1
+* OffPoss > 0
+* Points = 2*FG2M + 3*FG3M + FtPoints
+* 2*FG2M = PtsAssisted2s + PtsUnassisted2s
+* 3*FG3M = PtsAssisted3s + PtsUnassisted3s
+* Fg2Pct*FG2A = FG2M
+* Fg3Pct*FG3A = FG3M
+* FG3APct*(FG2A+FG3A) = FG3A
+* EfgPct*(FG2A+FG3A) = FG2M + 1.5*FG3M
+* Assisted2sPct*(2*FG2M) = PtsAssisted2s
+* Assisted3sPct*(3*FG3M) = PtsAssisted3s
+* NonPutbacksAssisted2sPct*(2*FG2M-PtsPutbacks) = PtsAssisted2s
+* FG2APctBlocked*FG2A = Fg2aBlocked
+* FG3APctBlocked*FG3A = Fg3aBlocked
+* probability-like columns are within [0, 1]
+* EfgPct and TsPct are within [0, 1.5]
+* 0 <= Usage <= 100
+* FG2M <= FG2A
+* FG3M <= FG3A
+* Fg2aBlocked <= FG2A
+* Fg3aBlocked <= FG3A
+* PtsPutbacks <= PtsUnassisted2s
+* Assisted2sPct <= NonPutbacksAssisted2sPct
+* scoring components do not exceed Points
+
+Non-enforced relationships
+--------------------------
+
+NonHeaveFg3Pct == Fg3Pct is not enforced. It happened to hold in the
+2025-26 file, but legitimate heave attempts can make the values differ.
+EfgPct <= TsPct and ShotQualityAvg <= TsPct are not enforced because
+they had valid counterexamples in the inspected data.
+
+Audit summary
+-------------
+
+Seasonal files: 30
+Rows read: 14063
+Rows kept: 14062
+Rows dropped: 1
+Output columns: 26
+Output path: dataset/nba/data.csv
+Output SHA-256: 254a4b5bbc2b2470344a59c6c4b6d3dea4942d6bf4072824f1d9d7ce3bd77209
+
+Output column order:
+
+    Points, FG2M, FG2A, Fg2Pct, FG3M, FG3A, Fg3Pct, NonHeaveFg3Pct, FtPoints, PtsAssisted2s, PtsUnassisted2s, PtsAssisted3s, PtsUnassisted3s, Assisted2sPct, NonPutbacksAssisted2sPct, Assisted3sPct, FG3APct, ShotQualityAvg, EfgPct, TsPct, PtsPutbacks, Fg2aBlocked, FG2APctBlocked, Fg3aBlocked, FG3APctBlocked, Usage
+
+Per-file audit
+--------------
+
+* dataset/nba/raw/all_seasons/96-97.csv: read=442, null_cells=1917, kept=442, dropped=0
+* dataset/nba/raw/all_seasons/97-98.csv: read=438, null_cells=2065, kept=438, dropped=0
+* dataset/nba/raw/all_seasons/98-99.csv: read=440, null_cells=2550, kept=440, dropped=0
+* dataset/nba/raw/all_seasons/99-00.csv: read=439, null_cells=2036, kept=439, dropped=0
+* dataset/nba/raw/all_seasons/00-01.csv: read=441, null_cells=1975, kept=441, dropped=0
+* dataset/nba/raw/all_seasons/01-02.csv: read=440, null_cells=1950, kept=440, dropped=0
+* dataset/nba/raw/all_seasons/02-03.csv: read=428, null_cells=1983, kept=428, dropped=0
+* dataset/nba/raw/all_seasons/03-04.csv: read=442, null_cells=1999, kept=442, dropped=0
+* dataset/nba/raw/all_seasons/04-05.csv: read=464, null_cells=2083, kept=464, dropped=0
+* dataset/nba/raw/all_seasons/05-06.csv: read=458, null_cells=2059, kept=458, dropped=0
+* dataset/nba/raw/all_seasons/06-07.csv: read=458, null_cells=2061, kept=458, dropped=0
+* dataset/nba/raw/all_seasons/07-08.csv: read=451, null_cells=1919, kept=451, dropped=0
+* dataset/nba/raw/all_seasons/08-09.csv: read=445, null_cells=1877, kept=445, dropped=0
+* dataset/nba/raw/all_seasons/09-10.csv: read=442, null_cells=1767, kept=441, dropped=1
+* dataset/nba/raw/all_seasons/10-11.csv: read=452, null_cells=1934, kept=452, dropped=0
+* dataset/nba/raw/all_seasons/11-12.csv: read=478, null_cells=1968, kept=478, dropped=0
+* dataset/nba/raw/all_seasons/12-13.csv: read=469, null_cells=1913, kept=469, dropped=0
+* dataset/nba/raw/all_seasons/13-14.csv: read=482, null_cells=1961, kept=482, dropped=0
+* dataset/nba/raw/all_seasons/14-15.csv: read=492, null_cells=1818, kept=492, dropped=0
+* dataset/nba/raw/all_seasons/15-16.csv: read=476, null_cells=1592, kept=476, dropped=0
+* dataset/nba/raw/all_seasons/16-17.csv: read=486, null_cells=1549, kept=486, dropped=0
+* dataset/nba/raw/all_seasons/17-18.csv: read=500, null_cells=1337, kept=500, dropped=0
+* dataset/nba/raw/all_seasons/18-19.csv: read=500, null_cells=1169, kept=500, dropped=0
+* dataset/nba/raw/all_seasons/19-20.csv: read=500, null_cells=1149, kept=500, dropped=0
+* dataset/nba/raw/all_seasons/20-21.csv: read=500, null_cells=1055, kept=500, dropped=0
+* dataset/nba/raw/all_seasons/21-22.csv: read=500, null_cells=923, kept=500, dropped=0
+* dataset/nba/raw/all_seasons/22-23.csv: read=500, null_cells=973, kept=500, dropped=0
+* dataset/nba/raw/all_seasons/23-24.csv: read=500, null_cells=972, kept=500, dropped=0
+* dataset/nba/raw/all_seasons/24-25.csv: read=500, null_cells=908, kept=500, dropped=0
+* dataset/nba/raw/all_seasons/25-26.csv: read=500, null_cells=807, kept=500, dropped=0
+
+Nulls replaced with zero by column
+----------------------------------
+
+* Minutes: 4
+* OffPoss: 1
+* Points: 104
+* FG2M: 178
+* FG2A: 47
+* Fg2Pct: 178
+* FG3M: 3375
+* FG3A: 1712
+* Fg3Pct: 3375
+* NonHeaveFg3Pct: 3390
+* FtPoints: 443
+* PtsAssisted2s: 316
+* PtsUnassisted2s: 430
+* PtsAssisted3s: 3513
+* PtsUnassisted3s: 6402
+* Assisted2sPct: 316
+* NonPutbacksAssisted2sPct: 316
+* Assisted3sPct: 3513
+* FG3APct: 1712
+* ShotQualityAvg: 33
+* EfgPct: 137
+* TsPct: 104
+* PtsPutbacks: 2022
+* Fg2aBlocked: 659
+* FG2APctBlocked: 659
+* Fg3aBlocked: 8654
+* FG3APctBlocked: 8654
+* Usage: 22
+
+Constraint violation counts
+---------------------------
+
+Counts below overlap when one row violates multiple constraints. The first-failure count assigns each rejected row only to its earliest failed check.
+
+* all retained numeric values are finite: all_failures=0, first_failures=0
+* all retained numeric values are nonnegative: all_failures=0, first_failures=0
+* GamesPlayed >= 1: all_failures=0, first_failures=0
+* OffPoss > 0: all_failures=1, first_failures=1
+* Points = 2*FG2M + 3*FG3M + FtPoints: all_failures=0, first_failures=0
+* 2*FG2M = PtsAssisted2s + PtsUnassisted2s: all_failures=0, first_failures=0
+* 3*FG3M = PtsAssisted3s + PtsUnassisted3s: all_failures=0, first_failures=0
+* Fg2Pct*FG2A = FG2M: all_failures=0, first_failures=0
+* Fg3Pct*FG3A = FG3M: all_failures=0, first_failures=0
+* FG3APct*(FG2A+FG3A) = FG3A: all_failures=0, first_failures=0
+* EfgPct*(FG2A+FG3A) = FG2M + 1.5*FG3M: all_failures=0, first_failures=0
+* Assisted2sPct*(2*FG2M) = PtsAssisted2s: all_failures=0, first_failures=0
+* Assisted3sPct*(3*FG3M) = PtsAssisted3s: all_failures=0, first_failures=0
+* NonPutbacksAssisted2sPct*(2*FG2M-PtsPutbacks) = PtsAssisted2s: all_failures=0, first_failures=0
+* FG2APctBlocked*FG2A = Fg2aBlocked: all_failures=0, first_failures=0
+* FG3APctBlocked*FG3A = Fg3aBlocked: all_failures=0, first_failures=0
+* probability-like columns are within [0, 1]: all_failures=0, first_failures=0
+* EfgPct and TsPct are within [0, 1.5]: all_failures=0, first_failures=0
+* 0 <= Usage <= 100: all_failures=0, first_failures=0
+* FG2M <= FG2A: all_failures=0, first_failures=0
+* FG3M <= FG3A: all_failures=0, first_failures=0
+* Fg2aBlocked <= FG2A: all_failures=0, first_failures=0
+* Fg3aBlocked <= FG3A: all_failures=0, first_failures=0
+* PtsPutbacks <= PtsUnassisted2s: all_failures=0, first_failures=0
+* Assisted2sPct <= NonPutbacksAssisted2sPct: all_failures=0, first_failures=0
+* scoring components do not exceed Points: all_failures=0, first_failures=0

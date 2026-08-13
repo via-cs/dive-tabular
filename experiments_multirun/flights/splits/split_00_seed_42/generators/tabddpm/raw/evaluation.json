@@ -1,0 +1,339 @@
+{
+  "paths": {
+    "experiment_dir": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw",
+    "synthetic_files": [
+      "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_0.csv",
+      "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_1.csv",
+      "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_2.csv"
+    ],
+    "metrics": [
+      "constraint",
+      "quality",
+      "utility"
+    ],
+    "constraints_expert": "experiments_multirun/flights/splits/split_00_seed_42/constraints",
+    "utility_regimes": [
+      "trtr",
+      "tstr"
+    ]
+  },
+  "per_file": [
+    {
+      "path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_0.csv",
+      "quality": {
+        "score": 0.9443089510741822,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9649202898550726
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9236976122932918
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.8683332538808375,
+              "rmse": 19.699513890440624
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.861361563205719,
+              "rmse": 20.214327816483674
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_0.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.6490496722925954,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9823571428571428,
+        "categorical_dependency_cvr": 0.12130952380952381,
+        "categorical_dependency_scvc": 0.06122222222222222,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    },
+    {
+      "path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_1.csv",
+      "quality": {
+        "score": 0.9453894094320843,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9660320910973086
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9247467277668598
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.8694902037779013,
+              "rmse": 19.612773543802074
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.8649473190307617,
+              "rmse": 19.951202371642136
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_1.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.6590425319909945,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9830340136054422,
+        "categorical_dependency_cvr": 0.12071428571428572,
+        "categorical_dependency_scvc": 0.059698412698412695,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    },
+    {
+      "path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_2.csv",
+      "quality": {
+        "score": 0.9451994549982643,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9652660455486543
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9251328644478745
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.8977260098653945,
+              "rmse": 17.362012238414486
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.8580127954483032,
+              "rmse": 20.4570047707247
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_2.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.6589457890728533,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9824489795918367,
+        "categorical_dependency_cvr": 0.11897619047619047,
+        "categorical_dependency_scvc": 0.0603968253968254,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    }
+  ],
+  "utility_columns": {
+    "target": "ARR_DELAY",
+    "categorical_feature_columns": [
+      "YEAR",
+      "MONTH",
+      "DAY",
+      "AIRLINE",
+      "AIRLINE_CODE",
+      "ORIGIN",
+      "ORIGIN_CITY",
+      "DEST",
+      "DEST_CITY"
+    ],
+    "numerical_feature_columns": [
+      "DEP_TIME_UTC_MIN",
+      "TAXI_OUT",
+      "DEP_DELAY",
+      "WHEELS_OFF_UTC_MIN",
+      "WHEELS_ON_UTC_MIN",
+      "TAXI_IN",
+      "AIR_TIME",
+      "ARR_TIME_UTC_MIN",
+      "ELAPSED_TIME",
+      "DISTANCE"
+    ]
+  },
+  "quality": {
+    "score": [
+      0.9443089510741822,
+      0.9453894094320843,
+      0.9451994549982643
+    ],
+    "properties": [
+      {
+        "Property": "Column Shapes",
+        "Score": [
+          0.9649202898550726,
+          0.9660320910973086,
+          0.9652660455486543
+        ]
+      },
+      {
+        "Property": "Column Pair Trends",
+        "Score": [
+          0.9236976122932918,
+          0.9247467277668598,
+          0.9251328644478745
+        ]
+      }
+    ]
+  },
+  "utility": {
+    "task": "regression",
+    "models": {
+      "linear_regression": {
+        "trtr": {
+          "r2": 0.9857632065422174,
+          "rmse": 6.477740563198919
+        },
+        "tstr": {
+          "r2": [
+            0.8683332538808375,
+            0.8694902037779013,
+            0.8977260098653945
+          ],
+          "rmse": [
+            19.699513890440624,
+            19.612773543802074,
+            17.362012238414486
+          ]
+        }
+      },
+      "xgboost": {
+        "trtr": {
+          "r2": 0.8447815179824829,
+          "rmse": 21.388937884298027
+        },
+        "tstr": {
+          "r2": [
+            0.861361563205719,
+            0.8649473190307617,
+            0.8580127954483032
+          ],
+          "rmse": [
+            20.214327816483674,
+            19.951202371642136,
+            20.4570047707247
+          ]
+        }
+      }
+    }
+  },
+  "constraint": {
+    "available_families": [
+      "categorical_dependency",
+      "equational",
+      "linear"
+    ],
+    "real_train": {
+      "path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/train.csv",
+      "rows": 42000,
+      "average_r2_consistency": 1.0,
+      "equational_cvr": 0.0,
+      "equational_scvc": 0.0,
+      "categorical_dependency_cvr": 0.0,
+      "categorical_dependency_scvc": 0.0,
+      "linear_cvr": 0.0,
+      "linear_scvc": 0.0,
+      "family_status": {
+        "equational": "evaluated",
+        "categorical_dependency": "evaluated",
+        "linear": "evaluated"
+      },
+      "linear_feasibility_distance": 0.0
+    },
+    "synthetic": [
+      {
+        "path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_0.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.6490496722925954,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9823571428571428,
+        "categorical_dependency_cvr": 0.12130952380952381,
+        "categorical_dependency_scvc": 0.06122222222222222,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      },
+      {
+        "path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_1.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.6590425319909945,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9830340136054422,
+        "categorical_dependency_cvr": 0.12071428571428572,
+        "categorical_dependency_scvc": 0.059698412698412695,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      },
+      {
+        "path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/synthetic/synthetic_2.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.6589457890728533,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9824489795918367,
+        "categorical_dependency_cvr": 0.11897619047619047,
+        "categorical_dependency_scvc": 0.0603968253968254,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    ],
+    "details_path": "experiments_multirun/flights/splits/split_00_seed_42/generators/tabddpm/raw/constraint_evaluation_details.json"
+  }
+}

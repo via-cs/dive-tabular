@@ -1,0 +1,15 @@
+{
+    "dataset_description": "A dataset of steel-industry electricity-use observations recorded at 15-minute intervals over a calendar year. Each row describes one interval using active electrical energy consumption, lagging and leading reactive energy, corresponding power-factor measurements, estimated carbon-dioxide emissions, time within the day, weekday context, and an operational load category. The dataset supports regression of industrial electricity consumption and tabular synthetic-data experiments that should preserve meaningful relationships among electrical, temporal, and operating variables.",
+    "column_descriptions": {
+        "Lagging_Current_Reactive_Power_kVarh": "Lagging reactive electrical energy during the observation interval, measured in kilovolt-ampere reactive hours (kVArh). It represents the inductive reactive component associated with current that lags voltage.",
+        "Leading_Current_Reactive_Power_kVarh": "Leading reactive electrical energy during the observation interval, measured in kilovolt-ampere reactive hours (kVArh). It represents the capacitive reactive component associated with current that leads voltage.",
+        "CO2(tCO2)": "Estimated carbon-dioxide emissions associated with the interval's electricity use, measured in metric tonnes of CO2.",
+        "Lagging_Current_Power_Factor": "Power-factor measurement associated with lagging current, expressed on a percentage scale from 0 to 100. Higher values indicate that a greater share of apparent electrical power is active power.",
+        "Leading_Current_Power_Factor": "Power-factor measurement associated with leading current, expressed on a percentage scale from 0 to 100. Higher values indicate that a greater share of apparent electrical power is active power.",
+        "NSM": "Number of seconds elapsed since local midnight at the observation time. Values lie on a daily clock from 0 for 00:00:00 through 86399 immediately before the next midnight; the observations occur at 15-minute intervals.",
+        "WeekStatus": "Whether the observation falls on a weekday or weekend.",
+        "Day_of_week": "Name of the local calendar day on which the observation was recorded, from Monday through Sunday.",
+        "Load_Type": "Categorical operating-load level assigned to the interval, with values representing light, medium, or maximum load.",
+        "Usage_kWh": "Active electrical energy consumed by the steel facility during the observation interval, measured in kilowatt-hours (kWh). This is the regression target."
+    }
+}

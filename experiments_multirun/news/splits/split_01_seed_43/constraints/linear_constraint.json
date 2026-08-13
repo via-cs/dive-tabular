@@ -1,0 +1,359 @@
+[
+  {
+    "id": "avg_positive_at_least_min_positive",
+    "description": "Average positive-word polarity is at least the minimum positive-word polarity.",
+    "formula": "avg_positive_polarity - min_positive_polarity >= 0",
+    "columns": [
+      "avg_positive_polarity",
+      "min_positive_polarity"
+    ],
+    "coefficients": {
+      "avg_positive_polarity": 1,
+      "min_positive_polarity": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "avg_positive_polarity",
+      "min_positive_polarity"
+    ],
+    "explanation": "An arithmetic mean of positive-word polarity values cannot be below their minimum.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "max_positive_at_least_avg_positive",
+    "description": "Maximum positive-word polarity is at least the average positive-word polarity.",
+    "formula": "max_positive_polarity - avg_positive_polarity >= 0",
+    "columns": [
+      "max_positive_polarity",
+      "avg_positive_polarity"
+    ],
+    "coefficients": {
+      "max_positive_polarity": 1,
+      "avg_positive_polarity": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "max_positive_polarity",
+      "avg_positive_polarity"
+    ],
+    "explanation": "An arithmetic mean of positive-word polarity values cannot exceed their maximum.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "avg_negative_at_least_min_negative",
+    "description": "Average signed negative-word polarity is at least its minimum polarity.",
+    "formula": "avg_negative_polarity - min_negative_polarity >= 0",
+    "columns": [
+      "avg_negative_polarity",
+      "min_negative_polarity"
+    ],
+    "coefficients": {
+      "avg_negative_polarity": 1,
+      "min_negative_polarity": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "avg_negative_polarity",
+      "min_negative_polarity"
+    ],
+    "explanation": "For signed values, the arithmetic mean cannot be below the most negative observed value.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "max_negative_at_least_avg_negative",
+    "description": "Maximum signed negative-word polarity is at least its average polarity.",
+    "formula": "max_negative_polarity - avg_negative_polarity >= 0",
+    "columns": [
+      "max_negative_polarity",
+      "avg_negative_polarity"
+    ],
+    "coefficients": {
+      "max_negative_polarity": 1,
+      "avg_negative_polarity": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "max_negative_polarity",
+      "avg_negative_polarity"
+    ],
+    "explanation": "For signed values, the arithmetic mean cannot exceed the largest, least-negative observed value.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "self_links_within_total_links",
+    "description": "Total hyperlinks cover at least the number of self-referential hyperlinks.",
+    "formula": "num_hrefs - num_self_hrefs >= 0",
+    "columns": [
+      "num_hrefs",
+      "num_self_hrefs"
+    ],
+    "coefficients": {
+      "num_hrefs": 1,
+      "num_self_hrefs": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "num_hrefs",
+      "num_self_hrefs"
+    ],
+    "explanation": "Self-references are a subset of all article hyperlinks.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "kw_avg_min_at_least_kw_min_min",
+    "description": "The average historical shares for the worst-performing keyword are at least its minimum historical shares.",
+    "formula": "kw_avg_min - kw_min_min >= 0",
+    "columns": [
+      "kw_avg_min",
+      "kw_min_min"
+    ],
+    "coefficients": {
+      "kw_avg_min": 1,
+      "kw_min_min": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "kw_avg_min",
+      "kw_min_min"
+    ],
+    "explanation": "An arithmetic mean of the historical share values for a keyword cannot be below their minimum.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "kw_max_min_at_least_kw_avg_min",
+    "description": "The maximum historical shares for the worst-performing keyword are at least its average historical shares.",
+    "formula": "kw_max_min - kw_avg_min >= 0",
+    "columns": [
+      "kw_max_min",
+      "kw_avg_min"
+    ],
+    "coefficients": {
+      "kw_max_min": 1,
+      "kw_avg_min": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "kw_max_min",
+      "kw_avg_min"
+    ],
+    "explanation": "An arithmetic mean cannot exceed the maximum of the historical share values for that keyword.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "kw_avg_avg_at_least_kw_min_avg",
+    "description": "The average historical shares for the middle-performing keyword are at least its minimum historical shares.",
+    "formula": "kw_avg_avg - kw_min_avg >= 0",
+    "columns": [
+      "kw_avg_avg",
+      "kw_min_avg"
+    ],
+    "coefficients": {
+      "kw_avg_avg": 1,
+      "kw_min_avg": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "kw_avg_avg",
+      "kw_min_avg"
+    ],
+    "explanation": "An arithmetic mean of the historical share values for a keyword cannot be below their minimum.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "kw_max_avg_at_least_kw_avg_avg",
+    "description": "The maximum historical shares for the middle-performing keyword are at least its average historical shares.",
+    "formula": "kw_max_avg - kw_avg_avg >= 0",
+    "columns": [
+      "kw_max_avg",
+      "kw_avg_avg"
+    ],
+    "coefficients": {
+      "kw_max_avg": 1,
+      "kw_avg_avg": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "kw_max_avg",
+      "kw_avg_avg"
+    ],
+    "explanation": "An arithmetic mean cannot exceed the maximum of the historical share values for that keyword.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "kw_avg_max_at_least_kw_min_max",
+    "description": "The average historical shares for the best-performing keyword are at least its minimum historical shares.",
+    "formula": "kw_avg_max - kw_min_max >= 0",
+    "columns": [
+      "kw_avg_max",
+      "kw_min_max"
+    ],
+    "coefficients": {
+      "kw_avg_max": 1,
+      "kw_min_max": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "kw_avg_max",
+      "kw_min_max"
+    ],
+    "explanation": "An arithmetic mean of the historical share values for a keyword cannot be below their minimum.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "kw_max_max_at_least_kw_avg_max",
+    "description": "The maximum historical shares for the best-performing keyword are at least its average historical shares.",
+    "formula": "kw_max_max - kw_avg_max >= 0",
+    "columns": [
+      "kw_max_max",
+      "kw_avg_max"
+    ],
+    "coefficients": {
+      "kw_max_max": 1,
+      "kw_avg_max": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "kw_max_max",
+      "kw_avg_max"
+    ],
+    "explanation": "An arithmetic mean cannot exceed the maximum of the historical share values for that keyword.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "worst_keyword_average_at_most_middle_keyword_average",
+    "description": "The average historical shares for the worst-performing keyword do not exceed those for the middle-performing keyword.",
+    "formula": "kw_avg_avg - kw_avg_min >= 0",
+    "columns": [
+      "kw_avg_avg",
+      "kw_avg_min"
+    ],
+    "coefficients": {
+      "kw_avg_avg": 1,
+      "kw_avg_min": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "kw_avg_avg",
+      "kw_avg_min"
+    ],
+    "explanation": "Keywords are ranked by their historical average shares, so the worst-ranked keyword has no greater average than the middle-ranked keyword.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "middle_keyword_average_at_most_best_keyword_average",
+    "description": "The average historical shares for the middle-performing keyword do not exceed those for the best-performing keyword.",
+    "formula": "kw_avg_max - kw_avg_avg >= 0",
+    "columns": [
+      "kw_avg_max",
+      "kw_avg_avg"
+    ],
+    "coefficients": {
+      "kw_avg_max": 1,
+      "kw_avg_avg": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "kw_avg_max",
+      "kw_avg_avg"
+    ],
+    "explanation": "Keywords are ranked by their historical average shares, so the middle-ranked keyword has no greater average than the best-ranked keyword.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "self_reference_average_at_least_minimum",
+    "description": "The average shares of linked earlier Mashable articles are at least their minimum shares.",
+    "formula": "self_reference_avg_sharess - self_reference_min_shares >= 0",
+    "columns": [
+      "self_reference_avg_sharess",
+      "self_reference_min_shares"
+    ],
+    "coefficients": {
+      "self_reference_avg_sharess": 1,
+      "self_reference_min_shares": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "self_reference_avg_sharess",
+      "self_reference_min_shares"
+    ],
+    "explanation": "An arithmetic mean of linked-article share counts cannot be below the minimum linked-article share count.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "self_reference_max_at_least_average",
+    "description": "The maximum shares of linked earlier Mashable articles are at least their average shares.",
+    "formula": "self_reference_max_shares - self_reference_avg_sharess >= 0",
+    "columns": [
+      "self_reference_max_shares",
+      "self_reference_avg_sharess"
+    ],
+    "coefficients": {
+      "self_reference_max_shares": 1,
+      "self_reference_avg_sharess": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "self_reference_max_shares",
+      "self_reference_avg_sharess"
+    ],
+    "explanation": "An arithmetic mean of linked-article share counts cannot exceed the maximum linked-article share count.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "max_positive_at_least_min_positive",
+    "description": "Maximum positive-word polarity is at least minimum positive-word polarity.",
+    "formula": "max_positive_polarity - min_positive_polarity >= 0",
+    "columns": [
+      "max_positive_polarity",
+      "min_positive_polarity"
+    ],
+    "coefficients": {
+      "max_positive_polarity": 1,
+      "min_positive_polarity": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "max_positive_polarity",
+      "min_positive_polarity"
+    ],
+    "explanation": "The maximum of a set of positive-word polarity values cannot be below its minimum.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "max_negative_at_least_min_negative",
+    "description": "Maximum signed negative-word polarity is at least minimum signed negative-word polarity.",
+    "formula": "max_negative_polarity - min_negative_polarity >= 0",
+    "columns": [
+      "max_negative_polarity",
+      "min_negative_polarity"
+    ],
+    "coefficients": {
+      "max_negative_polarity": 1,
+      "min_negative_polarity": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "max_negative_polarity",
+      "min_negative_polarity"
+    ],
+    "explanation": "The maximum of a set of signed negative-word polarity values cannot be below its minimum.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

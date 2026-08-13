@@ -1,0 +1,65 @@
+[
+  {
+    "id": "nonheave_three_pct_covers_overall_three_pct",
+    "description": "The sum of the non-heave and overall three-point percentages is nonnegative.",
+    "formula": "NonHeaveFg3Pct + Fg3Pct >= 0",
+    "columns": [
+      "NonHeaveFg3Pct",
+      "Fg3Pct"
+    ],
+    "coefficients": {
+      "NonHeaveFg3Pct": 1,
+      "Fg3Pct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NonHeaveFg3Pct",
+      "Fg3Pct"
+    ],
+    "explanation": "Both columns are percentages on a 0-to-1 scale, so each is nonnegative for every player-season row; their sum therefore cannot be below zero. The prior ordering is not universal because excluding heaves can change both made-shot and attempt denominators in ways that do not force one percentage to be larger.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "efficiency_percentages_nonnegative",
+    "description": "Effective and true shooting percentages have a nonnegative combined value.",
+    "formula": "EfgPct + TsPct >= 0",
+    "columns": [
+      "EfgPct",
+      "TsPct"
+    ],
+    "coefficients": {
+      "EfgPct": 1,
+      "TsPct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "EfgPct",
+      "TsPct"
+    ],
+    "explanation": "Both are efficiency percentages and are nonnegative in this scoring-rate table, so their sum cannot be negative.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "shot_quality_and_true_shooting_nonnegative",
+    "description": "Shot-quality average and true shooting percentage have a nonnegative combined value.",
+    "formula": "ShotQualityAvg + TsPct >= 0",
+    "columns": [
+      "ShotQualityAvg",
+      "TsPct"
+    ],
+    "coefficients": {
+      "ShotQualityAvg": 1,
+      "TsPct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "ShotQualityAvg",
+      "TsPct"
+    ],
+    "explanation": "ShotQualityAvg is an estimated make probability and TsPct is a shooting-efficiency percentage; both are nonnegative by definition.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

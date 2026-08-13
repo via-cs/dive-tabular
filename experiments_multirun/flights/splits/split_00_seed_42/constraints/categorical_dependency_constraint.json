@@ -1,0 +1,2152 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "airline_code_to_name",
+      "description": "Reporting carrier code determines the airline name.",
+      "rationale": "AIRLINE_CODE is the standardized reporting-carrier identifier, and each code maps uniquely to the recorded full airline name across all rows.",
+      "determinants": [
+        "AIRLINE_CODE"
+      ],
+      "dependent": "AIRLINE",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              "AS"
+            ]
+          ],
+          "dependent_values": [
+            "Alaska Airlines Inc."
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "G4"
+            ]
+          ],
+          "dependent_values": [
+            "Allegiant Air"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "AA"
+            ]
+          ],
+          "dependent_values": [
+            "American Airlines Inc."
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DL"
+            ]
+          ],
+          "dependent_values": [
+            "Delta Air Lines Inc."
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "9E"
+            ]
+          ],
+          "dependent_values": [
+            "Endeavor Air Inc."
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MQ"
+            ]
+          ],
+          "dependent_values": [
+            "Envoy Air"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "EV"
+            ]
+          ],
+          "dependent_values": [
+            "ExpressJet Airlines LLC d/b/a aha!"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "F9"
+            ]
+          ],
+          "dependent_values": [
+            "Frontier Airlines Inc."
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "HA"
+            ]
+          ],
+          "dependent_values": [
+            "Hawaiian Airlines Inc."
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "QX"
+            ]
+          ],
+          "dependent_values": [
+            "Horizon Air"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "B6"
+            ]
+          ],
+          "dependent_values": [
+            "JetBlue Airways"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "YV"
+            ]
+          ],
+          "dependent_values": [
+            "Mesa Airlines Inc."
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "OH"
+            ]
+          ],
+          "dependent_values": [
+            "PSA Airlines Inc."
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "YX"
+            ]
+          ],
+          "dependent_values": [
+            "Republic Airline"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "OO"
+            ]
+          ],
+          "dependent_values": [
+            "SkyWest Airlines Inc."
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "WN"
+            ]
+          ],
+          "dependent_values": [
+            "Southwest Airlines Co."
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "NK"
+            ]
+          ],
+          "dependent_values": [
+            "Spirit Air Lines"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "UA"
+            ]
+          ],
+          "dependent_values": [
+            "United Air Lines Inc."
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "dest_to_city",
+      "description": "Destination airport code determines its destination city label.",
+      "rationale": "DEST is a stable IATA airport identifier, and each observed destination code maps to one corresponding city/state label.",
+      "determinants": [
+        "DEST"
+      ],
+      "dependent": "DEST_CITY",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              "ALB"
+            ]
+          ],
+          "dependent_values": [
+            "Albany, NY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ABQ"
+            ]
+          ],
+          "dependent_values": [
+            "Albuquerque, NM"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ANC"
+            ]
+          ],
+          "dependent_values": [
+            "Anchorage, AK"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ATL"
+            ]
+          ],
+          "dependent_values": [
+            "Atlanta, GA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "AUS"
+            ]
+          ],
+          "dependent_values": [
+            "Austin, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BWI"
+            ]
+          ],
+          "dependent_values": [
+            "Baltimore, MD"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BHM"
+            ]
+          ],
+          "dependent_values": [
+            "Birmingham, AL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BOI"
+            ]
+          ],
+          "dependent_values": [
+            "Boise, ID"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BOS"
+            ]
+          ],
+          "dependent_values": [
+            "Boston, MA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BZN"
+            ]
+          ],
+          "dependent_values": [
+            "Bozeman, MT"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BUF"
+            ]
+          ],
+          "dependent_values": [
+            "Buffalo, NY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BUR"
+            ]
+          ],
+          "dependent_values": [
+            "Burbank, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "CHS"
+            ]
+          ],
+          "dependent_values": [
+            "Charleston, SC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "CLT"
+            ]
+          ],
+          "dependent_values": [
+            "Charlotte, NC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MDW",
+              "ORD"
+            ]
+          ],
+          "dependent_values": [
+            "Chicago, IL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "CVG"
+            ]
+          ],
+          "dependent_values": [
+            "Cincinnati, OH"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "CLE"
+            ]
+          ],
+          "dependent_values": [
+            "Cleveland, OH"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "COS"
+            ]
+          ],
+          "dependent_values": [
+            "Colorado Springs, CO"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "CMH"
+            ]
+          ],
+          "dependent_values": [
+            "Columbus, OH"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DAL"
+            ]
+          ],
+          "dependent_values": [
+            "Dallas, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DFW"
+            ]
+          ],
+          "dependent_values": [
+            "Dallas/Fort Worth, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DEN"
+            ]
+          ],
+          "dependent_values": [
+            "Denver, CO"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DSM"
+            ]
+          ],
+          "dependent_values": [
+            "Des Moines, IA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DTW"
+            ]
+          ],
+          "dependent_values": [
+            "Detroit, MI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ELP"
+            ]
+          ],
+          "dependent_values": [
+            "El Paso, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "XNA"
+            ]
+          ],
+          "dependent_values": [
+            "Fayetteville, AR"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "FLL"
+            ]
+          ],
+          "dependent_values": [
+            "Fort Lauderdale, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "RSW"
+            ]
+          ],
+          "dependent_values": [
+            "Fort Myers, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "FAT"
+            ]
+          ],
+          "dependent_values": [
+            "Fresno, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "GRR"
+            ]
+          ],
+          "dependent_values": [
+            "Grand Rapids, MI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "GSO"
+            ]
+          ],
+          "dependent_values": [
+            "Greensboro/High Point, NC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "GSP"
+            ]
+          ],
+          "dependent_values": [
+            "Greer, SC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BDL"
+            ]
+          ],
+          "dependent_values": [
+            "Hartford, CT"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "HNL"
+            ]
+          ],
+          "dependent_values": [
+            "Honolulu, HI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "HOU",
+              "IAH"
+            ]
+          ],
+          "dependent_values": [
+            "Houston, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "IND"
+            ]
+          ],
+          "dependent_values": [
+            "Indianapolis, IN"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "JAX"
+            ]
+          ],
+          "dependent_values": [
+            "Jacksonville, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "OGG"
+            ]
+          ],
+          "dependent_values": [
+            "Kahului, HI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MCI"
+            ]
+          ],
+          "dependent_values": [
+            "Kansas City, MO"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "TYS"
+            ]
+          ],
+          "dependent_values": [
+            "Knoxville, TN"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "KOA"
+            ]
+          ],
+          "dependent_values": [
+            "Kona, HI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "LAS"
+            ]
+          ],
+          "dependent_values": [
+            "Las Vegas, NV"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "LIH"
+            ]
+          ],
+          "dependent_values": [
+            "Lihue, HI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "LIT"
+            ]
+          ],
+          "dependent_values": [
+            "Little Rock, AR"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "LGB"
+            ]
+          ],
+          "dependent_values": [
+            "Long Beach, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "LAX"
+            ]
+          ],
+          "dependent_values": [
+            "Los Angeles, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SDF"
+            ]
+          ],
+          "dependent_values": [
+            "Louisville, KY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MSN"
+            ]
+          ],
+          "dependent_values": [
+            "Madison, WI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MEM"
+            ]
+          ],
+          "dependent_values": [
+            "Memphis, TN"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MIA"
+            ]
+          ],
+          "dependent_values": [
+            "Miami, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MKE"
+            ]
+          ],
+          "dependent_values": [
+            "Milwaukee, WI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MSP"
+            ]
+          ],
+          "dependent_values": [
+            "Minneapolis, MN"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MYR"
+            ]
+          ],
+          "dependent_values": [
+            "Myrtle Beach, SC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BNA"
+            ]
+          ],
+          "dependent_values": [
+            "Nashville, TN"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MSY"
+            ]
+          ],
+          "dependent_values": [
+            "New Orleans, LA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "JFK",
+              "LGA"
+            ]
+          ],
+          "dependent_values": [
+            "New York, NY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "EWR"
+            ]
+          ],
+          "dependent_values": [
+            "Newark, NJ"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ORF"
+            ]
+          ],
+          "dependent_values": [
+            "Norfolk, VA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "OAK"
+            ]
+          ],
+          "dependent_values": [
+            "Oakland, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "OKC"
+            ]
+          ],
+          "dependent_values": [
+            "Oklahoma City, OK"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "OMA"
+            ]
+          ],
+          "dependent_values": [
+            "Omaha, NE"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ONT"
+            ]
+          ],
+          "dependent_values": [
+            "Ontario, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MCO"
+            ]
+          ],
+          "dependent_values": [
+            "Orlando, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PSP"
+            ]
+          ],
+          "dependent_values": [
+            "Palm Springs, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PNS"
+            ]
+          ],
+          "dependent_values": [
+            "Pensacola, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PHL"
+            ]
+          ],
+          "dependent_values": [
+            "Philadelphia, PA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PHX"
+            ]
+          ],
+          "dependent_values": [
+            "Phoenix, AZ"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PIT"
+            ]
+          ],
+          "dependent_values": [
+            "Pittsburgh, PA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PWM"
+            ]
+          ],
+          "dependent_values": [
+            "Portland, ME"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PDX"
+            ]
+          ],
+          "dependent_values": [
+            "Portland, OR"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PVD"
+            ]
+          ],
+          "dependent_values": [
+            "Providence, RI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "RDU"
+            ]
+          ],
+          "dependent_values": [
+            "Raleigh/Durham, NC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "RNO"
+            ]
+          ],
+          "dependent_values": [
+            "Reno, NV"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "RIC"
+            ]
+          ],
+          "dependent_values": [
+            "Richmond, VA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ROC"
+            ]
+          ],
+          "dependent_values": [
+            "Rochester, NY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SMF"
+            ]
+          ],
+          "dependent_values": [
+            "Sacramento, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SLC"
+            ]
+          ],
+          "dependent_values": [
+            "Salt Lake City, UT"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SAT"
+            ]
+          ],
+          "dependent_values": [
+            "San Antonio, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SAN"
+            ]
+          ],
+          "dependent_values": [
+            "San Diego, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SFO"
+            ]
+          ],
+          "dependent_values": [
+            "San Francisco, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SJC"
+            ]
+          ],
+          "dependent_values": [
+            "San Jose, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SJU"
+            ]
+          ],
+          "dependent_values": [
+            "San Juan, PR"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SFB"
+            ]
+          ],
+          "dependent_values": [
+            "Sanford, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SNA"
+            ]
+          ],
+          "dependent_values": [
+            "Santa Ana, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SRQ"
+            ]
+          ],
+          "dependent_values": [
+            "Sarasota/Bradenton, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SAV"
+            ]
+          ],
+          "dependent_values": [
+            "Savannah, GA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SEA"
+            ]
+          ],
+          "dependent_values": [
+            "Seattle, WA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "GEG"
+            ]
+          ],
+          "dependent_values": [
+            "Spokane, WA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "STL"
+            ]
+          ],
+          "dependent_values": [
+            "St. Louis, MO"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SYR"
+            ]
+          ],
+          "dependent_values": [
+            "Syracuse, NY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "TPA"
+            ]
+          ],
+          "dependent_values": [
+            "Tampa, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "TUS"
+            ]
+          ],
+          "dependent_values": [
+            "Tucson, AZ"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "TUL"
+            ]
+          ],
+          "dependent_values": [
+            "Tulsa, OK"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "VPS"
+            ]
+          ],
+          "dependent_values": [
+            "Valparaiso, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DCA",
+              "IAD"
+            ]
+          ],
+          "dependent_values": [
+            "Washington, DC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PBI"
+            ]
+          ],
+          "dependent_values": [
+            "West Palm Beach/Palm Beach, FL"
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "origin_to_city",
+      "description": "Origin airport code determines its origin city label.",
+      "rationale": "ORIGIN is a stable IATA airport identifier, and each observed origin code maps to one corresponding city/state label.",
+      "determinants": [
+        "ORIGIN"
+      ],
+      "dependent": "ORIGIN_CITY",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              "ALB"
+            ]
+          ],
+          "dependent_values": [
+            "Albany, NY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ABQ"
+            ]
+          ],
+          "dependent_values": [
+            "Albuquerque, NM"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ANC"
+            ]
+          ],
+          "dependent_values": [
+            "Anchorage, AK"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ATL"
+            ]
+          ],
+          "dependent_values": [
+            "Atlanta, GA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "AUS"
+            ]
+          ],
+          "dependent_values": [
+            "Austin, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BWI"
+            ]
+          ],
+          "dependent_values": [
+            "Baltimore, MD"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BHM"
+            ]
+          ],
+          "dependent_values": [
+            "Birmingham, AL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BOI"
+            ]
+          ],
+          "dependent_values": [
+            "Boise, ID"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BOS"
+            ]
+          ],
+          "dependent_values": [
+            "Boston, MA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BZN"
+            ]
+          ],
+          "dependent_values": [
+            "Bozeman, MT"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BUF"
+            ]
+          ],
+          "dependent_values": [
+            "Buffalo, NY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BUR"
+            ]
+          ],
+          "dependent_values": [
+            "Burbank, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "CHS"
+            ]
+          ],
+          "dependent_values": [
+            "Charleston, SC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "CLT"
+            ]
+          ],
+          "dependent_values": [
+            "Charlotte, NC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MDW",
+              "ORD"
+            ]
+          ],
+          "dependent_values": [
+            "Chicago, IL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "CVG"
+            ]
+          ],
+          "dependent_values": [
+            "Cincinnati, OH"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "CLE"
+            ]
+          ],
+          "dependent_values": [
+            "Cleveland, OH"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "COS"
+            ]
+          ],
+          "dependent_values": [
+            "Colorado Springs, CO"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "CMH"
+            ]
+          ],
+          "dependent_values": [
+            "Columbus, OH"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DAL"
+            ]
+          ],
+          "dependent_values": [
+            "Dallas, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DFW"
+            ]
+          ],
+          "dependent_values": [
+            "Dallas/Fort Worth, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DEN"
+            ]
+          ],
+          "dependent_values": [
+            "Denver, CO"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DSM"
+            ]
+          ],
+          "dependent_values": [
+            "Des Moines, IA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DTW"
+            ]
+          ],
+          "dependent_values": [
+            "Detroit, MI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ELP"
+            ]
+          ],
+          "dependent_values": [
+            "El Paso, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "XNA"
+            ]
+          ],
+          "dependent_values": [
+            "Fayetteville, AR"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "FLL"
+            ]
+          ],
+          "dependent_values": [
+            "Fort Lauderdale, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "RSW"
+            ]
+          ],
+          "dependent_values": [
+            "Fort Myers, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "FAT"
+            ]
+          ],
+          "dependent_values": [
+            "Fresno, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "GRR"
+            ]
+          ],
+          "dependent_values": [
+            "Grand Rapids, MI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "GSO"
+            ]
+          ],
+          "dependent_values": [
+            "Greensboro/High Point, NC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "GSP"
+            ]
+          ],
+          "dependent_values": [
+            "Greer, SC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BDL"
+            ]
+          ],
+          "dependent_values": [
+            "Hartford, CT"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "HNL"
+            ]
+          ],
+          "dependent_values": [
+            "Honolulu, HI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "HOU",
+              "IAH"
+            ]
+          ],
+          "dependent_values": [
+            "Houston, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "IND"
+            ]
+          ],
+          "dependent_values": [
+            "Indianapolis, IN"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "JAX"
+            ]
+          ],
+          "dependent_values": [
+            "Jacksonville, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "OGG"
+            ]
+          ],
+          "dependent_values": [
+            "Kahului, HI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MCI"
+            ]
+          ],
+          "dependent_values": [
+            "Kansas City, MO"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "TYS"
+            ]
+          ],
+          "dependent_values": [
+            "Knoxville, TN"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "KOA"
+            ]
+          ],
+          "dependent_values": [
+            "Kona, HI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "LAS"
+            ]
+          ],
+          "dependent_values": [
+            "Las Vegas, NV"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "LIH"
+            ]
+          ],
+          "dependent_values": [
+            "Lihue, HI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "LIT"
+            ]
+          ],
+          "dependent_values": [
+            "Little Rock, AR"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "LGB"
+            ]
+          ],
+          "dependent_values": [
+            "Long Beach, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "LAX"
+            ]
+          ],
+          "dependent_values": [
+            "Los Angeles, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SDF"
+            ]
+          ],
+          "dependent_values": [
+            "Louisville, KY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MSN"
+            ]
+          ],
+          "dependent_values": [
+            "Madison, WI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MEM"
+            ]
+          ],
+          "dependent_values": [
+            "Memphis, TN"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MIA"
+            ]
+          ],
+          "dependent_values": [
+            "Miami, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MKE"
+            ]
+          ],
+          "dependent_values": [
+            "Milwaukee, WI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MSP"
+            ]
+          ],
+          "dependent_values": [
+            "Minneapolis, MN"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MYR"
+            ]
+          ],
+          "dependent_values": [
+            "Myrtle Beach, SC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "BNA"
+            ]
+          ],
+          "dependent_values": [
+            "Nashville, TN"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MSY"
+            ]
+          ],
+          "dependent_values": [
+            "New Orleans, LA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "JFK",
+              "LGA"
+            ]
+          ],
+          "dependent_values": [
+            "New York, NY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "EWR"
+            ]
+          ],
+          "dependent_values": [
+            "Newark, NJ"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ORF"
+            ]
+          ],
+          "dependent_values": [
+            "Norfolk, VA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "OAK"
+            ]
+          ],
+          "dependent_values": [
+            "Oakland, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "OKC"
+            ]
+          ],
+          "dependent_values": [
+            "Oklahoma City, OK"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "OMA"
+            ]
+          ],
+          "dependent_values": [
+            "Omaha, NE"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ONT"
+            ]
+          ],
+          "dependent_values": [
+            "Ontario, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "MCO"
+            ]
+          ],
+          "dependent_values": [
+            "Orlando, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PSP"
+            ]
+          ],
+          "dependent_values": [
+            "Palm Springs, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PNS"
+            ]
+          ],
+          "dependent_values": [
+            "Pensacola, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PHL"
+            ]
+          ],
+          "dependent_values": [
+            "Philadelphia, PA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PHX"
+            ]
+          ],
+          "dependent_values": [
+            "Phoenix, AZ"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PIT"
+            ]
+          ],
+          "dependent_values": [
+            "Pittsburgh, PA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PWM"
+            ]
+          ],
+          "dependent_values": [
+            "Portland, ME"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PDX"
+            ]
+          ],
+          "dependent_values": [
+            "Portland, OR"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PVD"
+            ]
+          ],
+          "dependent_values": [
+            "Providence, RI"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "RDU"
+            ]
+          ],
+          "dependent_values": [
+            "Raleigh/Durham, NC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "RNO"
+            ]
+          ],
+          "dependent_values": [
+            "Reno, NV"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "RIC"
+            ]
+          ],
+          "dependent_values": [
+            "Richmond, VA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "ROC"
+            ]
+          ],
+          "dependent_values": [
+            "Rochester, NY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SMF"
+            ]
+          ],
+          "dependent_values": [
+            "Sacramento, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SLC"
+            ]
+          ],
+          "dependent_values": [
+            "Salt Lake City, UT"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SAT"
+            ]
+          ],
+          "dependent_values": [
+            "San Antonio, TX"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SAN"
+            ]
+          ],
+          "dependent_values": [
+            "San Diego, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SFO"
+            ]
+          ],
+          "dependent_values": [
+            "San Francisco, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SJC"
+            ]
+          ],
+          "dependent_values": [
+            "San Jose, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SJU"
+            ]
+          ],
+          "dependent_values": [
+            "San Juan, PR"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SFB"
+            ]
+          ],
+          "dependent_values": [
+            "Sanford, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SNA"
+            ]
+          ],
+          "dependent_values": [
+            "Santa Ana, CA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SRQ"
+            ]
+          ],
+          "dependent_values": [
+            "Sarasota/Bradenton, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SAV"
+            ]
+          ],
+          "dependent_values": [
+            "Savannah, GA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SEA"
+            ]
+          ],
+          "dependent_values": [
+            "Seattle, WA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "GEG"
+            ]
+          ],
+          "dependent_values": [
+            "Spokane, WA"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "STL"
+            ]
+          ],
+          "dependent_values": [
+            "St. Louis, MO"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "SYR"
+            ]
+          ],
+          "dependent_values": [
+            "Syracuse, NY"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "TPA"
+            ]
+          ],
+          "dependent_values": [
+            "Tampa, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "TUS"
+            ]
+          ],
+          "dependent_values": [
+            "Tucson, AZ"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "TUL"
+            ]
+          ],
+          "dependent_values": [
+            "Tulsa, OK"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "DCA",
+              "IAD"
+            ]
+          ],
+          "dependent_values": [
+            "Washington, DC"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "PBI"
+            ]
+          ],
+          "dependent_values": [
+            "West Palm Beach/Palm Beach, FL"
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "HPN"
+            ]
+          ],
+          "dependent_values": [
+            "White Plains, NY"
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    }
+  ]
+}

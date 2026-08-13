@@ -1,0 +1,236 @@
+[
+  {
+    "id": "ninety_day_insolvencies_subset_of_sixty_day",
+    "description": "The count of trades delinquent 90 days or worse does not exceed the count delinquent 60 days or worse.",
+    "formula": "nr_trades_insolvent_for_over_60_days - nr_trades_insolvent_for_over_90_days >= 0",
+    "columns": [
+      "nr_trades_insolvent_for_over_60_days",
+      "nr_trades_insolvent_for_over_90_days"
+    ],
+    "coefficients": {
+      "nr_trades_insolvent_for_over_60_days": 1,
+      "nr_trades_insolvent_for_over_90_days": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nr_trades_insolvent_for_over_60_days",
+      "nr_trades_insolvent_for_over_90_days"
+    ],
+    "explanation": "A trade reaching the 90-day delinquency threshold is necessarily also included among trades reaching the 60-day threshold.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "total_trades_cover_high_utilization_trades",
+    "description": "The total trade count is at least the count of trades with high utilization.",
+    "formula": "nr_total_trades - nr_banks_with_high_ratio >= 0",
+    "columns": [
+      "nr_total_trades",
+      "nr_banks_with_high_ratio"
+    ],
+    "coefficients": {
+      "nr_total_trades": 1,
+      "nr_banks_with_high_ratio": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nr_total_trades",
+      "nr_banks_with_high_ratio"
+    ],
+    "explanation": "High-utilization trades are a counted subset of the applicant's recorded credit trades.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "oldest_trade_at_least_recent_trade_age",
+    "description": "The sum of the two trade-age fields is at least -18, allowing their documented unavailable-value codes while remaining nonnegative when both ages are observed.",
+    "formula": "months_since_first_trade + months_since_last_trade >= -18",
+    "columns": [
+      "months_since_first_trade",
+      "months_since_last_trade"
+    ],
+    "coefficients": {
+      "months_since_first_trade": 1,
+      "months_since_last_trade": 1
+    },
+    "sense": ">=",
+    "rhs": -18,
+    "mutable_columns": [
+      "months_since_first_trade",
+      "months_since_last_trade"
+    ],
+    "explanation": "For observed bureau ages, both elapsed-month values are nonnegative. The documented special codes are no lower than -9, so even when either field is unavailable their sum cannot be below -18; this avoids interpreting an unavailable oldest-trade value of -8 as an ordinary age in the original ordering inequality.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "total_trades_cover_satisfactory_trades",
+    "description": "The total trade count is at least the count of satisfactory trades.",
+    "formula": "nr_total_trades - number_of_satisfactory_trades >= 0",
+    "columns": [
+      "nr_total_trades",
+      "number_of_satisfactory_trades"
+    ],
+    "coefficients": {
+      "nr_total_trades": 1,
+      "number_of_satisfactory_trades": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nr_total_trades",
+      "number_of_satisfactory_trades"
+    ],
+    "explanation": "Satisfactory trades are a counted subset of all credit trades recorded for the applicant, and repository preprocessing explicitly enforces this coverage.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "total_trades_cover_recently_initiated_trades",
+    "description": "The total trade count is at least the count of trades initiated during the last year.",
+    "formula": "nr_total_trades - nr_trades_initiated_in_last_year >= 0",
+    "columns": [
+      "nr_total_trades",
+      "nr_trades_initiated_in_last_year"
+    ],
+    "coefficients": {
+      "nr_total_trades": 1,
+      "nr_trades_initiated_in_last_year": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nr_total_trades",
+      "nr_trades_initiated_in_last_year"
+    ],
+    "explanation": "Trades opened during the last year are a subset of all trades in the bureau file, and repository preprocessing explicitly enforces this coverage.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "total_trades_cover_revolving_balance_trades",
+    "description": "The total trade count is at least the count of revolving trades carrying a balance.",
+    "formula": "nr_total_trades - nr_revolving_trades_with_balance >= 0",
+    "columns": [
+      "nr_total_trades",
+      "nr_revolving_trades_with_balance"
+    ],
+    "coefficients": {
+      "nr_total_trades": 1,
+      "nr_revolving_trades_with_balance": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nr_total_trades",
+      "nr_revolving_trades_with_balance"
+    ],
+    "explanation": "Revolving trades with a current balance are counted among the applicant's total recorded trades, and repository preprocessing explicitly enforces this coverage.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "total_trades_cover_installment_balance_trades",
+    "description": "The total trade count is at least the count of installment trades carrying a balance.",
+    "formula": "nr_total_trades - nr_installment_trades_with_balance >= 0",
+    "columns": [
+      "nr_total_trades",
+      "nr_installment_trades_with_balance"
+    ],
+    "coefficients": {
+      "nr_total_trades": 1,
+      "nr_installment_trades_with_balance": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nr_total_trades",
+      "nr_installment_trades_with_balance"
+    ],
+    "explanation": "Installment trades with a current balance are counted among the applicant's total recorded trades, and repository preprocessing explicitly enforces this coverage.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "six_month_inquiries_cover_non_recent_inquiries",
+    "description": "The six-month inquiry count is at least the six-month inquiry count excluding the immediately preceding seven days.",
+    "formula": "nr_inquiries_in_last_6_months - nr_inquiries_in_last_6_months_not_recent >= 0",
+    "columns": [
+      "nr_inquiries_in_last_6_months",
+      "nr_inquiries_in_last_6_months_not_recent"
+    ],
+    "coefficients": {
+      "nr_inquiries_in_last_6_months": 1,
+      "nr_inquiries_in_last_6_months_not_recent": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nr_inquiries_in_last_6_months",
+      "nr_inquiries_in_last_6_months_not_recent"
+    ],
+    "explanation": "Removing the most recent seven days from a six-month inquiry window can only remove inquiries, so the resulting count is a subset of the original six-month count; the repository's sentinel conventions preserve this ordering when unavailable values occur.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "revolving_balance_trades_cover_high_utilization_trades",
+    "description": "The count of revolving trades carrying a balance is at least the count of high-utilization bankcard or national trades.",
+    "formula": "nr_revolving_trades_with_balance - nr_banks_with_high_ratio >= 0",
+    "columns": [
+      "nr_revolving_trades_with_balance",
+      "nr_banks_with_high_ratio"
+    ],
+    "coefficients": {
+      "nr_revolving_trades_with_balance": 1,
+      "nr_banks_with_high_ratio": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nr_revolving_trades_with_balance",
+      "nr_banks_with_high_ratio"
+    ],
+    "explanation": "A trade classified as high utilization has a balance relative to its credit limit and is a revolving bankcard or national trade, so it is included among revolving trades with a balance.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "total_trades_cover_revolving_and_installment_balance_trades",
+    "description": "The total trade count is at least the combined counts of revolving and installment trades that carry a balance.",
+    "formula": "nr_total_trades - nr_revolving_trades_with_balance - nr_installment_trades_with_balance >= 0",
+    "columns": [
+      "nr_total_trades",
+      "nr_revolving_trades_with_balance",
+      "nr_installment_trades_with_balance"
+    ],
+    "coefficients": {
+      "nr_total_trades": 1,
+      "nr_revolving_trades_with_balance": -1,
+      "nr_installment_trades_with_balance": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nr_total_trades",
+      "nr_revolving_trades_with_balance",
+      "nr_installment_trades_with_balance"
+    ],
+    "explanation": "Revolving and installment accounts are distinct trade categories, and the balance-carrying accounts in those two categories are therefore disjoint subsets of all recorded trades.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "average_trade_age_at_least_most_recent_trade_age",
+    "description": "The average age of trades in the bureau file is at least the age of the most recently opened trade.",
+    "formula": "average_duration_of_resolution - months_since_last_trade >= 0",
+    "columns": [
+      "average_duration_of_resolution",
+      "months_since_last_trade"
+    ],
+    "coefficients": {
+      "average_duration_of_resolution": 1,
+      "months_since_last_trade": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "average_duration_of_resolution",
+      "months_since_last_trade"
+    ],
+    "explanation": "Among observed trades, the most recently opened trade has the smallest months-since-opened value, so an average age cannot be below it; the source fields use compatible nonnegative observed values and documented unavailable codes.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

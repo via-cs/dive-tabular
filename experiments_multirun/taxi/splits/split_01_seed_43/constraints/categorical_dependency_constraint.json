@@ -1,0 +1,79 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "pickup_day_determines_weekend",
+      "description": "Pickup weekday determines the weekend indicator.",
+      "rationale": "is_weekend is explicitly derived from pickup_day_of_week: Saturday and Sunday map to 1, and Monday through Friday map to 0.",
+      "determinants": [
+        "pickup_day_of_week"
+      ],
+      "dependent": "is_weekend",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              5,
+              6
+            ]
+          ],
+          "dependent_values": [
+            1
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "rate_code_maps_trip_type",
+      "description": "Final rate code strongly determines the usual trip-origin type.",
+      "rationale": "The TLC rate-code semantics align with the observed trip-origin coding: standard and airport/geographic rate codes map to street-hail type 1, while negotiated-fare code 5 maps to dispatch type 2; the small observed exceptions are treated as data inconsistencies rather than additional admissible mappings.",
+      "determinants": [
+        "rate_code"
+      ],
+      "dependent": "trip_type",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1,
+              2,
+              3,
+              4
+            ]
+          ],
+          "dependent_values": [
+            1
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              5
+            ]
+          ],
+          "dependent_values": [
+            2
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0007381479629497345
+    }
+  ]
+}

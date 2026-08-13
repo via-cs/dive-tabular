@@ -1,0 +1,83 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "empty_title_excludes_domain_match",
+      "description": "A page with an empty title cannot have its domain present in the title.",
+      "rationale": "domain_in_title is inverted: value 1 means the domain is absent from the title. An empty title necessarily lacks the domain, while nonempty titles may or may not contain it.",
+      "determinants": [
+        "empty_title"
+      ],
+      "dependent": "domain_in_title",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              0
+            ]
+          ],
+          "dependent_values": [
+            0,
+            1
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            1
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "external_redirect_implies_redirect",
+      "description": "An external-domain redirect can occur only when at least one total HTTP redirect is present.",
+      "rationale": "The dataset defines nb_external_redirection as a subset count of nb_redirection, so a positive external redirect is admissible only with a positive total redirect count; zero external redirects impose no restriction on total redirects.",
+      "determinants": [
+        "nb_external_redirection"
+      ],
+      "dependent": "nb_redirection",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              0
+            ]
+          ],
+          "dependent_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    }
+  ]
+}

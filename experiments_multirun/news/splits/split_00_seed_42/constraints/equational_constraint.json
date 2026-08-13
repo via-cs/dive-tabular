@@ -1,0 +1,97 @@
+[
+  {
+    "id": "lda_topic_weights_sum_to_one",
+    "description": "The five LDA topic membership weights sum to one for each article.",
+    "rationale": "The metadata defines LDA_00 through LDA_04 as a complete five-topic probability distribution, so their row-wise total is one up to decimal storage precision.",
+    "columns": [
+      "LDA_00",
+      "LDA_01",
+      "LDA_02",
+      "LDA_03",
+      "LDA_04"
+    ],
+    "check_code": "def check(df):\n    total = df[\"LDA_00\"] + df[\"LDA_01\"] + df[\"LDA_02\"] + df[\"LDA_03\"] + df[\"LDA_04\"]\n    return (total - 1.0).abs() <= 1e-10",
+    "fix_code": [
+      {
+        "column": "LDA_00",
+        "code": "def fix(df):\n    return 1.0 - df['LDA_01'] - df['LDA_02'] - df['LDA_03'] - df['LDA_04']"
+      },
+      {
+        "column": "LDA_01",
+        "code": "def fix(df):\n    return 1.0 - (df['LDA_00'] + df['LDA_02'] + df['LDA_03'] + df['LDA_04'])"
+      },
+      {
+        "column": "LDA_02",
+        "code": "def fix(df):\n    return 1.0 - df['LDA_00'] - df['LDA_01'] - df['LDA_03'] - df['LDA_04']"
+      },
+      {
+        "column": "LDA_03",
+        "code": "def fix(df):\n    return 1.0 - df['LDA_00'] - df['LDA_01'] - df['LDA_02'] - df['LDA_04']"
+      },
+      {
+        "column": "LDA_04",
+        "code": "def fix(df):\n    return 1.0 - df['LDA_00'] - df['LDA_01'] - df['LDA_02'] - df['LDA_03']"
+      }
+    ]
+  },
+  {
+    "id": "sentiment_rate_partition",
+    "description": "The positive and negative sentiment-bearing word rates sum to one.",
+    "rationale": "These two fields are complementary fractions within the sentiment-bearing words, and the preprocessing removed rows where that denominator was zero.",
+    "columns": [
+      "rate_positive_words",
+      "rate_negative_words"
+    ],
+    "check_code": "def check(df):\n    return (df[\"rate_positive_words\"] + df[\"rate_negative_words\"] - 1.0).abs() <= 1e-10",
+    "fix_code": [
+      {
+        "column": "rate_positive_words",
+        "code": "def fix(df):\n    return (1.0 - df['rate_negative_words']).astype(float)"
+      },
+      {
+        "column": "rate_negative_words",
+        "code": "def fix(df):\n    return (1.0 - df['rate_positive_words']).rename('rate_negative_words')"
+      }
+    ]
+  },
+  {
+    "id": "title_subjectivity_centered_absolute_value",
+    "description": "Absolute title subjectivity equals the absolute distance of title subjectivity from 0.5.",
+    "rationale": "The processed field is explicitly defined as abs(title_subjectivity - 0.5), so this is a deterministic per-row transformation rather than a statistical association.",
+    "columns": [
+      "title_subjectivity",
+      "abs_title_subjectivity"
+    ],
+    "check_code": "def check(df):\n    expected = (df[\"title_subjectivity\"] - 0.5).abs()\n    return (df[\"abs_title_subjectivity\"] - expected).abs() <= 1e-10",
+    "fix_code": [
+      {
+        "column": "title_subjectivity",
+        "code": null
+      },
+      {
+        "column": "abs_title_subjectivity",
+        "code": "def fix(df):\n    return (df['title_subjectivity'] - 0.5).abs()"
+      }
+    ]
+  },
+  {
+    "id": "title_sentiment_absolute_value",
+    "description": "Absolute title sentiment polarity equals the magnitude of title sentiment polarity.",
+    "rationale": "The processed field is explicitly defined as abs(title_sentiment_polarity), retaining only the polarity magnitude.",
+    "columns": [
+      "title_sentiment_polarity",
+      "abs_title_sentiment_polarity"
+    ],
+    "check_code": "def check(df):\n    expected = df[\"title_sentiment_polarity\"].abs()\n    return (df[\"abs_title_sentiment_polarity\"] - expected).abs() <= 1e-10",
+    "fix_code": [
+      {
+        "column": "title_sentiment_polarity",
+        "code": null
+      },
+      {
+        "column": "abs_title_sentiment_polarity",
+        "code": "def fix(df):\n    return df['title_sentiment_polarity'].abs()"
+      }
+    ]
+  }
+]

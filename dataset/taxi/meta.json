@@ -1,0 +1,27 @@
+{
+  "dataset_description": "This is the repository's processed 59,996-row sample of New York City Taxi and Limousine Commission (TLC) 2015 Green Taxi Trip Records. Each row represents one green-taxi trip and contains pickup and drop-off coordinates, metered trip distance, itemized charges, local clock times, elapsed duration, dispatch and fare codes, driver-reported passenger count, pickup weekday, and the regression target total_amount. The bundled source has 60,000 trips spanning 2015; preprocessing removes the row identifier, vendor, original timestamps, and entirely missing e-hail fee, then drops four trips whose duration is not strictly between 0 and 1,440 minutes. It derives fractional local minutes of day and weekday fields and contains no missing retained values. pickup_minute_of_day and dropoff_minute_of_day are positions on a 24-hour clock in the range 0 through just under 1,440, not elapsed times or calendar dates; they retain source seconds as fractions of a minute. Consequently, dropoff_minute_of_day = (pickup_minute_of_day + duration) modulo 1,440, including trips that cross midnight. total_amount is rebuilt during preprocessing to repair 17 inconsistent source totals and exactly equals fare_amount + extra + mta_tax + tip_amount + tolls_amount + improvement_surcharge. The TLC notes that technology service providers supplied these records and that TLC cannot guarantee their accuracy.",
+  "column_descriptions": {
+    "pickup_longitude": "Longitude in decimal degrees of the location where the taximeter was engaged at the start of the trip. Negative values denote locations west of the prime meridian.",
+    "pickup_latitude": "Latitude in decimal degrees of the location where the taximeter was engaged at the start of the trip. Positive values denote locations north of the equator.",
+    "dropoff_longitude": "Longitude in decimal degrees of the location where the taximeter was disengaged at the end of the trip. Negative values denote locations west of the prime meridian.",
+    "dropoff_latitude": "Latitude in decimal degrees of the location where the taximeter was disengaged at the end of the trip. Positive values denote locations north of the equator.",
+    "trip_distance": "Elapsed trip distance in miles as reported by the taximeter.",
+    "fare_amount": "Meter-calculated time-and-distance fare in U.S. dollars. It is one of the six retained components that sum exactly to total_amount.",
+    "extra": "Miscellaneous extra charges and surcharges in U.S. dollars. It is one of the six retained components that sum exactly to total_amount.",
+    "mta_tax": "MTA tax in U.S. dollars, automatically triggered according to the metered rate in use. It is one of the six retained components that sum exactly to total_amount.",
+    "tip_amount": "Recorded tip in U.S. dollars. Credit-card tips are populated automatically, while cash tips are not included. It is one of the six retained components that sum exactly to total_amount.",
+    "tolls_amount": "Total toll charges paid for the trip, in U.S. dollars. It is one of the six retained components that sum exactly to total_amount.",
+    "improvement_surcharge": "Improvement surcharge in U.S. dollars assessed at flag drop; this surcharge began in 2015. It is one of the six retained components that sum exactly to total_amount.",
+    "pickup_minute_of_day": "Local pickup clock time represented as fractional minutes after midnight: hour * 60 + minute + second / 60. Values range from 0 through just under 1,440 and contain no calendar date or day offset.",
+    "dropoff_minute_of_day": "Local drop-off clock time represented as fractional minutes after midnight. It is derived as (pickup_minute_of_day + duration) modulo 1,440, so it wraps at midnight and contains no calendar date or day offset.",
+    "duration": "Full elapsed trip duration in minutes, computed from the original drop-off timestamp minus the pickup timestamp. Retained values are strictly greater than 0 and strictly less than 1,440; unlike the minute-of-day fields, duration does not wrap at midnight.",
+    "store_and_fwd_flag": "Whether the trip record was temporarily held in vehicle memory because no server connection was available: 'Y' means a store-and-forward trip and 'N' means it was not.",
+    "rate_code": "Final rate code in effect at the end of the trip: 1 = standard rate, 2 = JFK, 3 = Newark, 4 = Nassau or Westchester, 5 = negotiated fare, and 6 = group ride.",
+    "passenger_count": "Number of passengers in the vehicle as reported by the driver. It is treated as categorical in this repository.",
+    "payment_type": "Passenger payment-method code: 1 = credit card, 2 = cash, 3 = no charge, 4 = dispute, and 5 = unknown.",
+    "trip_type": "Green-taxi trip-origin code automatically assigned from the metered rate but alterable by the driver: 1 = street hail and 2 = dispatch.",
+    "pickup_day_of_week": "Pickup weekday derived from the original local pickup timestamp using Monday = 0, Tuesday = 1, Wednesday = 2, Thursday = 3, Friday = 4, Saturday = 5, and Sunday = 6.",
+    "is_weekend": "Binary categorical indicator derived from pickup_day_of_week: 1 for Saturday (5) or Sunday (6), and 0 for Monday through Friday.",
+    "total_amount": "Regression target: processed total trip charge in U.S. dollars, excluding unrecorded cash tips and the removed e-hail fee. It is rebuilt to equal fare_amount + extra + mta_tax + tip_amount + tolls_amount + improvement_surcharge exactly."
+  }
+}

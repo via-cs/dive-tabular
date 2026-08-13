@@ -1,0 +1,647 @@
+[
+  {
+    "id": "hostname_length_within_url_length",
+    "description": "The parsed hostname length does not exceed the complete URL length.",
+    "formula": "length_url - length_hostname >= 0",
+    "columns": [
+      "length_url",
+      "length_hostname"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "length_hostname": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "length_hostname"
+    ],
+    "explanation": "The hostname is a substring/component of the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "raw_longest_at_least_raw_average",
+    "description": "The longest raw URL token is at least the average raw token length.",
+    "formula": "longest_words_raw - avg_words_raw >= 0",
+    "columns": [
+      "longest_words_raw",
+      "avg_words_raw"
+    ],
+    "coefficients": {
+      "longest_words_raw": 1,
+      "avg_words_raw": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "longest_words_raw",
+      "avg_words_raw"
+    ],
+    "explanation": "A maximum of a collection cannot be below its arithmetic mean.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "raw_average_at_least_raw_shortest",
+    "description": "The average raw URL token length is at least the shortest raw token length.",
+    "formula": "avg_words_raw - shortest_words_raw >= 0",
+    "columns": [
+      "avg_words_raw",
+      "shortest_words_raw"
+    ],
+    "coefficients": {
+      "avg_words_raw": 1,
+      "shortest_words_raw": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "avg_words_raw",
+      "shortest_words_raw"
+    ],
+    "explanation": "An arithmetic mean cannot be below the minimum of the same nonempty token collection.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "host_longest_at_least_host_average",
+    "description": "The longest host token is at least the average host token length.",
+    "formula": "longest_word_host - avg_word_host >= 0",
+    "columns": [
+      "longest_word_host",
+      "avg_word_host"
+    ],
+    "coefficients": {
+      "longest_word_host": 1,
+      "avg_word_host": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "longest_word_host",
+      "avg_word_host"
+    ],
+    "explanation": "A maximum of the host-token collection cannot be below its arithmetic mean.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "host_average_at_least_host_shortest",
+    "description": "The average host token length is at least the shortest host token length.",
+    "formula": "avg_word_host - shortest_word_host >= 0",
+    "columns": [
+      "avg_word_host",
+      "shortest_word_host"
+    ],
+    "coefficients": {
+      "avg_word_host": 1,
+      "shortest_word_host": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "avg_word_host",
+      "shortest_word_host"
+    ],
+    "explanation": "An arithmetic mean cannot be below the minimum of the same nonempty host-token collection.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "path_longest_at_least_path_average",
+    "description": "The longest path token is at least the average path token length.",
+    "formula": "longest_word_path - avg_word_path >= 0",
+    "columns": [
+      "longest_word_path",
+      "avg_word_path"
+    ],
+    "coefficients": {
+      "longest_word_path": 1,
+      "avg_word_path": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "longest_word_path",
+      "avg_word_path"
+    ],
+    "explanation": "When path tokens exist, a maximum cannot be below their arithmetic mean; when absent, both path quantities are zero by definition.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "path_average_at_least_path_shortest",
+    "description": "The average path token length is at least the shortest path token length.",
+    "formula": "avg_word_path - shortest_word_path >= 0",
+    "columns": [
+      "avg_word_path",
+      "shortest_word_path"
+    ],
+    "coefficients": {
+      "avg_word_path": 1,
+      "shortest_word_path": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "avg_word_path",
+      "shortest_word_path"
+    ],
+    "explanation": "For a nonempty path-token collection the mean is at least its minimum, and when absent both values are zero by definition.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "hostname_covers_longest_host_token",
+    "description": "The hostname character length is at least the longest host token length.",
+    "formula": "length_hostname - longest_word_host >= 0",
+    "columns": [
+      "length_hostname",
+      "longest_word_host"
+    ],
+    "coefficients": {
+      "length_hostname": 1,
+      "longest_word_host": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_hostname",
+      "longest_word_host"
+    ],
+    "explanation": "The longest host token is contained within the parsed hostname, whose length includes token characters and separators.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_covers_longest_raw_token",
+    "description": "The complete URL length is at least the longest raw token length.",
+    "formula": "length_url - longest_words_raw >= 0",
+    "columns": [
+      "length_url",
+      "longest_words_raw"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "longest_words_raw": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "longest_words_raw"
+    ],
+    "explanation": "Every raw URL token is composed of characters occurring within the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_covers_longest_path_token",
+    "description": "The complete URL length is at least the longest path token length.",
+    "formula": "length_url - longest_word_path >= 0",
+    "columns": [
+      "length_url",
+      "longest_word_path"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "longest_word_path": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "longest_word_path"
+    ],
+    "explanation": "Every path token is a character substring/component of the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "hyperlink_count_covers_external_css",
+    "description": "The extracted hyperlink/resource count is at least the number of external CSS links.",
+    "formula": "nb_hyperlinks - nb_extCSS >= 0",
+    "columns": [
+      "nb_hyperlinks",
+      "nb_extCSS"
+    ],
+    "coefficients": {
+      "nb_hyperlinks": 1,
+      "nb_extCSS": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "nb_hyperlinks",
+      "nb_extCSS"
+    ],
+    "explanation": "External CSS links are a subset of linked resources extracted from href and src attributes.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_dot_count",
+    "description": "The complete URL length is at least its number of period characters.",
+    "formula": "length_url - nb_dots >= 0",
+    "columns": [
+      "length_url",
+      "nb_dots"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "nb_dots": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "nb_dots"
+    ],
+    "explanation": "Each counted period is one character in the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_hyphen_count",
+    "description": "The complete URL length is at least its number of hyphen characters.",
+    "formula": "length_url - nb_hyphens >= 0",
+    "columns": [
+      "length_url",
+      "nb_hyphens"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "nb_hyphens": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "nb_hyphens"
+    ],
+    "explanation": "Each counted hyphen is one character in the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_ampersand_count",
+    "description": "The complete URL length is at least its number of ampersand characters.",
+    "formula": "length_url - nb_and >= 0",
+    "columns": [
+      "length_url",
+      "nb_and"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "nb_and": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "nb_and"
+    ],
+    "explanation": "Each counted ampersand is one character in the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_equals_count",
+    "description": "The complete URL length is at least its number of equals-sign characters.",
+    "formula": "length_url - nb_eq >= 0",
+    "columns": [
+      "length_url",
+      "nb_eq"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "nb_eq": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "nb_eq"
+    ],
+    "explanation": "Each counted equals sign is one character in the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_underscore_count",
+    "description": "The complete URL length is at least its number of underscore characters.",
+    "formula": "length_url - nb_underscore >= 0",
+    "columns": [
+      "length_url",
+      "nb_underscore"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "nb_underscore": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "nb_underscore"
+    ],
+    "explanation": "Each counted underscore is one character in the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_percent_count",
+    "description": "The complete URL length is at least its number of percent-sign characters.",
+    "formula": "length_url - nb_percent >= 0",
+    "columns": [
+      "length_url",
+      "nb_percent"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "nb_percent": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "nb_percent"
+    ],
+    "explanation": "Each counted percent sign is one character in the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_slash_count",
+    "description": "The complete URL length is at least its number of forward-slash characters.",
+    "formula": "length_url - nb_slash >= 0",
+    "columns": [
+      "length_url",
+      "nb_slash"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "nb_slash": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "nb_slash"
+    ],
+    "explanation": "Each counted forward slash is one character in the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_semicolon_count",
+    "description": "The complete URL length is at least its number of semicolon characters.",
+    "formula": "length_url - nb_semicolumn >= 0",
+    "columns": [
+      "length_url",
+      "nb_semicolumn"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "nb_semicolumn": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "nb_semicolumn"
+    ],
+    "explanation": "Each counted semicolon is one character in the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_counted_punctuation",
+    "description": "The complete URL length covers the total count of the listed URL punctuation characters.",
+    "formula": "length_url - nb_dots - nb_hyphens - nb_and - nb_eq - nb_underscore - nb_percent - nb_slash - nb_semicolumn >= 0",
+    "columns": [
+      "length_url",
+      "nb_dots",
+      "nb_hyphens",
+      "nb_and",
+      "nb_eq",
+      "nb_underscore",
+      "nb_percent",
+      "nb_slash",
+      "nb_semicolumn"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "nb_dots": -1,
+      "nb_hyphens": -1,
+      "nb_and": -1,
+      "nb_eq": -1,
+      "nb_underscore": -1,
+      "nb_percent": -1,
+      "nb_slash": -1,
+      "nb_semicolumn": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "nb_dots",
+      "nb_hyphens",
+      "nb_and",
+      "nb_eq",
+      "nb_underscore",
+      "nb_percent",
+      "nb_slash",
+      "nb_semicolumn"
+    ],
+    "explanation": "Periods, hyphens, ampersands, equals signs, underscores, percent signs, slashes, and semicolons are distinct character categories, each counted within the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_raw_token_count",
+    "description": "The complete URL length is at least the number of nonempty raw URL tokens.",
+    "formula": "length_url - length_words_raw >= 0",
+    "columns": [
+      "length_url",
+      "length_words_raw"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "length_words_raw": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "length_words_raw"
+    ],
+    "explanation": "The nonempty raw tokens are disjoint character components of the URL, and each contains at least one character.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_covers_shortest_raw_token",
+    "description": "The complete URL length is at least the shortest nonempty raw URL token length.",
+    "formula": "length_url - shortest_words_raw >= 0",
+    "columns": [
+      "length_url",
+      "shortest_words_raw"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "shortest_words_raw": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "shortest_words_raw"
+    ],
+    "explanation": "Every raw URL token is a component of the complete URL, including the shortest token when the raw-token collection is nonempty.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "hostname_covers_shortest_host_token",
+    "description": "The parsed hostname length is at least the shortest host token length.",
+    "formula": "length_hostname - shortest_word_host >= 0",
+    "columns": [
+      "length_hostname",
+      "shortest_word_host"
+    ],
+    "coefficients": {
+      "length_hostname": 1,
+      "shortest_word_host": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_hostname",
+      "shortest_word_host"
+    ],
+    "explanation": "The shortest nonempty host token is contained in the parsed hostname, whose total character length includes that token.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_hostname_and_slashes",
+    "description": "The complete URL length covers the parsed hostname together with all forward slashes in the URL.",
+    "formula": "length_url - length_hostname - nb_slash >= 0",
+    "columns": [
+      "length_url",
+      "length_hostname",
+      "nb_slash"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "length_hostname": -1,
+      "nb_slash": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "length_hostname",
+      "nb_slash"
+    ],
+    "explanation": "The hostname characters and forward-slash characters are disjoint character positions within the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_hostname_and_query_marks",
+    "description": "The complete URL length covers the parsed hostname together with ampersands and equals signs.",
+    "formula": "length_url - length_hostname - nb_and - nb_eq >= 0",
+    "columns": [
+      "length_url",
+      "length_hostname",
+      "nb_and",
+      "nb_eq"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "length_hostname": -1,
+      "nb_and": -1,
+      "nb_eq": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "length_hostname",
+      "nb_and",
+      "nb_eq"
+    ],
+    "explanation": "Ampersands and equals signs cannot be hostname characters, so their counted positions are additional to the hostname characters within the complete URL.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "url_length_covers_hostname_and_encoding_marks",
+    "description": "The complete URL length covers the parsed hostname together with percent signs and semicolons.",
+    "formula": "length_url - length_hostname - nb_percent - nb_semicolumn >= 0",
+    "columns": [
+      "length_url",
+      "length_hostname",
+      "nb_percent",
+      "nb_semicolumn"
+    ],
+    "coefficients": {
+      "length_url": 1,
+      "length_hostname": -1,
+      "nb_percent": -1,
+      "nb_semicolumn": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_url",
+      "length_hostname",
+      "nb_percent",
+      "nb_semicolumn"
+    ],
+    "explanation": "Percent signs and semicolons are not hostname characters, so these counted URL characters are additional to the parsed hostname.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "raw_longest_at_least_host_average",
+    "description": "The longest raw URL token is at least the average host token length.",
+    "formula": "longest_words_raw - avg_word_host >= 0",
+    "columns": [
+      "longest_words_raw",
+      "avg_word_host"
+    ],
+    "coefficients": {
+      "longest_words_raw": 1,
+      "avg_word_host": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "longest_words_raw",
+      "avg_word_host"
+    ],
+    "explanation": "The raw-token maximum is at least the host-token maximum, which is at least the host-token arithmetic mean.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "raw_longest_at_least_path_average",
+    "description": "The longest raw URL token is at least the average path token length.",
+    "formula": "longest_words_raw - avg_word_path >= 0",
+    "columns": [
+      "longest_words_raw",
+      "avg_word_path"
+    ],
+    "coefficients": {
+      "longest_words_raw": 1,
+      "avg_word_path": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "longest_words_raw",
+      "avg_word_path"
+    ],
+    "explanation": "The raw-token maximum is at least the path-token maximum, which is at least the path-token arithmetic mean; absent path tokens have zero average.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "hostname_length_covers_dot_count",
+    "description": "The sum of hostname length and URL dot count is nonnegative.",
+    "formula": "length_hostname + nb_dots >= 0",
+    "columns": [
+      "length_hostname",
+      "nb_dots"
+    ],
+    "coefficients": {
+      "length_hostname": 1,
+      "nb_dots": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "length_hostname",
+      "nb_dots"
+    ],
+    "explanation": "Both columns are counts: hostname character length and number of period characters in the complete URL. Counts cannot be negative, so their sum is universally nonnegative; the prior containment claim is invalid because URL dots may occur outside the hostname.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

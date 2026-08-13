@@ -1,0 +1,24 @@
+{
+  "feature_columns": [
+    "YEAR",
+    "MONTH",
+    "DAY",
+    "AIRLINE",
+    "AIRLINE_CODE",
+    "ORIGIN",
+    "ORIGIN_CITY",
+    "DEST",
+    "DEST_CITY",
+    "DEP_TIME_UTC_MIN",
+    "TAXI_OUT",
+    "DEP_DELAY",
+    "WHEELS_OFF_UTC_MIN",
+    "WHEELS_ON_UTC_MIN",
+    "TAXI_IN",
+    "AIR_TIME",
+    "ARR_TIME_UTC_MIN",
+    "ELAPSED_TIME",
+    "DISTANCE"
+  ],
+  "target_column": "ARR_DELAY"
+}

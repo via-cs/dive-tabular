@@ -1,0 +1,6 @@
+{
+  "feature_columns": [
+    "estimate_of_risk", "months_since_first_trade", "months_since_last_trade", "average_duration_of_resolution", "number_of_satisfactory_trades", "nr_trades_insolvent_for_over_60_days", "nr_trades_insolvent_for_over_90_days", "percentage_of_legal_trades", "months_since_last_illegal_trade", "maximum_illegal_trades_over_last_year", "maximum_illegal_trades", "nr_total_trades", "nr_trades_initiated_in_last_year", "percentage_of_installment_trades", "months_since_last_inquiry_not_recent", "nr_inquiries_in_last_6_months", "nr_inquiries_in_last_6_months_not_recent", "net_fraction_of_revolving_burden", "net_fraction_of_installment_burden", "nr_revolving_trades_with_balance", "nr_installment_trades_with_balance", "nr_banks_with_high_ratio", "percentage_trades_with_balance"
+  ],
+  "target_column": "is_at_risk"
+}

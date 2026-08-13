@@ -1,0 +1,344 @@
+{
+  "paths": {
+    "experiment_dir": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained",
+    "synthetic_files": [
+      "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_0.csv",
+      "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_1.csv",
+      "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_2.csv"
+    ],
+    "metrics": [
+      "constraint",
+      "quality",
+      "utility"
+    ],
+    "constraints_expert": "experiments_multirun/nba/splits/split_00_seed_42/constraints",
+    "utility_regimes": [
+      "trtr",
+      "tstr"
+    ]
+  },
+  "per_file": [
+    {
+      "path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_0.csv",
+      "quality": {
+        "score": 0.8749647948555772,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8465566052782866
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.903372984432868
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.8414394100115903,
+              "rmse": 2.0886735245211616
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.7197439951146531,
+              "rmse": 2.776837071126844
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_0.csv",
+        "rows": 9835,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    },
+    {
+      "path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_1.csv",
+      "quality": {
+        "score": 0.8882812853500865,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8555331994330989
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9210293712670743
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.8443727096436314,
+              "rmse": 2.0692635760267257
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.7179129421387244,
+              "rmse": 2.785893536927581
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_1.csv",
+        "rows": 9834,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    },
+    {
+      "path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_2.csv",
+      "quality": {
+        "score": 0.8883119865639179,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.855684192140873
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9209397809869627
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.8417628322315561,
+              "rmse": 2.0865422627341967
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.7234727199626474,
+              "rmse": 2.7583027102619733
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_2.csv",
+        "rows": 9833,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    }
+  ],
+  "utility_columns": {
+    "target": "Usage",
+    "categorical_feature_columns": [],
+    "numerical_feature_columns": [
+      "Points",
+      "FG2M",
+      "FG2A",
+      "Fg2Pct",
+      "FG3M",
+      "FG3A",
+      "Fg3Pct",
+      "NonHeaveFg3Pct",
+      "FtPoints",
+      "PtsAssisted2s",
+      "PtsUnassisted2s",
+      "PtsAssisted3s",
+      "PtsUnassisted3s",
+      "Assisted2sPct",
+      "NonPutbacksAssisted2sPct",
+      "Assisted3sPct",
+      "FG3APct",
+      "ShotQualityAvg",
+      "EfgPct",
+      "TsPct",
+      "PtsPutbacks",
+      "Fg2aBlocked",
+      "FG2APctBlocked",
+      "Fg3aBlocked",
+      "FG3APctBlocked"
+    ]
+  },
+  "quality": {
+    "score": [
+      0.8749647948555772,
+      0.8882812853500865,
+      0.8883119865639179
+    ],
+    "properties": [
+      {
+        "Property": "Column Shapes",
+        "Score": [
+          0.8465566052782866,
+          0.8555331994330989,
+          0.855684192140873
+        ]
+      },
+      {
+        "Property": "Column Pair Trends",
+        "Score": [
+          0.903372984432868,
+          0.9210293712670743,
+          0.9209397809869627
+        ]
+      }
+    ]
+  },
+  "utility": {
+    "task": "regression",
+    "models": {
+      "linear_regression": {
+        "trtr": {
+          "r2": 0.9236942901903011,
+          "rmse": 1.448943508535579
+        },
+        "tstr": {
+          "r2": [
+            0.8414394100115903,
+            0.8443727096436314,
+            0.8417628322315561
+          ],
+          "rmse": [
+            2.0886735245211616,
+            2.0692635760267257,
+            2.0865422627341967
+          ]
+        }
+      },
+      "xgboost": {
+        "trtr": {
+          "r2": 0.9128745248495553,
+          "rmse": 1.5482657798516288
+        },
+        "tstr": {
+          "r2": [
+            0.7197439951146531,
+            0.7179129421387244,
+            0.7234727199626474
+          ],
+          "rmse": [
+            2.776837071126844,
+            2.785893536927581,
+            2.7583027102619733
+          ]
+        }
+      }
+    }
+  },
+  "constraint": {
+    "available_families": [
+      "categorical_dependency",
+      "equational",
+      "linear"
+    ],
+    "real_train": {
+      "path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/train.csv",
+      "rows": 9843,
+      "average_r2_consistency": 1.0,
+      "equational_cvr": 0.0,
+      "equational_scvc": 0.0,
+      "categorical_dependency_cvr": 0.0,
+      "categorical_dependency_scvc": null,
+      "linear_cvr": 0.0,
+      "linear_scvc": 0.0,
+      "family_status": {
+        "equational": "evaluated",
+        "categorical_dependency": "evaluated",
+        "linear": "evaluated"
+      },
+      "linear_feasibility_distance": 0.0
+    },
+    "synthetic": [
+      {
+        "path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_0.csv",
+        "rows": 9835,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      },
+      {
+        "path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_1.csv",
+        "rows": 9834,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      },
+      {
+        "path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/synthetic/synthetic_2.csv",
+        "rows": 9833,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": null,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    ],
+    "details_path": "experiments_multirun/nba/splits/split_00_seed_42/generators/gaussian_copula/constrained/constraint_evaluation_details.json"
+  }
+}

@@ -1,0 +1,322 @@
+[
+  {
+    "id": "three_attempt_share_identity",
+    "description": "The three-point attempt share equals three-point attempts divided by total field-goal attempts.",
+    "rationale": "FG3APct is explicitly the share of all field-goal attempts that are three-point attempts.",
+    "columns": [
+      "FG3APct",
+      "FG2A",
+      "FG3A"
+    ],
+    "check_code": "def check(df):\n    total_attempts = df[\"FG2A\"] + df[\"FG3A\"]\n    expected = df[\"FG3A\"] / total_attempts.replace(0, np.nan)\n    return ((total_attempts == 0) & (df[\"FG3APct\"] == 0)) | np.isclose(df[\"FG3APct\"], expected.fillna(0), rtol=1e-9, atol=1e-8)",
+    "fix_code": [
+      {
+        "column": "FG3APct",
+        "code": "def fix(df):\n    total_attempts = df['FG2A'] + df['FG3A']\n    return (df['FG3A'] / total_attempts.replace(0, np.nan)).fillna(0).astype(float)"
+      },
+      {
+        "column": "FG2A",
+        "code": "def fix(df):\n    return (df['FG3A'] * (1.0 - df['FG3APct']) / df['FG3APct'].replace(0, np.nan)).fillna(0.0)"
+      },
+      {
+        "column": "FG3A",
+        "code": "def fix(df):\n    p = df['FG3APct']\n    a = df['FG2A']\n    denominator = 1.0 - p\n    return p.mul(a).div(denominator).where(denominator.ne(0), 0.0).fillna(0.0)"
+      }
+    ]
+  },
+  {
+    "id": "effective_field_goal_percentage_identity",
+    "description": "Effective field-goal percentage equals two-point makes plus one and a half times three-point makes, divided by total field-goal attempts.",
+    "rationale": "Effective field-goal percentage credits each three-point make as 1.5 field goals while retaining two-point makes, normalized by all field-goal attempts.",
+    "columns": [
+      "EfgPct",
+      "FG2M",
+      "FG3M",
+      "FG2A",
+      "FG3A"
+    ],
+    "check_code": "def check(df):\n    attempts = df[\"FG2A\"] + df[\"FG3A\"]\n    expected = (df[\"FG2M\"] + 1.5 * df[\"FG3M\"]) / attempts.replace(0, np.nan)\n    return ((attempts == 0) & (df[\"EfgPct\"] == 0)) | np.isclose(df[\"EfgPct\"], expected.fillna(0), rtol=1e-9, atol=1e-8)",
+    "fix_code": [
+      {
+        "column": "EfgPct",
+        "code": "def fix(df):\n    attempts = df['FG2A'] + df['FG3A']\n    return ((df['FG2M'] + 1.5 * df['FG3M']) / attempts.replace(0, np.nan)).fillna(0)\n"
+      },
+      {
+        "column": "FG2M",
+        "code": "def fix(df):\n    attempts = df['FG2A'] + df['FG3A']\n    return df['EfgPct'] * attempts - 1.5 * df['FG3M']"
+      },
+      {
+        "column": "FG3M",
+        "code": "def fix(df):\n    attempts = df['FG2A'] + df['FG3A']\n    return ((df['EfgPct'] * attempts - df['FG2M']) / 1.5).fillna(0.0)"
+      },
+      {
+        "column": "FG2A",
+        "code": "def fix(df):\n    numerator = df['FG2M'] + 1.5 * df['FG3M']\n    efg = df['EfgPct']\n    total_attempts = (numerator / efg).where(efg != 0, 0.0)\n    return total_attempts - df['FG3A']"
+      },
+      {
+        "column": "FG3A",
+        "code": "def fix(df):\n    numerator = df['FG2M'] + 1.5 * df['FG3M']\n    efg = df['EfgPct'].replace(0, np.nan)\n    result = numerator / efg - df['FG2A']\n    return result.replace([np.inf, -np.inf], np.nan).fillna(0.0)\n"
+      }
+    ]
+  },
+  {
+    "id": "two_point_assisted_share_identity",
+    "description": "The assisted two-point scoring fraction equals assisted two-point points divided by total two-point points.",
+    "rationale": "Assisted2sPct is defined as the fraction of two-point field-goal points that were assisted, and total two-point points are twice the two-point makes.",
+    "columns": [
+      "Assisted2sPct",
+      "PtsAssisted2s",
+      "FG2M"
+    ],
+    "check_code": "def check(df):\n    total = 2.0 * df[\"FG2M\"]\n    expected = df[\"PtsAssisted2s\"] / total.replace(0, np.nan)\n    return ((total == 0) & (df[\"Assisted2sPct\"] == 0)) | np.isclose(df[\"Assisted2sPct\"], expected.fillna(0), rtol=1e-9, atol=1e-8)",
+    "fix_code": [
+      {
+        "column": "Assisted2sPct",
+        "code": "def fix(df):\n    total = 2.0 * df['FG2M']\n    return (df['PtsAssisted2s'] / total.replace(0, np.nan)).fillna(0.0).astype(float)"
+      },
+      {
+        "column": "PtsAssisted2s",
+        "code": "def fix(df):\n    return (2.0 * df['Assisted2sPct'] * df['FG2M']).replace([np.inf, -np.inf], 0.0).fillna(0.0)\n"
+      },
+      {
+        "column": "FG2M",
+        "code": "def fix(df):\n    return df['PtsAssisted2s'].div(2.0 * df['Assisted2sPct']).where(df['Assisted2sPct'] != 0, 0.0)"
+      }
+    ]
+  },
+  {
+    "id": "three_point_assisted_share_identity",
+    "description": "The assisted three-point scoring fraction equals assisted three-point points divided by total three-point points.",
+    "rationale": "Assisted3sPct is defined as the fraction of three-point field-goal points that were assisted, and total three-point points are three times the three-point makes.",
+    "columns": [
+      "Assisted3sPct",
+      "PtsAssisted3s",
+      "FG3M"
+    ],
+    "check_code": "def check(df):\n    total = 3.0 * df[\"FG3M\"]\n    expected = df[\"PtsAssisted3s\"] / total.replace(0, np.nan)\n    return ((total == 0) & (df[\"Assisted3sPct\"] == 0)) | np.isclose(df[\"Assisted3sPct\"], expected.fillna(0), rtol=1e-9, atol=1e-8)",
+    "fix_code": [
+      {
+        "column": "Assisted3sPct",
+        "code": "def fix(df):\n    return (df['PtsAssisted3s'] / (3.0 * df['FG3M'].replace(0, np.nan))).fillna(0.0)"
+      },
+      {
+        "column": "PtsAssisted3s",
+        "code": "def fix(df):\n    return (3.0 * df['FG3M'] * df['Assisted3sPct']).astype(float)\n"
+      },
+      {
+        "column": "FG3M",
+        "code": "def fix(df):\n    pct = df['Assisted3sPct']\n    assisted_points = df['PtsAssisted3s']\n    total = 3.0 * pct\n    result = assisted_points / total\n    return result.replace([np.inf, -np.inf], np.nan).fillna(0.0)"
+      }
+    ]
+  },
+  {
+    "id": "two_point_block_rate_identity",
+    "description": "The blocked two-point attempt fraction equals blocked two-point attempts divided by all two-point attempts.",
+    "rationale": "FG2APctBlocked is explicitly the fraction of two-point attempts that were blocked, with Fg2aBlocked and FG2A providing numerator and denominator.",
+    "columns": [
+      "FG2APctBlocked",
+      "Fg2aBlocked",
+      "FG2A"
+    ],
+    "check_code": "def check(df):\n    attempts = df[\"FG2A\"]\n    expected = df[\"Fg2aBlocked\"] / attempts.replace(0, np.nan)\n    return ((attempts == 0) & (df[\"FG2APctBlocked\"] == 0)) | np.isclose(df[\"FG2APctBlocked\"], expected.fillna(0), rtol=1e-9, atol=1e-8)",
+    "fix_code": [
+      {
+        "column": "FG2APctBlocked",
+        "code": "def fix(df):\n    attempts = df['FG2A']\n    return (df['Fg2aBlocked'] / attempts.replace(0, np.nan)).fillna(0)"
+      },
+      {
+        "column": "Fg2aBlocked",
+        "code": "def fix(df):\n    result = df['FG2APctBlocked'].fillna(0) * df['FG2A'].fillna(0)\n    return result.where(np.isfinite(result), 0.0)"
+      },
+      {
+        "column": "FG2A",
+        "code": "def fix(df):\n    pct = df['FG2APctBlocked']\n    blocked = df['Fg2aBlocked']\n    result = blocked.div(pct.replace(0, np.nan))\n    return result.replace([np.inf, -np.inf], np.nan).fillna(0.0)"
+      }
+    ]
+  },
+  {
+    "id": "three_point_block_rate_identity",
+    "description": "The blocked three-point attempt fraction equals blocked three-point attempts divided by all three-point attempts.",
+    "rationale": "FG3APctBlocked is explicitly the fraction of three-point attempts that were blocked, with Fg3aBlocked and FG3A providing numerator and denominator.",
+    "columns": [
+      "FG3APctBlocked",
+      "Fg3aBlocked",
+      "FG3A"
+    ],
+    "check_code": "def check(df):\n    attempts = df[\"FG3A\"]\n    expected = df[\"Fg3aBlocked\"] / attempts.replace(0, np.nan)\n    return ((attempts == 0) & (df[\"FG3APctBlocked\"] == 0)) | np.isclose(df[\"FG3APctBlocked\"], expected.fillna(0), rtol=1e-9, atol=1e-8)",
+    "fix_code": [
+      {
+        "column": "FG3APctBlocked",
+        "code": "def fix(df):\n    attempts = df['FG3A']\n    return (df['Fg3aBlocked'] / attempts.replace(0, np.nan)).fillna(0).astype(float)\n"
+      },
+      {
+        "column": "Fg3aBlocked",
+        "code": "def fix(df):\n    return (df['FG3APctBlocked'] * df['FG3A']).replace([np.inf, -np.inf], np.nan).fillna(0.0)\n"
+      },
+      {
+        "column": "FG3A",
+        "code": "def fix(df):\n    blocked = df['Fg3aBlocked']\n    fraction = df['FG3APctBlocked']\n    return blocked.div(fraction.replace(0, np.nan)).fillna(0.0)"
+      }
+    ]
+  },
+  {
+    "id": "non_putback_two_point_assist_share",
+    "description": "The assisted fraction of non-putback two-point points equals assisted two-point points divided by total two-point points less putback points.",
+    "rationale": "NonPutbacksAssisted2sPct is defined over non-putback two-point scoring; subtracting putback points from all two-point points yields that denominator.",
+    "columns": [
+      "NonPutbacksAssisted2sPct",
+      "PtsAssisted2s",
+      "FG2M",
+      "PtsPutbacks"
+    ],
+    "check_code": "def check(df):\n    denominator = 2.0 * df[\"FG2M\"] - df[\"PtsPutbacks\"]\n    expected = df[\"PtsAssisted2s\"] / denominator.replace(0, np.nan)\n    return ((denominator == 0) & (df[\"NonPutbacksAssisted2sPct\"] == 0)) | np.isclose(df[\"NonPutbacksAssisted2sPct\"], expected.fillna(0), rtol=1e-9, atol=1e-8)",
+    "fix_code": [
+      {
+        "column": "NonPutbacksAssisted2sPct",
+        "code": "def fix(df):\n    denominator = 2.0 * df['FG2M'] - df['PtsPutbacks']\n    return (df['PtsAssisted2s'] / denominator.replace(0, np.nan)).fillna(0.0).astype(float)"
+      },
+      {
+        "column": "PtsAssisted2s",
+        "code": "def fix(df):\n    denominator = 2.0 * df['FG2M'] - df['PtsPutbacks']\n    values = np.where(denominator == 0, 0.0, df['NonPutbacksAssisted2sPct'] * denominator)\n    return pd.Series(values, index=df['FG2M'].index, dtype=float)"
+      },
+      {
+        "column": "FG2M",
+        "code": "def fix(df):\n    pct = df['NonPutbacksAssisted2sPct']\n    assisted = df['PtsAssisted2s']\n    putbacks = df['PtsPutbacks']\n    return ((assisted / pct + putbacks) / 2.0).where(pct != 0, putbacks / 2.0)"
+      },
+      {
+        "column": "PtsPutbacks",
+        "code": "def fix(df):\n    pct = df['NonPutbacksAssisted2sPct']\n    fg2m = df['FG2M']\n    assisted = df['PtsAssisted2s']\n    safe_pct = pct.where(pct != 0, 1.0)\n    return (2.0 * fg2m - assisted / safe_pct).where(pct != 0, 2.0 * fg2m)"
+      }
+    ]
+  },
+  {
+    "id": "two_point_make_rate_identity",
+    "description": "Two-point field goals made per 100 possessions equals two-point attempts multiplied by the two-point field-goal percentage.",
+    "rationale": "FG2M, FG2A, and Fg2Pct are the made rate, attempt rate, and corresponding make fraction for the same two-point shots.",
+    "columns": [
+      "FG2M",
+      "FG2A",
+      "Fg2Pct"
+    ],
+    "check_code": "def check(df):\n    expected = df[\"FG2A\"] * df[\"Fg2Pct\"]\n    return pd.Series(np.isclose(df[\"FG2M\"], expected, rtol=1e-9, atol=1e-8), index=df.index)",
+    "fix_code": [
+      {
+        "column": "FG2M",
+        "code": "def fix(df):\n    return (df['FG2A'] * df['Fg2Pct']).astype(float)\n"
+      },
+      {
+        "column": "FG2A",
+        "code": "def fix(df):\n    return (df['FG2M'] / df['Fg2Pct']).replace([np.inf, -np.inf], np.nan).fillna(0.0)"
+      },
+      {
+        "column": "Fg2Pct",
+        "code": "def fix(df):\n    return (df['FG2M'] / df['FG2A']).replace([np.inf, -np.inf], 0.0).fillna(0.0)"
+      }
+    ]
+  },
+  {
+    "id": "three_point_make_rate_identity",
+    "description": "Three-point field goals made per 100 possessions equals three-point attempts multiplied by the three-point field-goal percentage.",
+    "rationale": "FG3M, FG3A, and Fg3Pct are the made rate, attempt rate, and corresponding make fraction for the same three-point shots.",
+    "columns": [
+      "FG3M",
+      "FG3A",
+      "Fg3Pct"
+    ],
+    "check_code": "def check(df):\n    expected = df[\"FG3A\"] * df[\"Fg3Pct\"]\n    return pd.Series(np.isclose(df[\"FG3M\"], expected, rtol=1e-9, atol=1e-8), index=df.index)",
+    "fix_code": [
+      {
+        "column": "FG3M",
+        "code": "def fix(df):\n    return (df['FG3A'] * df['Fg3Pct']).astype(float)"
+      },
+      {
+        "column": "FG3A",
+        "code": "def fix(df):\n    return df['FG3M'].div(df['Fg3Pct']).where(df['Fg3Pct'].ne(0), 0.0)"
+      },
+      {
+        "column": "Fg3Pct",
+        "code": "def fix(df):\n    return df['FG3M'].div(df['FG3A']).replace([np.inf, -np.inf], 0.0).fillna(0.0)"
+      }
+    ]
+  },
+  {
+    "id": "field_goal_points_total",
+    "description": "Total field-goal points plus free-throw points equals total points scored.",
+    "rationale": "Two-point makes contribute two points and three-point makes contribute three points; adding free-throw points gives the stated total points.",
+    "columns": [
+      "Points",
+      "FG2M",
+      "FG3M",
+      "FtPoints"
+    ],
+    "check_code": "def check(df):\n    expected = 2.0 * df[\"FG2M\"] + 3.0 * df[\"FG3M\"] + df[\"FtPoints\"]\n    return pd.Series(np.isclose(df[\"Points\"], expected, rtol=1e-9, atol=1e-8), index=df.index)",
+    "fix_code": [
+      {
+        "column": "Points",
+        "code": "def fix(df):\n    return 2.0 * df['FG2M'] + 3.0 * df['FG3M'] + df['FtPoints']"
+      },
+      {
+        "column": "FG2M",
+        "code": "def fix(df):\n    return (df['Points'] - 3.0 * df['FG3M'] - df['FtPoints']) / 2.0"
+      },
+      {
+        "column": "FG3M",
+        "code": "def fix(df):\n    return (df['Points'] - 2.0 * df['FG2M'] - df['FtPoints']) / 3.0"
+      },
+      {
+        "column": "FtPoints",
+        "code": "def fix(df):\n    return df['Points'] - 2.0 * df['FG2M'] - 3.0 * df['FG3M']"
+      }
+    ]
+  },
+  {
+    "id": "two_point_assist_split_total",
+    "description": "Assisted and unassisted two-point scoring sum to all points from two-point field goals.",
+    "rationale": "The two-point scoring split partitions all two-point field-goal points, while the two-point make rate converts directly to two-point points.",
+    "columns": [
+      "PtsAssisted2s",
+      "PtsUnassisted2s",
+      "FG2M"
+    ],
+    "check_code": "def check(df):\n    expected = 2.0 * df[\"FG2M\"]\n    actual = df[\"PtsAssisted2s\"] + df[\"PtsUnassisted2s\"]\n    return pd.Series(np.isclose(actual, expected, rtol=1e-9, atol=1e-8), index=df.index)",
+    "fix_code": [
+      {
+        "column": "PtsAssisted2s",
+        "code": "def fix(df):\n    return 2.0 * df['FG2M'] - df['PtsUnassisted2s']"
+      },
+      {
+        "column": "PtsUnassisted2s",
+        "code": "def fix(df):\n    return 2.0 * df['FG2M'] - df['PtsAssisted2s']"
+      },
+      {
+        "column": "FG2M",
+        "code": "def fix(df):\n    return (df['PtsAssisted2s'] + df['PtsUnassisted2s']) / 2.0"
+      }
+    ]
+  },
+  {
+    "id": "three_point_assist_split_total",
+    "description": "Assisted and unassisted three-point scoring sum to all points from three-point field goals.",
+    "rationale": "The three-point scoring split partitions all three-point field-goal points, and each made three-point field goal contributes three points.",
+    "columns": [
+      "PtsAssisted3s",
+      "PtsUnassisted3s",
+      "FG3M"
+    ],
+    "check_code": "def check(df):\n    expected = 3.0 * df[\"FG3M\"]\n    actual = df[\"PtsAssisted3s\"] + df[\"PtsUnassisted3s\"]\n    return pd.Series(np.isclose(actual, expected, rtol=1e-9, atol=1e-8), index=df.index)",
+    "fix_code": [
+      {
+        "column": "PtsAssisted3s",
+        "code": "def fix(df):\n    return 3.0 * df['FG3M'] - df['PtsUnassisted3s']"
+      },
+      {
+        "column": "PtsUnassisted3s",
+        "code": "def fix(df):\n    return 3.0 * df['FG3M'] - df['PtsAssisted3s']"
+      },
+      {
+        "column": "FG3M",
+        "code": "def fix(df):\n    return (df['PtsAssisted3s'] + df['PtsUnassisted3s']) / 3.0"
+      }
+    ]
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "clock_and_reactive_energy_nonnegative",
+    "description": "Elapsed seconds since midnight plus total reactive energy is nonnegative.",
+    "formula": "NSM + Lagging_Current_Reactive_Power_kVarh + Leading_Current_Reactive_Power_kVarh >= 0",
+    "columns": [
+      "NSM",
+      "Lagging_Current_Reactive_Power_kVarh",
+      "Leading_Current_Reactive_Power_kVarh"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Lagging_Current_Reactive_Power_kVarh": 1,
+      "Leading_Current_Reactive_Power_kVarh": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Lagging_Current_Reactive_Power_kVarh",
+      "Leading_Current_Reactive_Power_kVarh"
+    ],
+    "explanation": "NSM is a nonnegative daily-clock quantity and both reactive-energy components are nonnegative.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "daily_clock_upper_bound_with_reactive",
+    "description": "The daily-clock upper bound is not exceeded after accounting for nonnegative reactive-energy magnitudes.",
+    "formula": "-NSM + Lagging_Current_Reactive_Power_kVarh + Leading_Current_Reactive_Power_kVarh >= -86399",
+    "columns": [
+      "NSM",
+      "Lagging_Current_Reactive_Power_kVarh",
+      "Leading_Current_Reactive_Power_kVarh"
+    ],
+    "coefficients": {
+      "NSM": -1,
+      "Lagging_Current_Reactive_Power_kVarh": 1,
+      "Leading_Current_Reactive_Power_kVarh": 1
+    },
+    "sense": ">=",
+    "rhs": -86399,
+    "mutable_columns": [
+      "NSM",
+      "Lagging_Current_Reactive_Power_kVarh",
+      "Leading_Current_Reactive_Power_kVarh"
+    ],
+    "explanation": "NSM is defined to be below 86399 seconds, and adding nonnegative reactive-energy magnitudes preserves that upper-bound inequality in this canonical form.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_factor_upper_bound_lagging",
+    "description": "Elapsed seconds since midnight plus lagging power-factor percentage does not exceed 86499.",
+    "formula": "-NSM - Lagging_Current_Power_Factor >= -86499",
+    "columns": [
+      "NSM",
+      "Lagging_Current_Power_Factor"
+    ],
+    "coefficients": {
+      "NSM": -1,
+      "Lagging_Current_Power_Factor": -1
+    },
+    "sense": ">=",
+    "rhs": -86499,
+    "mutable_columns": [
+      "NSM",
+      "Lagging_Current_Power_Factor"
+    ],
+    "explanation": "NSM is at most 86399 by definition and the lagging power factor is at most 100, so their sum is bounded by the sum of these independently defined maxima.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_factor_upper_bound_leading",
+    "description": "Elapsed seconds since midnight plus leading power-factor percentage does not exceed 86499.",
+    "formula": "-NSM - Leading_Current_Power_Factor >= -86499",
+    "columns": [
+      "NSM",
+      "Leading_Current_Power_Factor"
+    ],
+    "coefficients": {
+      "NSM": -1,
+      "Leading_Current_Power_Factor": -1
+    },
+    "sense": ">=",
+    "rhs": -86499,
+    "mutable_columns": [
+      "NSM",
+      "Leading_Current_Power_Factor"
+    ],
+    "explanation": "The daily clock is bounded by 86399 seconds and the leading power factor is bounded by 100 percentage points, giving this definition-based combined upper bound.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_and_both_factors_upper_bound",
+    "description": "Elapsed seconds since midnight plus both power-factor percentages does not exceed 86599.",
+    "formula": "-NSM - Lagging_Current_Power_Factor - Leading_Current_Power_Factor >= -86599",
+    "columns": [
+      "NSM",
+      "Lagging_Current_Power_Factor",
+      "Leading_Current_Power_Factor"
+    ],
+    "coefficients": {
+      "NSM": -1,
+      "Lagging_Current_Power_Factor": -1,
+      "Leading_Current_Power_Factor": -1
+    },
+    "sense": ">=",
+    "rhs": -86599,
+    "mutable_columns": [
+      "NSM",
+      "Lagging_Current_Power_Factor",
+      "Leading_Current_Power_Factor"
+    ],
+    "explanation": "Adding the defined maxima NSM less than 86400 and each power factor no greater than 100 yields a universal upper bound of 86599 for this combined quantity.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_and_emissions_nonnegative",
+    "description": "Elapsed seconds since midnight plus estimated emissions is nonnegative.",
+    "formula": "NSM + CO2(tCO2) >= 0",
+    "columns": [
+      "NSM",
+      "CO2(tCO2)"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "CO2(tCO2)": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "CO2(tCO2)"
+    ],
+    "explanation": "Both elapsed time from midnight and estimated interval emissions are nonnegative by their definitions.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_and_usage_nonnegative",
+    "description": "Elapsed seconds since midnight plus active usage is nonnegative.",
+    "formula": "NSM + Usage_kWh >= 0",
+    "columns": [
+      "NSM",
+      "Usage_kWh"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Usage_kWh": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Usage_kWh"
+    ],
+    "explanation": "Both elapsed time on the daily clock and active interval electricity consumption are nonnegative quantities.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_and_lagging_reactive_nonnegative",
+    "description": "Elapsed seconds since midnight plus lagging reactive energy is nonnegative.",
+    "formula": "NSM + Lagging_Current_Reactive_Power_kVarh >= 0",
+    "columns": [
+      "NSM",
+      "Lagging_Current_Reactive_Power_kVarh"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Lagging_Current_Reactive_Power_kVarh": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Lagging_Current_Reactive_Power_kVarh"
+    ],
+    "explanation": "NSM is a nonnegative daily-clock value and lagging reactive energy is a nonnegative magnitude.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_and_leading_reactive_nonnegative",
+    "description": "Elapsed seconds since midnight plus leading reactive energy is nonnegative.",
+    "formula": "NSM + Leading_Current_Reactive_Power_kVarh >= 0",
+    "columns": [
+      "NSM",
+      "Leading_Current_Reactive_Power_kVarh"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Leading_Current_Reactive_Power_kVarh": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Leading_Current_Reactive_Power_kVarh"
+    ],
+    "explanation": "Both the elapsed daily-clock value and leading reactive-energy magnitude are nonnegative.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_and_lagging_factor_nonnegative",
+    "description": "Elapsed seconds since midnight plus the lagging power-factor percentage is nonnegative.",
+    "formula": "NSM + Lagging_Current_Power_Factor >= 0",
+    "columns": [
+      "NSM",
+      "Lagging_Current_Power_Factor"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Lagging_Current_Power_Factor": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Lagging_Current_Power_Factor"
+    ],
+    "explanation": "NSM and the lagging power-factor percentage are both defined on nonnegative scales.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "clock_and_leading_factor_nonnegative",
+    "description": "Elapsed seconds since midnight plus the leading power-factor percentage is nonnegative.",
+    "formula": "NSM + Leading_Current_Power_Factor >= 0",
+    "columns": [
+      "NSM",
+      "Leading_Current_Power_Factor"
+    ],
+    "coefficients": {
+      "NSM": 1,
+      "Leading_Current_Power_Factor": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NSM",
+      "Leading_Current_Power_Factor"
+    ],
+    "explanation": "The daily-clock value and leading power-factor percentage cannot be negative under their stated definitions.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

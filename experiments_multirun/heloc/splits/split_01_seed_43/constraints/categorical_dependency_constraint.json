@@ -1,0 +1,28 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "recent_status_7_implies_ever_status_8",
+      "description": "Applicants with recent delinquency/public-record status code 7 have ever-status code 8.",
+      "rationale": "These are coded worst-status fields for recent versus lifetime history; the near-universal 7-to-8 correspondence is a semantically meaningful admissible status mapping.",
+      "determinants": [
+        "maximum_illegal_trades_over_last_year"
+      ],
+      "dependent": "maximum_illegal_trades",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              7
+            ]
+          ],
+          "dependent_values": [
+            8
+          ]
+        }
+      ],
+      "support": 0.4235608681975464,
+      "violation_rate": 0.0011139992573338284
+    }
+  ]
+}

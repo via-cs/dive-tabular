@@ -1,0 +1,128 @@
+[
+  {
+    "id": "non_stop_unique_within_non_stop",
+    "description": "The proportion of unique non-stop-word tokens does not exceed the proportion of non-stop-word tokens.",
+    "formula": "n_non_stop_words - n_non_stop_unique_tokens >= 0",
+    "columns": [
+      "n_non_stop_words",
+      "n_non_stop_unique_tokens"
+    ],
+    "coefficients": {
+      "n_non_stop_words": 1,
+      "n_non_stop_unique_tokens": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "n_non_stop_words",
+      "n_non_stop_unique_tokens"
+    ],
+    "explanation": "Unique non-stop tokens are a subset of all non-stop tokens, and both proportions use the article body token count as denominator.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "keyword_average_rank_order",
+    "description": "The mean historical shares for worst-performing keywords do not exceed those for middle-performing keywords, which do not exceed those for best-performing keywords.",
+    "formula": "kw_avg_avg - kw_avg_min >= 0",
+    "columns": [
+      "kw_avg_avg",
+      "kw_avg_min"
+    ],
+    "coefficients": {
+      "kw_avg_avg": 1,
+      "kw_avg_min": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "kw_avg_avg",
+      "kw_avg_min"
+    ],
+    "explanation": "The keyword groups are ranked by their historical average shares before the current article, so their corresponding average-share features are ordered by rank.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "middle_to_best_keyword_average_order",
+    "description": "The mean historical shares for middle-performing keywords do not exceed those for best-performing keywords.",
+    "formula": "kw_avg_max - kw_avg_avg >= 0",
+    "columns": [
+      "kw_avg_max",
+      "kw_avg_avg"
+    ],
+    "coefficients": {
+      "kw_avg_max": 1,
+      "kw_avg_avg": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "kw_avg_max",
+      "kw_avg_avg"
+    ],
+    "explanation": "The middle and best keyword groups are ordered by their pre-publication average share ranking.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "positive_polarity_above_negative_polarity",
+    "description": "The least positive-word polarity is at least the most neutral negative-word polarity.",
+    "formula": "min_positive_polarity - max_negative_polarity >= 0",
+    "columns": [
+      "min_positive_polarity",
+      "max_negative_polarity"
+    ],
+    "coefficients": {
+      "min_positive_polarity": 1,
+      "max_negative_polarity": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "min_positive_polarity",
+      "max_negative_polarity"
+    ],
+    "explanation": "Positive-word polarity scores are on the nonnegative side of the sentiment scale, whereas negative-word polarity scores are nonpositive; consequently every positive score is no lower than every negative score.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "positive_average_above_negative_average",
+    "description": "The average polarity of positive words is at least the average polarity of negative words.",
+    "formula": "avg_positive_polarity - avg_negative_polarity >= 0",
+    "columns": [
+      "avg_positive_polarity",
+      "avg_negative_polarity"
+    ],
+    "coefficients": {
+      "avg_positive_polarity": 1,
+      "avg_negative_polarity": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "avg_positive_polarity",
+      "avg_negative_polarity"
+    ],
+    "explanation": "Every positive-word polarity is no lower than every negative-word polarity on the signed sentiment scale, so their means preserve that ordering.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "positive_max_above_negative_min",
+    "description": "The maximum positive-word polarity is at least the minimum negative-word polarity.",
+    "formula": "max_positive_polarity - min_negative_polarity >= 0",
+    "columns": [
+      "max_positive_polarity",
+      "min_negative_polarity"
+    ],
+    "coefficients": {
+      "max_positive_polarity": 1,
+      "min_negative_polarity": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "max_positive_polarity",
+      "min_negative_polarity"
+    ],
+    "explanation": "Positive sentiment scores are no lower than negative sentiment scores on the signed polarity scale.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "recent_status_7_implies_ever_status_8",
+      "description": "Applicants with the recent coded delinquency/public-record status 7 have ever-history status code 8.",
+      "rationale": "The two fields encode the worst status over different time horizons; code 7 is overwhelmingly paired with code 8 (2,669 of 2,673 rows), making this a semantically grounded conditional status mapping rather than a target prediction.",
+      "determinants": [
+        "maximum_illegal_trades_over_last_year"
+      ],
+      "dependent": "maximum_illegal_trades",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              7
+            ]
+          ],
+          "dependent_values": [
+            8
+          ]
+        }
+      ],
+      "support": 0.4204152249134948,
+      "violation_rate": 0.0014964459408903852
+    }
+  ]
+}

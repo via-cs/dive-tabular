@@ -1,0 +1,25 @@
+{
+  "dataset_description": "A low-cardinality categorical view of an anxiety and lifestyle survey. Continuous measurements and ordinal scores are grouped at interpretable or expert-annotated thresholds. Existing expert rules relate the very-high anxiety band and occupation groups to admissible physiological, lifestyle, demographic, and treatment bands.",
+  "column_descriptions": {
+    "Age Band": "Age grouped around the expert very-high-anxiety interval of 20 through 49.",
+    "Gender": "Self-reported gender category.",
+    "Occupation": "Reported occupation; thirteen categories occur in the dataset.",
+    "Occupation Group": "Occupation grouping induced by the two annotated caffeine-floor rules.",
+    "Sleep Band": "Daily sleep duration grouped as under 6, 6-9, or over 9 hours.",
+    "Physical Activity Band": "Weekly activity grouped at the annotated four-hour threshold.",
+    "Caffeine Band": "Daily caffeine grouped at 100, 250, and 294 mg thresholds used by expert rules.",
+    "Alcohol Band": "Weekly alcohol consumption grouped at the annotated five-drink threshold.",
+    "Smoking": "Whether the participant reports smoking.",
+    "Family History of Anxiety": "Whether the participant reports a family history of anxiety.",
+    "Stress Band": "Stress score grouped into low, moderate, high, and very-high bands.",
+    "Heart Rate Band": "Heart rate grouped at the annotated 85 bpm threshold.",
+    "Breathing Rate Band": "Breathing rate grouped at the annotated 20 breaths/min threshold.",
+    "Sweating Band": "Sweating score grouped into low, moderate, and high bands.",
+    "Dizziness": "Whether dizziness is reported.",
+    "Medication": "Whether anxiety-related medication is reported.",
+    "Therapy Band": "Monthly therapy sessions grouped at the annotated three-session threshold.",
+    "Recent Major Life Event": "Whether a recent major life event is reported.",
+    "Diet Quality Band": "Diet quality grouped into low, moderate, and high bands.",
+    "Anxiety Band": "Anxiety score grouped into low, moderate, high, and very-high bands."
+  }
+}

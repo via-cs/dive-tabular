@@ -1,0 +1,28 @@
+{
+    "dataset_description": "A 60,000-row dataset of U.S. airline flights from 2019 through 2023. Each row describes one completed flight through its calendar date, operating airline, origin and destination, scheduled and actual operational times, taxi and airborne durations, route distance, and departure and arrival delays. The dataset supports arrival-delay regression and tabular synthetic-data experiments in which realistic semantic and equational relationships among flight variables should be preserved. Clock-event columns whose names end in UTC_MIN are UTC minute-of-day values in the range 0 through 1439: 0 means 00:00 UTC, 60 means 01:00 UTC, 720 means 12:00 UTC, and 1439 means 23:59 UTC. These fields store only a position on the 24-hour UTC clock, not a UTC calendar date or day offset. Clock equations that cross midnight therefore use arithmetic modulo 1440; for example, UTC minute 1380 plus 120 minutes equals UTC minute 60. YEAR, MONTH, and DAY identify the flight date associated with the origin and should not be treated as the UTC calendar date of every flight event.",
+    "column_descriptions": {
+        "YEAR": "Four-digit year of the flight date at the origin, spanning 2019 through 2023.",
+        "MONTH": "Month number from 1 through 12 for the flight date at the origin.",
+        "DAY": "Day of month from 1 through 31 for the flight date at the origin.",
+        "AIRLINE": "Full name of the airline operating and reporting the flight, such as 'Delta Air Lines Inc.' or 'Southwest Airlines Co.'.",
+        "AIRLINE_CODE": "Reporting carrier code for the operating airline, such as DL, WN, AA, or UA.",
+        "ORIGIN": "Three-letter IATA code of the departure airport, such as LAX, ATL, or JFK.",
+        "ORIGIN_CITY": "City and state or territory associated with the origin airport, formatted like 'Los Angeles, CA'.",
+        "DEST": "Three-letter IATA code of the destination airport.",
+        "DEST_CITY": "City and state or territory associated with the destination airport, formatted like 'Chicago, IL'.",
+        "CRS_DEP_TIME_UTC_MIN": "Scheduled gate-departure time in UTC, encoded as integer minutes since 00:00 UTC in the range 0-1439. CRS means Computerized Reservation System and denotes the published schedule. For example, 90 means 01:30 UTC and 810 means 13:30 UTC. The value contains no UTC date or day offset.",
+        "DEP_TIME_UTC_MIN": "Actual gate-departure time in UTC, encoded as integer minute of day from 0 through 1439. It marks when the aircraft left the departure gate, before taxi-out, rather than when it became airborne. The value contains no UTC date or day offset.",
+        "DEP_DELAY": "Signed departure delay in minutes. Positive values mean the flight left the gate late, zero means it left on schedule, and negative values mean it left early. This is a duration or difference rather than a UTC minute-of-day value.",
+        "TAXI_OUT": "Taxi-out duration in minutes from actual departure from the origin gate until the aircraft's wheels leave the runway. It is an elapsed duration rather than a clock reading.",
+        "WHEELS_OFF_UTC_MIN": "Actual takeoff time, defined by the aircraft's wheels leaving the origin runway, expressed as UTC minute of day in the range 0-1439. The value contains no UTC date or day offset.",
+        "WHEELS_ON_UTC_MIN": "Actual landing time, defined by the aircraft's wheels touching the destination runway, expressed as UTC minute of day in the range 0-1439. The value contains no UTC date or day offset.",
+        "TAXI_IN": "Taxi-in duration in minutes from wheels on at the destination runway to arrival at the destination gate. It is an elapsed duration rather than a clock reading.",
+        "CRS_ARR_TIME_UTC_MIN": "Scheduled destination gate-arrival time in UTC, encoded as integer minute of day from 0 through 1439. CRS means Computerized Reservation System and denotes the published schedule. The value contains no UTC date or day offset.",
+        "ARR_TIME_UTC_MIN": "Actual arrival time at the destination gate, expressed as UTC minute of day in the range 0-1439. This is the end of the gate-to-gate trip after taxi-in, not the wheels-on landing time. The value contains no UTC date or day offset.",
+        "CRS_ELAPSED_TIME": "Scheduled gate-to-gate elapsed time in minutes from scheduled departure at the origin gate to scheduled arrival at the destination gate. It is a duration rather than a clock reading.",
+        "ELAPSED_TIME": "Actual gate-to-gate elapsed time in minutes from departure from the origin gate to arrival at the destination gate. It covers the complete ground-and-air journey between the two gates and is a duration rather than a clock reading.",
+        "AIR_TIME": "Airborne duration in minutes from wheels off at the origin runway to wheels on at the destination runway. It excludes time spent taxiing before takeoff and after landing.",
+        "DISTANCE": "Published distance between the origin and destination airports in miles. It describes the route length rather than the exact trajectory flown.",
+        "ARR_DELAY": "Signed arrival delay in minutes. Positive values mean the flight arrived at the destination gate late, zero means it arrived on schedule, and negative values mean it arrived early. This is a duration or difference rather than a UTC minute-of-day value."
+    }
+}

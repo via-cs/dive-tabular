@@ -1,0 +1,439 @@
+{
+  "paths": {
+    "experiment_dir": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained",
+    "synthetic_files": [
+      "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_0.csv",
+      "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_1.csv",
+      "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_2.csv"
+    ],
+    "metrics": [
+      "constraint",
+      "quality",
+      "utility"
+    ],
+    "constraints_expert": "experiments_multirun/news/splits/split_00_seed_42/constraints",
+    "utility_regimes": [
+      "trtr",
+      "tstr"
+    ]
+  },
+  "per_file": [
+    {
+      "path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_0.csv",
+      "quality": {
+        "score": 0.8904082939155014,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8738037257168014
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9070128621142014
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "logistic_regression": {
+            "tstr": {
+              "accuracy": 0.6355520887502166,
+              "f1": 0.6649669349055852,
+              "roc_auc": 0.67797186383571
+            }
+          },
+          "decision_tree": {
+            "tstr": {
+              "accuracy": 0.5403882821979545,
+              "f1": 0.5561228760358249,
+              "roc_auc": 0.5403374186715542
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "accuracy": 0.5834633385335414,
+              "f1": 0.5962023189379936,
+              "roc_auc": 0.6249446928704016
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_0.csv",
+        "rows": 26920,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": 0.0,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "linear_feasibility_distance": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        }
+      }
+    },
+    {
+      "path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_1.csv",
+      "quality": {
+        "score": 0.8900018283364984,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8733510813934293
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9066525752795676
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "logistic_regression": {
+            "tstr": {
+              "accuracy": 0.6111111111111112,
+              "f1": 0.6541278039004086,
+              "roc_auc": 0.6464366398958787
+            }
+          },
+          "decision_tree": {
+            "tstr": {
+              "accuracy": 0.5299011960478419,
+              "f1": 0.5561374795417349,
+              "roc_auc": 0.5282832326040843
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "accuracy": 0.5852834113364535,
+              "f1": 0.602607756830828,
+              "roc_auc": 0.6185235445524366
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_1.csv",
+        "rows": 26920,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": 0.0,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "linear_feasibility_distance": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        }
+      }
+    },
+    {
+      "path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_2.csv",
+      "quality": {
+        "score": 0.8902678812495278,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.8730951791315832
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.9074405833674725
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "logistic_regression": {
+            "tstr": {
+              "accuracy": 0.5995839833593344,
+              "f1": 0.6162790697674418,
+              "roc_auc": 0.637592386854624
+            }
+          },
+          "decision_tree": {
+            "tstr": {
+              "accuracy": 0.5231409256370255,
+              "f1": 0.545063667934513,
+              "roc_auc": 0.5221983244802201
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "accuracy": 0.5728029121164847,
+              "f1": 0.618468921743169,
+              "roc_auc": 0.5994324511718565
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_2.csv",
+        "rows": 26920,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": 0.0,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "linear_feasibility_distance": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        }
+      }
+    }
+  ],
+  "utility_columns": {
+    "target": "is_popular",
+    "categorical_feature_columns": [
+      "data_channel_is_lifestyle",
+      "data_channel_is_entertainment",
+      "data_channel_is_bus",
+      "data_channel_is_socmed",
+      "data_channel_is_tech",
+      "data_channel_is_world",
+      "week_day",
+      "is_weekend"
+    ],
+    "numerical_feature_columns": [
+      "timedelta",
+      "n_tokens_title",
+      "n_tokens_content",
+      "n_unique_tokens",
+      "n_non_stop_words",
+      "n_non_stop_unique_tokens",
+      "num_hrefs",
+      "num_self_hrefs",
+      "num_imgs",
+      "num_videos",
+      "average_token_length",
+      "num_keywords",
+      "kw_min_min",
+      "kw_max_min",
+      "kw_avg_min",
+      "kw_min_max",
+      "kw_max_max",
+      "kw_avg_max",
+      "kw_min_avg",
+      "kw_max_avg",
+      "kw_avg_avg",
+      "self_reference_min_shares",
+      "self_reference_max_shares",
+      "self_reference_avg_sharess",
+      "LDA_00",
+      "LDA_01",
+      "LDA_02",
+      "LDA_03",
+      "LDA_04",
+      "global_subjectivity",
+      "global_sentiment_polarity",
+      "global_rate_positive_words",
+      "global_rate_negative_words",
+      "rate_positive_words",
+      "rate_negative_words",
+      "avg_positive_polarity",
+      "min_positive_polarity",
+      "max_positive_polarity",
+      "avg_negative_polarity",
+      "min_negative_polarity",
+      "max_negative_polarity",
+      "title_subjectivity",
+      "title_sentiment_polarity",
+      "abs_title_subjectivity",
+      "abs_title_sentiment_polarity"
+    ]
+  },
+  "quality": {
+    "score": [
+      0.8904082939155014,
+      0.8900018283364984,
+      0.8902678812495278
+    ],
+    "properties": [
+      {
+        "Property": "Column Shapes",
+        "Score": [
+          0.8738037257168014,
+          0.8733510813934293,
+          0.8730951791315832
+        ]
+      },
+      {
+        "Property": "Column Pair Trends",
+        "Score": [
+          0.9070128621142014,
+          0.9066525752795676,
+          0.9074405833674725
+        ]
+      }
+    ]
+  },
+  "utility": {
+    "task": "binary_classification",
+    "models": {
+      "logistic_regression": {
+        "trtr": {
+          "accuracy": 0.6593863754550182,
+          "f1": 0.6856502959526476,
+          "roc_auc": 0.7126687623612282
+        },
+        "tstr": {
+          "accuracy": [
+            0.6355520887502166,
+            0.6111111111111112,
+            0.5995839833593344
+          ],
+          "f1": [
+            0.6649669349055852,
+            0.6541278039004086,
+            0.6162790697674418
+          ],
+          "roc_auc": [
+            0.67797186383571,
+            0.6464366398958787,
+            0.637592386854624
+          ]
+        }
+      },
+      "decision_tree": {
+        "trtr": {
+          "accuracy": 0.5888368868088056,
+          "f1": 0.6153097632176452,
+          "roc_auc": 0.5868372093907335
+        },
+        "tstr": {
+          "accuracy": [
+            0.5403882821979545,
+            0.5299011960478419,
+            0.5231409256370255
+          ],
+          "f1": [
+            0.5561228760358249,
+            0.5561374795417349,
+            0.545063667934513
+          ],
+          "roc_auc": [
+            0.5403374186715542,
+            0.5282832326040843,
+            0.5221983244802201
+          ]
+        }
+      },
+      "xgboost": {
+        "trtr": {
+          "accuracy": 0.6666666666666666,
+          "f1": 0.6917775284500721,
+          "roc_auc": 0.7251473028932345
+        },
+        "tstr": {
+          "accuracy": [
+            0.5834633385335414,
+            0.5852834113364535,
+            0.5728029121164847
+          ],
+          "f1": [
+            0.5962023189379936,
+            0.602607756830828,
+            0.618468921743169
+          ],
+          "roc_auc": [
+            0.6249446928704016,
+            0.6185235445524366,
+            0.5994324511718565
+          ]
+        }
+      }
+    },
+    "classes": [
+      "0",
+      "1"
+    ]
+  },
+  "constraint": {
+    "available_families": [
+      "categorical_dependency",
+      "equational"
+    ],
+    "real_train": {
+      "path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/train.csv",
+      "rows": 26920,
+      "average_r2_consistency": 1.0,
+      "equational_cvr": 0.0,
+      "equational_scvc": 0.0,
+      "categorical_dependency_cvr": 0.0,
+      "categorical_dependency_scvc": 0.0,
+      "linear_cvr": null,
+      "linear_scvc": null,
+      "linear_feasibility_distance": null,
+      "family_status": {
+        "equational": "evaluated",
+        "categorical_dependency": "evaluated",
+        "linear": "not_available"
+      }
+    },
+    "synthetic": [
+      {
+        "path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_0.csv",
+        "rows": 26920,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": 0.0,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "linear_feasibility_distance": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        }
+      },
+      {
+        "path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_1.csv",
+        "rows": 26920,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": 0.0,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "linear_feasibility_distance": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        }
+      },
+      {
+        "path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/synthetic/synthetic_2.csv",
+        "rows": 26920,
+        "average_r2_consistency": 1.0,
+        "equational_cvr": 0.0,
+        "equational_scvc": 0.0,
+        "categorical_dependency_cvr": 0.0,
+        "categorical_dependency_scvc": 0.0,
+        "linear_cvr": null,
+        "linear_scvc": null,
+        "linear_feasibility_distance": null,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "not_available"
+        }
+      }
+    ],
+    "details_path": "experiments_multirun/news/splits/split_00_seed_42/generators/tvae/constrained/constraint_evaluation_details.json"
+  }
+}

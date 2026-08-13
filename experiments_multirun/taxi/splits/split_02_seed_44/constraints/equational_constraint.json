@@ -1,0 +1,72 @@
+[
+  {
+    "id": "clock_time_duration_wrap_balance",
+    "description": "Drop-off minute of day equals pickup minute of day plus elapsed duration, reduced modulo 1,440 minutes.",
+    "rationale": "The metadata explicitly states that dropoff_minute_of_day is derived from pickup_minute_of_day plus duration with midnight wraparound.",
+    "columns": [
+      "pickup_minute_of_day",
+      "dropoff_minute_of_day",
+      "duration"
+    ],
+    "check_code": "def check(df):\n    expected = (df[\"pickup_minute_of_day\"] + df[\"duration\"]) % 1440.0\n    circular_error = ((df[\"dropoff_minute_of_day\"] - expected + 720.0) % 1440.0) - 720.0\n    return circular_error.abs() <= 1e-6",
+    "fix_code": [
+      {
+        "column": "pickup_minute_of_day",
+        "code": "def fix(df):\n    return np.mod(df['dropoff_minute_of_day'] - df['duration'], 1440.0)"
+      },
+      {
+        "column": "dropoff_minute_of_day",
+        "code": "def fix(df):\n    return (df['pickup_minute_of_day'] + df['duration']) % 1440.0"
+      },
+      {
+        "column": "duration",
+        "code": "def fix(df):\n    return (df['dropoff_minute_of_day'] - df['pickup_minute_of_day']) % 1440.0"
+      }
+    ]
+  },
+  {
+    "id": "total_charge_components_balance",
+    "description": "Total amount equals the sum of fare, extra, MTA tax, tip, toll, and improvement surcharge, within a negligible floating-point representation tolerance.",
+    "rationale": "The metadata explicitly defines total_amount as the rebuilt sum of these six retained monetary components; a 1e-9 dollar absolute tolerance accommodates binary floating-point arithmetic without materially weakening the monetary equation.",
+    "columns": [
+      "total_amount",
+      "fare_amount",
+      "extra",
+      "mta_tax",
+      "tip_amount",
+      "tolls_amount",
+      "improvement_surcharge"
+    ],
+    "check_code": "def check(df):\n    expected = (df[\"fare_amount\"] + df[\"extra\"] + df[\"mta_tax\"] + df[\"tip_amount\"] + df[\"tolls_amount\"] + df[\"improvement_surcharge\"])\n    return pd.Series(np.isclose(df[\"total_amount\"], expected, rtol=0.0, atol=1e-9), index=df.index)",
+    "fix_code": [
+      {
+        "column": "total_amount",
+        "code": "def fix(df):\n    return (df['fare_amount'] + df['extra'] + df['mta_tax'] + df['tip_amount'] + df['tolls_amount'] + df['improvement_surcharge']).astype(float)\n"
+      },
+      {
+        "column": "fare_amount",
+        "code": "def fix(df):\n    return (df['total_amount'] - df['extra'] - df['mta_tax'] - df['tip_amount'] - df['tolls_amount'] - df['improvement_surcharge']).astype(float)"
+      },
+      {
+        "column": "extra",
+        "code": "def fix(df):\n    return (df['total_amount'] - df['fare_amount'] - df['mta_tax'] - df['tip_amount'] - df['tolls_amount'] - df['improvement_surcharge']).astype(float)"
+      },
+      {
+        "column": "mta_tax",
+        "code": "def fix(df):\n    return (df['total_amount'] - df['fare_amount'] - df['extra'] - df['tip_amount'] - df['tolls_amount'] - df['improvement_surcharge']).astype(float)"
+      },
+      {
+        "column": "tip_amount",
+        "code": "def fix(df):\n    return (df['total_amount'] - df['fare_amount'] - df['extra'] - df['mta_tax'] - df['tolls_amount'] - df['improvement_surcharge']).astype(float)"
+      },
+      {
+        "column": "tolls_amount",
+        "code": "def fix(df):\n    return (df['total_amount'] - df['fare_amount'] - df['extra'] - df['mta_tax'] - df['tip_amount'] - df['improvement_surcharge']).astype(float)"
+      },
+      {
+        "column": "improvement_surcharge",
+        "code": "def fix(df):\n    return (df['total_amount'] - df['fare_amount'] - df['extra'] - df['mta_tax'] - df['tip_amount'] - df['tolls_amount'])"
+      }
+    ]
+  }
+]

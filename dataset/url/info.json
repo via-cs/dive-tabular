@@ -1,0 +1,810 @@
+{
+  "name": "url",
+  "source": "https://data.mendeley.com/datasets/c2gw7fy2j4/3",
+  "doi": "https://doi.org/10.17632/c2gw7fy2j4.3",
+  "license": "CC BY 4.0",
+  "task": "binary_classification",
+  "target": "status",
+  "features_by_order": [
+    "length_url",
+    "length_hostname",
+    "ip",
+    "nb_dots",
+    "nb_hyphens",
+    "nb_at",
+    "nb_qm",
+    "nb_and",
+    "nb_or",
+    "nb_eq",
+    "nb_underscore",
+    "nb_tilde",
+    "nb_percent",
+    "nb_slash",
+    "nb_star",
+    "nb_colon",
+    "nb_comma",
+    "nb_semicolumn",
+    "nb_dollar",
+    "nb_space",
+    "nb_www",
+    "nb_com",
+    "nb_dslash",
+    "http_in_path",
+    "https_token",
+    "ratio_digits_url",
+    "ratio_digits_host",
+    "punycode",
+    "port",
+    "tld_in_path",
+    "tld_in_subdomain",
+    "abnormal_subdomain",
+    "nb_subdomains",
+    "prefix_suffix",
+    "random_domain",
+    "shortening_service",
+    "path_extension",
+    "nb_redirection",
+    "nb_external_redirection",
+    "length_words_raw",
+    "char_repeat",
+    "shortest_words_raw",
+    "shortest_word_host",
+    "shortest_word_path",
+    "longest_words_raw",
+    "longest_word_host",
+    "longest_word_path",
+    "avg_words_raw",
+    "avg_word_host",
+    "avg_word_path",
+    "phish_hints",
+    "domain_in_brand",
+    "brand_in_subdomain",
+    "brand_in_path",
+    "suspecious_tld",
+    "statistical_report",
+    "nb_hyperlinks",
+    "ratio_intHyperlinks",
+    "ratio_extHyperlinks",
+    "ratio_nullHyperlinks",
+    "nb_extCSS",
+    "ratio_intRedirection",
+    "ratio_extRedirection",
+    "ratio_intErrors",
+    "ratio_extErrors",
+    "login_form",
+    "external_favicon",
+    "links_in_tags",
+    "ratio_intMedia",
+    "ratio_extMedia",
+    "sfh",
+    "iframe",
+    "popup_window",
+    "safe_anchor",
+    "onmouseover",
+    "right_clic",
+    "empty_title",
+    "domain_in_title",
+    "domain_with_copyright",
+    "whois_registered_domain",
+    "domain_registration_length",
+    "domain_age",
+    "web_traffic",
+    "dns_record",
+    "google_index",
+    "page_rank",
+    "status"
+  ],
+  "shape": [
+    11430,
+    87
+  ],
+  "col_types": {
+    "length_url": {
+      "type": "num",
+      "unique_values": 324,
+      "missing_values": 0
+    },
+    "length_hostname": {
+      "type": "num",
+      "unique_values": 83,
+      "missing_values": 0
+    },
+    "ip": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "nb_dots": {
+      "type": "num",
+      "unique_values": 19,
+      "missing_values": 0
+    },
+    "nb_hyphens": {
+      "type": "num",
+      "unique_values": 27,
+      "missing_values": 0
+    },
+    "nb_at": {
+      "type": "cat",
+      "unique_values": 5,
+      "missing_values": 0
+    },
+    "nb_qm": {
+      "type": "cat",
+      "unique_values": 4,
+      "missing_values": 0
+    },
+    "nb_and": {
+      "type": "num",
+      "unique_values": 15,
+      "missing_values": 0
+    },
+    "nb_or": {
+      "type": "cat",
+      "unique_values": 1,
+      "missing_values": 0
+    },
+    "nb_eq": {
+      "type": "num",
+      "unique_values": 16,
+      "missing_values": 0
+    },
+    "nb_underscore": {
+      "type": "num",
+      "unique_values": 17,
+      "missing_values": 0
+    },
+    "nb_tilde": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "nb_percent": {
+      "type": "num",
+      "unique_values": 25,
+      "missing_values": 0
+    },
+    "nb_slash": {
+      "type": "num",
+      "unique_values": 22,
+      "missing_values": 0
+    },
+    "nb_star": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "nb_colon": {
+      "type": "cat",
+      "unique_values": 6,
+      "missing_values": 0
+    },
+    "nb_comma": {
+      "type": "cat",
+      "unique_values": 5,
+      "missing_values": 0
+    },
+    "nb_semicolumn": {
+      "type": "num",
+      "unique_values": 15,
+      "missing_values": 0
+    },
+    "nb_dollar": {
+      "type": "cat",
+      "unique_values": 5,
+      "missing_values": 0
+    },
+    "nb_space": {
+      "type": "cat",
+      "unique_values": 9,
+      "missing_values": 0
+    },
+    "nb_www": {
+      "type": "cat",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "nb_com": {
+      "type": "cat",
+      "unique_values": 7,
+      "missing_values": 0
+    },
+    "nb_dslash": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "http_in_path": {
+      "type": "cat",
+      "unique_values": 5,
+      "missing_values": 0
+    },
+    "https_token": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "ratio_digits_url": {
+      "type": "num",
+      "unique_values": 1414,
+      "missing_values": 0
+    },
+    "ratio_digits_host": {
+      "type": "num",
+      "unique_values": 241,
+      "missing_values": 0
+    },
+    "punycode": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "port": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "tld_in_path": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "tld_in_subdomain": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "abnormal_subdomain": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "nb_subdomains": {
+      "type": "cat",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "prefix_suffix": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "random_domain": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "shortening_service": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "path_extension": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "nb_redirection": {
+      "type": "cat",
+      "unique_values": 7,
+      "missing_values": 0
+    },
+    "nb_external_redirection": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "length_words_raw": {
+      "type": "num",
+      "unique_values": 54,
+      "missing_values": 0
+    },
+    "char_repeat": {
+      "type": "num",
+      "unique_values": 55,
+      "missing_values": 0
+    },
+    "shortest_words_raw": {
+      "type": "num",
+      "unique_values": 25,
+      "missing_values": 0
+    },
+    "shortest_word_host": {
+      "type": "num",
+      "unique_values": 34,
+      "missing_values": 0
+    },
+    "shortest_word_path": {
+      "type": "num",
+      "unique_values": 33,
+      "missing_values": 0
+    },
+    "longest_words_raw": {
+      "type": "num",
+      "unique_values": 119,
+      "missing_values": 0
+    },
+    "longest_word_host": {
+      "type": "num",
+      "unique_values": 49,
+      "missing_values": 0
+    },
+    "longest_word_path": {
+      "type": "num",
+      "unique_values": 120,
+      "missing_values": 0
+    },
+    "avg_words_raw": {
+      "type": "num",
+      "unique_values": 896,
+      "missing_values": 0
+    },
+    "avg_word_host": {
+      "type": "num",
+      "unique_values": 174,
+      "missing_values": 0
+    },
+    "avg_word_path": {
+      "type": "num",
+      "unique_values": 757,
+      "missing_values": 0
+    },
+    "phish_hints": {
+      "type": "cat",
+      "unique_values": 9,
+      "missing_values": 0
+    },
+    "domain_in_brand": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "brand_in_subdomain": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "brand_in_path": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "suspecious_tld": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "statistical_report": {
+      "type": "cat",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "nb_hyperlinks": {
+      "type": "num",
+      "unique_values": 691,
+      "missing_values": 0
+    },
+    "ratio_intHyperlinks": {
+      "type": "num",
+      "unique_values": 3131,
+      "missing_values": 0
+    },
+    "ratio_extHyperlinks": {
+      "type": "num",
+      "unique_values": 3131,
+      "missing_values": 0
+    },
+    "ratio_nullHyperlinks": {
+      "type": "cat",
+      "unique_values": 1,
+      "missing_values": 0
+    },
+    "nb_extCSS": {
+      "type": "num",
+      "unique_values": 33,
+      "missing_values": 0
+    },
+    "ratio_intRedirection": {
+      "type": "cat",
+      "unique_values": 1,
+      "missing_values": 0
+    },
+    "ratio_extRedirection": {
+      "type": "num",
+      "unique_values": 894,
+      "missing_values": 0
+    },
+    "ratio_intErrors": {
+      "type": "cat",
+      "unique_values": 1,
+      "missing_values": 0
+    },
+    "ratio_extErrors": {
+      "type": "num",
+      "unique_values": 635,
+      "missing_values": 0
+    },
+    "login_form": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "external_favicon": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "links_in_tags": {
+      "type": "num",
+      "unique_values": 473,
+      "missing_values": 0
+    },
+    "ratio_intMedia": {
+      "type": "num",
+      "unique_values": 490,
+      "missing_values": 0
+    },
+    "ratio_extMedia": {
+      "type": "num",
+      "unique_values": 490,
+      "missing_values": 0
+    },
+    "sfh": {
+      "type": "cat",
+      "unique_values": 1,
+      "missing_values": 0
+    },
+    "iframe": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "popup_window": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "safe_anchor": {
+      "type": "num",
+      "unique_values": 1083,
+      "missing_values": 0
+    },
+    "onmouseover": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "right_clic": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "empty_title": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "domain_in_title": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "domain_with_copyright": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "whois_registered_domain": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "domain_registration_length": {
+      "type": "num",
+      "unique_values": 1659,
+      "missing_values": 0
+    },
+    "domain_age": {
+      "type": "num",
+      "unique_values": 4430,
+      "missing_values": 0
+    },
+    "web_traffic": {
+      "type": "num",
+      "unique_values": 4744,
+      "missing_values": 0
+    },
+    "dns_record": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "google_index": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "page_rank": {
+      "type": "num",
+      "unique_values": 11,
+      "missing_values": 0
+    },
+    "status": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    }
+  },
+  "sdv_metadata": {
+    "tables": {
+      "table": {
+        "columns": {
+          "length_url": {
+            "sdtype": "numerical"
+          },
+          "length_hostname": {
+            "sdtype": "numerical"
+          },
+          "ip": {
+            "sdtype": "categorical"
+          },
+          "nb_dots": {
+            "sdtype": "numerical"
+          },
+          "nb_hyphens": {
+            "sdtype": "numerical"
+          },
+          "nb_at": {
+            "sdtype": "categorical"
+          },
+          "nb_qm": {
+            "sdtype": "categorical"
+          },
+          "nb_and": {
+            "sdtype": "numerical"
+          },
+          "nb_or": {
+            "sdtype": "categorical"
+          },
+          "nb_eq": {
+            "sdtype": "numerical"
+          },
+          "nb_underscore": {
+            "sdtype": "numerical"
+          },
+          "nb_tilde": {
+            "sdtype": "categorical"
+          },
+          "nb_percent": {
+            "sdtype": "numerical"
+          },
+          "nb_slash": {
+            "sdtype": "numerical"
+          },
+          "nb_star": {
+            "sdtype": "categorical"
+          },
+          "nb_colon": {
+            "sdtype": "categorical"
+          },
+          "nb_comma": {
+            "sdtype": "categorical"
+          },
+          "nb_semicolumn": {
+            "sdtype": "numerical"
+          },
+          "nb_dollar": {
+            "sdtype": "categorical"
+          },
+          "nb_space": {
+            "sdtype": "categorical"
+          },
+          "nb_www": {
+            "sdtype": "categorical"
+          },
+          "nb_com": {
+            "sdtype": "categorical"
+          },
+          "nb_dslash": {
+            "sdtype": "categorical"
+          },
+          "http_in_path": {
+            "sdtype": "categorical"
+          },
+          "https_token": {
+            "sdtype": "categorical"
+          },
+          "ratio_digits_url": {
+            "sdtype": "numerical"
+          },
+          "ratio_digits_host": {
+            "sdtype": "numerical"
+          },
+          "punycode": {
+            "sdtype": "categorical"
+          },
+          "port": {
+            "sdtype": "categorical"
+          },
+          "tld_in_path": {
+            "sdtype": "categorical"
+          },
+          "tld_in_subdomain": {
+            "sdtype": "categorical"
+          },
+          "abnormal_subdomain": {
+            "sdtype": "categorical"
+          },
+          "nb_subdomains": {
+            "sdtype": "categorical"
+          },
+          "prefix_suffix": {
+            "sdtype": "categorical"
+          },
+          "random_domain": {
+            "sdtype": "categorical"
+          },
+          "shortening_service": {
+            "sdtype": "categorical"
+          },
+          "path_extension": {
+            "sdtype": "categorical"
+          },
+          "nb_redirection": {
+            "sdtype": "categorical"
+          },
+          "nb_external_redirection": {
+            "sdtype": "categorical"
+          },
+          "length_words_raw": {
+            "sdtype": "numerical"
+          },
+          "char_repeat": {
+            "sdtype": "numerical"
+          },
+          "shortest_words_raw": {
+            "sdtype": "numerical"
+          },
+          "shortest_word_host": {
+            "sdtype": "numerical"
+          },
+          "shortest_word_path": {
+            "sdtype": "numerical"
+          },
+          "longest_words_raw": {
+            "sdtype": "numerical"
+          },
+          "longest_word_host": {
+            "sdtype": "numerical"
+          },
+          "longest_word_path": {
+            "sdtype": "numerical"
+          },
+          "avg_words_raw": {
+            "sdtype": "numerical"
+          },
+          "avg_word_host": {
+            "sdtype": "numerical"
+          },
+          "avg_word_path": {
+            "sdtype": "numerical"
+          },
+          "phish_hints": {
+            "sdtype": "categorical"
+          },
+          "domain_in_brand": {
+            "sdtype": "categorical"
+          },
+          "brand_in_subdomain": {
+            "sdtype": "categorical"
+          },
+          "brand_in_path": {
+            "sdtype": "categorical"
+          },
+          "suspecious_tld": {
+            "sdtype": "categorical"
+          },
+          "statistical_report": {
+            "sdtype": "categorical"
+          },
+          "nb_hyperlinks": {
+            "sdtype": "numerical"
+          },
+          "ratio_intHyperlinks": {
+            "sdtype": "numerical"
+          },
+          "ratio_extHyperlinks": {
+            "sdtype": "numerical"
+          },
+          "ratio_nullHyperlinks": {
+            "sdtype": "categorical"
+          },
+          "nb_extCSS": {
+            "sdtype": "numerical"
+          },
+          "ratio_intRedirection": {
+            "sdtype": "categorical"
+          },
+          "ratio_extRedirection": {
+            "sdtype": "numerical"
+          },
+          "ratio_intErrors": {
+            "sdtype": "categorical"
+          },
+          "ratio_extErrors": {
+            "sdtype": "numerical"
+          },
+          "login_form": {
+            "sdtype": "categorical"
+          },
+          "external_favicon": {
+            "sdtype": "categorical"
+          },
+          "links_in_tags": {
+            "sdtype": "numerical"
+          },
+          "ratio_intMedia": {
+            "sdtype": "numerical"
+          },
+          "ratio_extMedia": {
+            "sdtype": "numerical"
+          },
+          "sfh": {
+            "sdtype": "categorical"
+          },
+          "iframe": {
+            "sdtype": "categorical"
+          },
+          "popup_window": {
+            "sdtype": "categorical"
+          },
+          "safe_anchor": {
+            "sdtype": "numerical"
+          },
+          "onmouseover": {
+            "sdtype": "categorical"
+          },
+          "right_clic": {
+            "sdtype": "categorical"
+          },
+          "empty_title": {
+            "sdtype": "categorical"
+          },
+          "domain_in_title": {
+            "sdtype": "categorical"
+          },
+          "domain_with_copyright": {
+            "sdtype": "categorical"
+          },
+          "whois_registered_domain": {
+            "sdtype": "categorical"
+          },
+          "domain_registration_length": {
+            "sdtype": "numerical"
+          },
+          "domain_age": {
+            "sdtype": "numerical"
+          },
+          "web_traffic": {
+            "sdtype": "numerical"
+          },
+          "dns_record": {
+            "sdtype": "categorical"
+          },
+          "google_index": {
+            "sdtype": "categorical"
+          },
+          "page_rank": {
+            "sdtype": "numerical"
+          },
+          "status": {
+            "sdtype": "categorical"
+          }
+        }
+      }
+    },
+    "relationships": [],
+    "METADATA_SPEC_VERSION": "V1"
+  },
+  "preprocessing_note": "Dropped raw url because it is a near-unique website identifier. Dropped submit_email because it is constant zero and its name is interpreted as an email semantic type. See raw/preprocessing_info.json for the full audit."
+}

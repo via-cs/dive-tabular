@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "dataset": {
+    "name": "url",
+    "directory": "dataset/url",
+    "data_file": "dataset/url/data.csv",
+    "info_file": "dataset/url/info.json",
+    "utility_feature_file": "dataset/url/utility_feature.json",
+    "meta_file": "dataset/url/meta.json"
+  },
+  "splitting": {
+    "test_size": 0.3,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "stratify_classification": true
+  },
+  "agentic_pipelines": {
+    "categorical": {
+      "enabled": true,
+      "model": "gpt-5.6-luna",
+      "provider": "openai",
+      "arguments": {}
+    },
+    "equational": {
+      "enabled": true,
+      "model": "gpt-5.6-luna",
+      "provider": "openai",
+      "generate_fixes": true,
+      "arguments": {}
+    },
+    "linear": {
+      "enabled": true,
+      "model": "gpt-5.6-luna",
+      "provider": "openai",
+      "arguments": {}
+    }
+  },
+  "generators": {
+    "ctgan": {
+      "enabled": true,
+      "model": "CTGAN",
+      "training_arguments": {
+        "epochs": 300,
+        "device": "auto"
+      },
+      "sampling_arguments": {}
+    },
+    "tvae": {
+      "enabled": true,
+      "model": "TVAE",
+      "training_arguments": {
+        "epochs": 300,
+        "device": "auto"
+      },
+      "sampling_arguments": {}
+    },
+    "gaussian_copula": {
+      "enabled": true,
+      "model": "GaussianCopulaSynthesizer",
+      "training_arguments": {
+        "default_distribution": "beta"
+      },
+      "sampling_arguments": {}
+    },
+    "tabddpm": {
+      "enabled": true,
+      "model": "TabDDPM",
+      "training_arguments": {
+        "steps": 30000,
+        "device": "auto"
+      },
+      "sampling_arguments": {
+        "checkpoint_variant": "ema"
+      }
+    }
+  },
+  "runs": {
+    "training_seeds": [
+      2000,
+      2001,
+      2002
+    ],
+    "sample_seeds": [
+      1000,
+      1001,
+      1002
+    ],
+    "samples_per_generator": 3
+  },
+  "postprocessing": {
+    "invalid_row_policy": "drop",
+    "max_drop_fraction": 0.05,
+    "linear_scale_mode": "std",
+    "linear_solver": "OSQP",
+    "linear_batch_size": 1000,
+    "linear_tolerance": 1e-07
+  },
+  "evaluation": {
+    "metrics": [
+      "quality",
+      "utility",
+      "constraint"
+    ],
+    "constraint_source": "proposed"
+  }
+}

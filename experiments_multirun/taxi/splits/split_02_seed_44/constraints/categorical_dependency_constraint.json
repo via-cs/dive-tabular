@@ -1,0 +1,80 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "pickup_day_determines_weekend",
+      "description": "Pickup weekday deterministically determines the derived weekend indicator.",
+      "rationale": "is_weekend is explicitly derived from pickup_day_of_week: Saturday and Sunday map to 1, while Monday through Friday map to 0.",
+      "determinants": [
+        "pickup_day_of_week"
+      ],
+      "dependent": "is_weekend",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              5,
+              6
+            ]
+          ],
+          "dependent_values": [
+            1
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "rate_code_typically_determines_trip_type",
+      "description": "Final rate code strongly determines the usual trip-origin classification, with documented driver alteration exceptions.",
+      "rationale": "Trip type is automatically assigned from the metered rate but may be altered by the driver; the observed majority mapping is rate 1 to trip type 1, rate 5 to 2, and rates 2, 3, 4, and 6 to 1. The complete-table majority mapping remains below the required violation threshold.",
+      "determinants": [
+        "rate_code"
+      ],
+      "dependent": "trip_type",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1,
+              2,
+              3,
+              4,
+              6
+            ]
+          ],
+          "dependent_values": [
+            1
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              5
+            ]
+          ],
+          "dependent_values": [
+            2
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0008810153106174251
+    }
+  ]
+}

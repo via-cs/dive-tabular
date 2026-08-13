@@ -1,0 +1,130 @@
+{
+  "download": {
+    "provider": "Kaggle",
+    "dataset_handle": "csafrit2/steel-industry-energy-consumption",
+    "dataset_url": "https://www.kaggle.com/datasets/csafrit2/steel-industry-energy-consumption",
+    "file": "Steel_industry_data.csv",
+    "command": "uv run python data/steel/raw/download_steel.py"
+  },
+  "source": "/home/jz2003/LLM-synthetic/Dive-Tabular/dataset/steel/raw/Steel_industry_data.csv",
+  "source_sha256": "9b1cee6f9cb9cd9df2b95814ca90a9a2ff15b7f5f1fba0fae3c643e82072eacc",
+  "output": "/home/jz2003/LLM-synthetic/Dive-Tabular/dataset/steel/data.csv",
+  "preprocessing_command": "uv run python data/steel/preprocess_steel.py --force",
+  "preprocessing_steps": [
+    {
+      "order": 1,
+      "operation": "validate_schema_and_completeness",
+      "details": "Require the 11 expected source columns in their original order and require zero missing values."
+    },
+    {
+      "order": 2,
+      "operation": "validate_power_factor_equations",
+      "details": "Check both stored power-factor columns against round(100 * Usage_kWh / hypot(Usage_kWh, reactive_kVarh), 2). Rows are reported but not removed by this validation."
+    },
+    {
+      "order": 3,
+      "operation": "remove_strict_co2_equation_violations",
+      "details": "Remove rows where CO2(tCO2) differs from round(Usage_kWh * 0.0004585, 2)."
+    },
+    {
+      "order": 4,
+      "operation": "rename_lagging_reactive_column",
+      "details": "Rename Lagging_Current_Reactive.Power_kVarh to Lagging_Current_Reactive_Power_kVarh in processed data."
+    },
+    {
+      "order": 5,
+      "operation": "drop_unique_timestamp",
+      "details": "Drop date because every timestamp is unique. Retain NSM, Day_of_week, and WeekStatus as modelable temporal fields."
+    },
+    {
+      "order": 6,
+      "operation": "reorder_columns",
+      "details": "Place numerical features first, categorical features next, and the Usage_kWh regression target last."
+    },
+    {
+      "order": 7,
+      "operation": "reset_row_index",
+      "details": "Reset the retained rows to a zero-based contiguous index."
+    }
+  ],
+  "strict_co2_filter": {
+    "equation": "CO2(tCO2) == round(Usage_kWh * 0.0004585, 2)",
+    "coefficient": 0.0004585,
+    "coefficient_unit": "tCO2/kWh",
+    "rounding_decimals": 2,
+    "rows_removed": 47,
+    "violation_rate": 0.001341324200913242,
+    "all_removed_rows_have_recorded_co2_zero": true,
+    "removed_timestamp_start": "2018-01-02T08:15:00",
+    "removed_timestamp_end": "2018-01-02T20:30:00",
+    "removed_usage_kwh_min": 19.22,
+    "removed_usage_kwh_max": 147.46,
+    "expected_co2_counts": {
+      "0.01": 3,
+      "0.02": 15,
+      "0.03": 4,
+      "0.04": 10,
+      "0.05": 4,
+      "0.06": 8,
+      "0.07": 3
+    }
+  },
+  "power_factor_validation": {
+    "lagging_equation_violations": 0,
+    "leading_equation_violations": 0,
+    "rows_removed": 0
+  },
+  "columns": {
+    "source": [
+      "date",
+      "Usage_kWh",
+      "Lagging_Current_Reactive.Power_kVarh",
+      "Leading_Current_Reactive_Power_kVarh",
+      "CO2(tCO2)",
+      "Lagging_Current_Power_Factor",
+      "Leading_Current_Power_Factor",
+      "NSM",
+      "WeekStatus",
+      "Day_of_week",
+      "Load_Type"
+    ],
+    "output": [
+      "Lagging_Current_Reactive_Power_kVarh",
+      "Leading_Current_Reactive_Power_kVarh",
+      "CO2(tCO2)",
+      "Lagging_Current_Power_Factor",
+      "Leading_Current_Power_Factor",
+      "NSM",
+      "WeekStatus",
+      "Day_of_week",
+      "Load_Type",
+      "Usage_kWh"
+    ],
+    "categorical": [
+      "WeekStatus",
+      "Day_of_week",
+      "Load_Type"
+    ],
+    "numerical": [
+      "Lagging_Current_Reactive_Power_kVarh",
+      "Leading_Current_Reactive_Power_kVarh",
+      "CO2(tCO2)",
+      "Lagging_Current_Power_Factor",
+      "Leading_Current_Power_Factor",
+      "NSM",
+      "Usage_kWh"
+    ],
+    "target": "Usage_kWh",
+    "removed": [
+      "date"
+    ],
+    "renamed": {
+      "Lagging_Current_Reactive.Power_kVarh": "Lagging_Current_Reactive_Power_kVarh"
+    }
+  },
+  "row_counts": {
+    "input_rows": 35040,
+    "removed_strict_co2_violations": 47,
+    "output_rows": 34993
+  }
+}

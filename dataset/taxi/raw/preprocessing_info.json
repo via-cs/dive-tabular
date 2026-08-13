@@ -1,0 +1,188 @@
+{
+  "download": {
+    "provider": "NYC Taxi and Limousine Commission",
+    "dataset": "2015 Green Taxi Trip Records",
+    "dataset_url": "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page",
+    "file": "2015_green_60000.csv"
+  },
+  "source": "/home/jz2003/LLM-synthetic/Dive-Tabular/dataset/taxi/raw/2015_green_60000.csv",
+  "source_sha256": "1f256e862eec3fb8c274c47f33b2a241f4be74e6905d5aeb34d2de7be623e2fc",
+  "output": "/home/jz2003/LLM-synthetic/Dive-Tabular/dataset/taxi/data.csv",
+  "preprocessing_command": "uv run python data/taxi/preprocess_taxi.py --force",
+  "preprocessing_steps": [
+    {
+      "order": 1,
+      "operation": "validate_source_schema",
+      "details": "Require the expected 22 source columns in their original order."
+    },
+    {
+      "order": 2,
+      "operation": "drop_identifier_and_vendor",
+      "details": "Drop the unnamed row identifier and vendorid."
+    },
+    {
+      "order": 3,
+      "operation": "parse_timestamps_and_augment_time",
+      "details": "Parse pickup/drop-off timestamps; derive pickup_day_of_week, fractional pickup/dropoff minute-of-day, duration in minutes, and Saturday/Sunday is_weekend."
+    },
+    {
+      "order": 4,
+      "operation": "remove_ehail_fee_and_repair_payment_total",
+      "details": "Subtract nonmissing Ehail_fee from the recorded Total_amount, drop Ehail_fee, and recompute total_amount from the six retained payment components to guarantee the accounting identity."
+    },
+    {
+      "order": 5,
+      "operation": "drop_missing_and_invalid_duration_rows",
+      "details": "Drop rows missing any retained value and trips whose duration is not strictly between 0 and 1440 minutes. Ehail_fee is excluded from missingness because it is intentionally removed."
+    },
+    {
+      "order": 6,
+      "operation": "drop_source_timestamps",
+      "details": "Drop pickup_datetime and dropoff_datetime after deriving the retained temporal features."
+    },
+    {
+      "order": 7,
+      "operation": "reorder_and_reset_index",
+      "details": "Order model features consistently, put total_amount last as the regression target, and reset to a zero-based row index."
+    }
+  ],
+  "equations": {
+    "cyclic_time": "dropoff_minute_of_day == (pickup_minute_of_day + duration) % 1440",
+    "payment_total": "total_amount == fare_amount + extra + mta_tax + tip_amount + tolls_amount + improvement_surcharge",
+    "tolerance": 1e-09
+  },
+  "audit": {
+    "missing_required_rows": 0,
+    "invalid_duration_rows": 4,
+    "nonpositive_duration_rows": 4,
+    "duration_at_least_one_day_rows": 0,
+    "cross_calendar_date_rows": 784,
+    "raw_clock_equation_violations": 0,
+    "ehail_nonmissing_rows": 0,
+    "ehail_nonmissing_total": 0.0,
+    "source_payment_equation_comparable_rows": 60000,
+    "source_payment_equation_violations": 17,
+    "retained_payment_rows_repaired": 17,
+    "source_payment_max_absolute_error": 6.34,
+    "final_payment_equation_violations": 0,
+    "final_clock_equation_violations": 0,
+    "duration_min_minutes": 0.016666666666666666,
+    "duration_max_minutes": 1439.6333333333334
+  },
+  "columns": {
+    "source": [
+      "Unnamed: 0",
+      "vendorid",
+      "pickup_datetime",
+      "dropoff_datetime",
+      "Store_and_fwd_flag",
+      "rate_code",
+      "Pickup_longitude",
+      "Pickup_latitude",
+      "Dropoff_longitude",
+      "Dropoff_latitude",
+      "Passenger_count",
+      "Trip_distance",
+      "Fare_amount",
+      "Extra",
+      "MTA_tax",
+      "Tip_amount",
+      "Tolls_amount",
+      "Ehail_fee",
+      "Improvement_surcharge",
+      "Total_amount",
+      "Payment_type",
+      "Trip_type"
+    ],
+    "output": [
+      "pickup_longitude",
+      "pickup_latitude",
+      "dropoff_longitude",
+      "dropoff_latitude",
+      "trip_distance",
+      "fare_amount",
+      "extra",
+      "mta_tax",
+      "tip_amount",
+      "tolls_amount",
+      "improvement_surcharge",
+      "pickup_minute_of_day",
+      "dropoff_minute_of_day",
+      "duration",
+      "store_and_fwd_flag",
+      "rate_code",
+      "passenger_count",
+      "payment_type",
+      "trip_type",
+      "pickup_day_of_week",
+      "is_weekend",
+      "total_amount"
+    ],
+    "categorical": [
+      "store_and_fwd_flag",
+      "rate_code",
+      "passenger_count",
+      "payment_type",
+      "trip_type",
+      "pickup_day_of_week",
+      "is_weekend"
+    ],
+    "numerical": [
+      "pickup_longitude",
+      "pickup_latitude",
+      "dropoff_longitude",
+      "dropoff_latitude",
+      "trip_distance",
+      "fare_amount",
+      "extra",
+      "mta_tax",
+      "tip_amount",
+      "tolls_amount",
+      "improvement_surcharge",
+      "pickup_minute_of_day",
+      "dropoff_minute_of_day",
+      "duration",
+      "total_amount"
+    ],
+    "target": "total_amount",
+    "removed": [
+      "Unnamed: 0",
+      "vendorid",
+      "pickup_datetime",
+      "dropoff_datetime",
+      "Ehail_fee"
+    ],
+    "renamed": {
+      "Store_and_fwd_flag": "store_and_fwd_flag",
+      "Pickup_longitude": "pickup_longitude",
+      "Pickup_latitude": "pickup_latitude",
+      "Dropoff_longitude": "dropoff_longitude",
+      "Dropoff_latitude": "dropoff_latitude",
+      "Passenger_count": "passenger_count",
+      "Trip_distance": "trip_distance",
+      "Fare_amount": "fare_amount",
+      "Extra": "extra",
+      "MTA_tax": "mta_tax",
+      "Tip_amount": "tip_amount",
+      "Tolls_amount": "tolls_amount",
+      "Ehail_fee": "ehail_fee",
+      "Improvement_surcharge": "improvement_surcharge",
+      "Total_amount": "total_amount",
+      "Payment_type": "payment_type",
+      "Trip_type": "trip_type"
+    },
+    "derived": [
+      "pickup_day_of_week",
+      "pickup_minute_of_day",
+      "dropoff_minute_of_day",
+      "duration",
+      "is_weekend"
+    ]
+  },
+  "row_counts": {
+    "input_rows": 60000,
+    "removed_missing_required": 0,
+    "removed_invalid_duration": 4,
+    "output_rows": 59996
+  }
+}

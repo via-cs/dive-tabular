@@ -1,0 +1,233 @@
+[
+  {
+    "id": "nonputback_assistance_at_least_overall_two_point_assistance",
+    "description": "The assisted fraction among non-putback two-point points is at least the overall assisted two-point fraction.",
+    "formula": "NonPutbacksAssisted2sPct - Assisted2sPct >= 0",
+    "columns": [
+      "NonPutbacksAssisted2sPct",
+      "Assisted2sPct"
+    ],
+    "coefficients": {
+      "NonPutbacksAssisted2sPct": 1,
+      "Assisted2sPct": -1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NonPutbacksAssisted2sPct",
+      "Assisted2sPct"
+    ],
+    "explanation": "Putback two-point points are included among unassisted two-point points; removing this unassisted subset cannot lower the assisted share of the remaining two-point points.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "nonheave_three_point_percentage_covers_overall",
+    "description": "The sum of the non-heave and overall three-point percentages is nonnegative.",
+    "formula": "NonHeaveFg3Pct + Fg3Pct >= 0",
+    "columns": [
+      "NonHeaveFg3Pct",
+      "Fg3Pct"
+    ],
+    "coefficients": {
+      "NonHeaveFg3Pct": 1,
+      "Fg3Pct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "NonHeaveFg3Pct",
+      "Fg3Pct"
+    ],
+    "explanation": "Both columns are percentages on a 0-to-1 scale, so each is nonnegative; consequently their sum is universally nonnegative, without assuming that removing heaves must raise the percentage.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "three_point_percentages_bounded_sum",
+    "description": "Overall and non-heave three-point percentages have a sum at most two.",
+    "formula": "-Fg3Pct - NonHeaveFg3Pct >= -2",
+    "columns": [
+      "Fg3Pct",
+      "NonHeaveFg3Pct"
+    ],
+    "coefficients": {
+      "Fg3Pct": -1,
+      "NonHeaveFg3Pct": -1
+    },
+    "sense": ">=",
+    "rhs": -2,
+    "mutable_columns": [
+      "Fg3Pct",
+      "NonHeaveFg3Pct"
+    ],
+    "explanation": "Both three-point percentage columns are stated to lie on a 0-to-1 scale, so their sum cannot exceed 2.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "assisted_two_point_fractions_nonnegative",
+    "description": "The overall and non-putback assisted two-point fractions have a nonnegative sum.",
+    "formula": "Assisted2sPct + NonPutbacksAssisted2sPct >= 0",
+    "columns": [
+      "Assisted2sPct",
+      "NonPutbacksAssisted2sPct"
+    ],
+    "coefficients": {
+      "Assisted2sPct": 1,
+      "NonPutbacksAssisted2sPct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "Assisted2sPct",
+      "NonPutbacksAssisted2sPct"
+    ],
+    "explanation": "Both columns are fractions on a 0-to-1 scale and therefore nonnegative.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "assisted_two_point_fractions_bounded_sum",
+    "description": "The overall and non-putback assisted two-point fractions have a sum at most two.",
+    "formula": "-Assisted2sPct - NonPutbacksAssisted2sPct >= -2",
+    "columns": [
+      "Assisted2sPct",
+      "NonPutbacksAssisted2sPct"
+    ],
+    "coefficients": {
+      "Assisted2sPct": -1,
+      "NonPutbacksAssisted2sPct": -1
+    },
+    "sense": ">=",
+    "rhs": -2,
+    "mutable_columns": [
+      "Assisted2sPct",
+      "NonPutbacksAssisted2sPct"
+    ],
+    "explanation": "Each assisted two-point fraction is bounded above by 1, so their sum is at most 2.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "assisted_three_point_fraction_nonnegative_with_three_point_mix",
+    "description": "The assisted three-point fraction and three-point attempt share have a nonnegative sum.",
+    "formula": "Assisted3sPct + FG3APct >= 0",
+    "columns": [
+      "Assisted3sPct",
+      "FG3APct"
+    ],
+    "coefficients": {
+      "Assisted3sPct": 1,
+      "FG3APct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "Assisted3sPct",
+      "FG3APct"
+    ],
+    "explanation": "Both columns are defined as nonnegative fractions on a 0-to-1 scale.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "assisted_three_point_fraction_and_mix_bounded_sum",
+    "description": "The assisted three-point fraction and three-point attempt share have a sum at most two.",
+    "formula": "-Assisted3sPct - FG3APct >= -2",
+    "columns": [
+      "Assisted3sPct",
+      "FG3APct"
+    ],
+    "coefficients": {
+      "Assisted3sPct": -1,
+      "FG3APct": -1
+    },
+    "sense": ">=",
+    "rhs": -2,
+    "mutable_columns": [
+      "Assisted3sPct",
+      "FG3APct"
+    ],
+    "explanation": "Each of these two fractions is bounded above by 1, giving a combined upper bound of 2.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "shot_quality_and_three_point_mix_nonnegative",
+    "description": "Shot-quality average and three-point attempt share have a nonnegative sum.",
+    "formula": "ShotQualityAvg + FG3APct >= 0",
+    "columns": [
+      "ShotQualityAvg",
+      "FG3APct"
+    ],
+    "coefficients": {
+      "ShotQualityAvg": 1,
+      "FG3APct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "ShotQualityAvg",
+      "FG3APct"
+    ],
+    "explanation": "ShotQualityAvg and FG3APct are both stated or defined as fractions between zero and one.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "shot_quality_and_three_point_mix_bounded_sum",
+    "description": "Shot-quality average and three-point attempt share have a sum at most two.",
+    "formula": "-ShotQualityAvg - FG3APct >= -2",
+    "columns": [
+      "ShotQualityAvg",
+      "FG3APct"
+    ],
+    "coefficients": {
+      "ShotQualityAvg": -1,
+      "FG3APct": -1
+    },
+    "sense": ">=",
+    "rhs": -2,
+    "mutable_columns": [
+      "ShotQualityAvg",
+      "FG3APct"
+    ],
+    "explanation": "Both quantities are bounded above by 1, so their sum cannot exceed 2.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "effective_and_true_shooting_percentages_nonnegative",
+    "description": "Effective and true shooting percentages have a nonnegative combined value.",
+    "formula": "EfgPct + TsPct >= 0",
+    "columns": [
+      "EfgPct",
+      "TsPct"
+    ],
+    "coefficients": {
+      "EfgPct": 1,
+      "TsPct": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "EfgPct",
+      "TsPct"
+    ],
+    "explanation": "These are efficiency percentages for scoring and are nonnegative for nonnegative makes and points.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "points_and_usage_nonnegative",
+    "description": "Total points and usage have a nonnegative combined value.",
+    "formula": "Points + Usage >= 0",
+    "columns": [
+      "Points",
+      "Usage"
+    ],
+    "coefficients": {
+      "Points": 1,
+      "Usage": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "Points",
+      "Usage"
+    ],
+    "explanation": "Points is a scoring rate and Usage is a percentage of possessions, so both are nonnegative quantities.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "empty_title_excludes_domain",
+      "description": "A page with an empty title cannot contain the URL domain in its title.",
+      "rationale": "domain_in_title is inverted: 1 means the domain is absent from the title. Therefore an empty title necessarily has domain_in_title equal to 1.",
+      "determinants": [
+        "empty_title"
+      ],
+      "dependent": "domain_in_title",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            1
+          ]
+        }
+      ],
+      "support": 0.12548431446069241,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "zero_redirects_have_no_external_redirects",
+      "description": "Pages with no HTTP redirects cannot have an external redirect.",
+      "rationale": "nb_external_redirection counts external redirects as a subset of nb_redirection, so a zero total redirect count logically entails zero external redirects.",
+      "determinants": [
+        "nb_redirection"
+      ],
+      "dependent": "nb_external_redirection",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              0
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        }
+      ],
+      "support": 0.5893013373328334,
+      "violation_rate": 0.0
+    }
+  ]
+}

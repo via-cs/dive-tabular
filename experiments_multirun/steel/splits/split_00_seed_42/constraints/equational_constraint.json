@@ -1,0 +1,52 @@
+[
+  {
+    "id": "lagging_power_factor_equation",
+    "description": "Lagging-current power factor equals active interval energy divided by the lagging apparent-energy magnitude, expressed as a percentage.",
+    "rationale": "For lagging current, active energy and lagging reactive energy form the orthogonal components of apparent energy; the power factor is the active component divided by their Euclidean magnitude, with the stored value on a 0–100 scale.",
+    "columns": [
+      "Usage_kWh",
+      "Lagging_Current_Reactive_Power_kVarh",
+      "Lagging_Current_Power_Factor"
+    ],
+    "check_code": "def check(df):\n    active = df[\"Usage_kWh\"]\n    reactive = df[\"Lagging_Current_Reactive_Power_kVarh\"]\n    expected = 100.0 * active / np.sqrt(active * active + reactive * reactive)\n    return (df[\"Lagging_Current_Power_Factor\"] - expected).abs() <= 0.1",
+    "fix_code": [
+      {
+        "column": "Usage_kWh",
+        "code": "def fix(df):\n    reactive = df['Lagging_Current_Reactive_Power_kVarh']\n    factor = df['Lagging_Current_Power_Factor']\n    denominator = np.sqrt(np.maximum(10000.0 - factor * factor, 0.0))\n    regular = np.divide(\n        np.abs(reactive) * factor,\n        denominator,\n        out=np.zeros(reactive.shape, dtype=float),\n        where=denominator > 0.0\n    )\n    boundary = np.where(\n        np.abs(reactive) > 0.0,\n        1000.0 * np.abs(reactive),\n        1.0\n    )\n    active = np.where(denominator > 0.0, regular, boundary)\n    return pd.Series(active, index=reactive.index, dtype=float)"
+      },
+      {
+        "column": "Lagging_Current_Reactive_Power_kVarh",
+        "code": "def fix(df):\n    active = df['Usage_kWh']\n    pf = df['Lagging_Current_Power_Factor']\n    reactive = np.abs(active) * np.sqrt(np.maximum((100.0 / pf) ** 2 - 1.0, 0.0))\n    return reactive.replace([np.inf, -np.inf], 0.0).fillna(0.0)"
+      },
+      {
+        "column": "Lagging_Current_Power_Factor",
+        "code": "def fix(df):\n    active = df['Usage_kWh']\n    reactive = df['Lagging_Current_Reactive_Power_kVarh']\n    denominator = np.sqrt(active * active + reactive * reactive)\n    result = 100.0 * active / denominator\n    return result.replace([np.inf, -np.inf], np.nan).fillna(0.0)"
+      }
+    ]
+  },
+  {
+    "id": "leading_power_factor_equation",
+    "description": "Leading-current power factor equals active interval energy divided by the leading apparent-energy magnitude, expressed as a percentage.",
+    "rationale": "For leading current, active energy and leading reactive energy are the orthogonal components of apparent energy; the power factor is the active component divided by their Euclidean magnitude, with the stored value on a 0–100 scale.",
+    "columns": [
+      "Usage_kWh",
+      "Leading_Current_Reactive_Power_kVarh",
+      "Leading_Current_Power_Factor"
+    ],
+    "check_code": "def check(df):\n    active = df[\"Usage_kWh\"]\n    reactive = df[\"Leading_Current_Reactive_Power_kVarh\"]\n    expected = 100.0 * active / np.sqrt(active * active + reactive * reactive)\n    return (df[\"Leading_Current_Power_Factor\"] - expected).abs() <= 0.1",
+    "fix_code": [
+      {
+        "column": "Usage_kWh",
+        "code": null
+      },
+      {
+        "column": "Leading_Current_Reactive_Power_kVarh",
+        "code": "def fix(df):\n    active = df['Usage_kWh'].astype(float)\n    pf = df['Leading_Current_Power_Factor'].astype(float)\n    pf_safe = np.where(pf < 1e-12, 1e-12, pf)\n    pf_safe = np.where(pf_safe > 100.0, 100.0, pf_safe)\n    radicand = np.where(10000.0 - pf_safe * pf_safe > 0.0, 10000.0 - pf_safe * pf_safe, 0.0)\n    return np.abs(active) * np.sqrt(radicand) / pf_safe"
+      },
+      {
+        "column": "Leading_Current_Power_Factor",
+        "code": "def fix(df):\n    active = df['Usage_kWh']\n    reactive = df['Leading_Current_Reactive_Power_kVarh']\n    magnitude = np.sqrt(active * active + reactive * reactive)\n    result = 100.0 * active / magnitude\n    return result.replace([np.inf, -np.inf], np.nan).fillna(100.0)"
+      }
+    ]
+  }
+]

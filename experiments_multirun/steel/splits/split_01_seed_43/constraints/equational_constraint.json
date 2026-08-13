@@ -1,0 +1,52 @@
+[
+  {
+    "id": "lagging_power_factor_equation",
+    "description": "Lagging power factor percentage equals active energy divided by the lagging apparent-energy magnitude, multiplied by 100.",
+    "rationale": "For lagging current, active energy and lagging reactive energy form the orthogonal components of apparent energy; the power-factor definition is the active component over their Euclidean magnitude.",
+    "columns": [
+      "Lagging_Current_Reactive_Power_kVarh",
+      "Lagging_Current_Power_Factor",
+      "Usage_kWh"
+    ],
+    "check_code": "def check(df):\n    q = df[\"Lagging_Current_Reactive_Power_kVarh\"]\n    p = df[\"Usage_kWh\"]\n    expected = 100.0 * p / np.sqrt(p * p + q * q)\n    return (df[\"Lagging_Current_Power_Factor\"] - expected).abs() <= 0.03",
+    "fix_code": [
+      {
+        "column": "Lagging_Current_Reactive_Power_kVarh",
+        "code": "def fix(df):\n    q = np.abs(df['Usage_kWh']) * np.sqrt(np.maximum((100.0 / df['Lagging_Current_Power_Factor']) ** 2 - 1.0, 0.0))\n    return q.replace([np.inf, -np.inf], 1e308).fillna(0.0)"
+      },
+      {
+        "column": "Lagging_Current_Power_Factor",
+        "code": "def fix(df):\n    q = df['Lagging_Current_Reactive_Power_kVarh']\n    p = df['Usage_kWh']\n    qv = q.to_numpy(dtype=float)\n    pv = p.to_numpy(dtype=float)\n    denominator = np.sqrt(pv * pv + qv * qv)\n    result = np.zeros_like(pv, dtype=float)\n    np.divide(100.0 * pv, denominator, out=result, where=denominator != 0)\n    result = np.nan_to_num(result, nan=0.0, posinf=100.0, neginf=0.0)\n    return pd.Series(result, index=p.index, dtype=float)"
+      },
+      {
+        "column": "Usage_kWh",
+        "code": "def fix(df):\n    q = np.abs(df['Lagging_Current_Reactive_Power_kVarh'])\n    pf = df['Lagging_Current_Power_Factor']\n    denom = np.sqrt((10000.0 - pf * pf).clip(lower=0.0))\n    inverted = q * pf / denom.where(denom > 0.0, 1.0)\n    result = inverted.where(denom > 0.0, 1000000.0 * (q + 1.0))\n    return result.where(q != 0.0, 1.0).astype(float)"
+      }
+    ]
+  },
+  {
+    "id": "leading_power_factor_equation",
+    "description": "Leading power factor percentage equals active energy divided by the leading apparent-energy magnitude, multiplied by 100.",
+    "rationale": "For leading current, active energy and leading reactive energy are the orthogonal components of apparent energy; the power-factor definition uses the same magnitude relationship regardless of reactive-current direction.",
+    "columns": [
+      "Leading_Current_Reactive_Power_kVarh",
+      "Leading_Current_Power_Factor",
+      "Usage_kWh"
+    ],
+    "check_code": "def check(df):\n    q = df[\"Leading_Current_Reactive_Power_kVarh\"]\n    p = df[\"Usage_kWh\"]\n    expected = 100.0 * p / np.sqrt(p * p + q * q)\n    return (df[\"Leading_Current_Power_Factor\"] - expected).abs() <= 0.03",
+    "fix_code": [
+      {
+        "column": "Leading_Current_Reactive_Power_kVarh",
+        "code": "def fix(df):\n    p = df['Usage_kWh'].astype(float)\n    f = df['Leading_Current_Power_Factor'].astype(float)\n    f_safe = np.clip(f, 0.03, 100.0)\n    return (np.abs(p) * np.sqrt(np.maximum((100.0 / f_safe) ** 2 - 1.0, 0.0))).astype(float)\n"
+      },
+      {
+        "column": "Leading_Current_Power_Factor",
+        "code": "def fix(df):\n    q = df['Leading_Current_Reactive_Power_kVarh']\n    p = df['Usage_kWh']\n    denominator = np.sqrt(p * p + q * q)\n    result = np.zeros_like(p, dtype=float)\n    np.divide(100.0 * p, denominator, out=result, where=denominator != 0.0)\n    return pd.Series(result, index=p.index)"
+      },
+      {
+        "column": "Usage_kWh",
+        "code": "def fix(df):\n    q = df['Leading_Current_Reactive_Power_kVarh'].abs()\n    r = df['Leading_Current_Power_Factor']\n    denominator = np.sqrt(np.maximum(10000.0 - r * r, 0.0))\n    inverted = q * r / denominator\n    fallback = 100.0 * q + 1.0\n    result = np.where(r < 100.0, inverted, fallback)\n    return pd.Series(result, index=q.index, dtype=float)"
+      }
+    ]
+  }
+]

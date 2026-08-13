@@ -1,0 +1,13 @@
+{
+  "feature_columns": [
+    "Lagging_Current_Reactive_Power_kVarh",
+    "Leading_Current_Reactive_Power_kVarh",
+    "Lagging_Current_Power_Factor",
+    "Leading_Current_Power_Factor",
+    "NSM",
+    "WeekStatus",
+    "Day_of_week",
+    "Load_Type"
+  ],
+  "target_column": "Usage_kWh"
+}

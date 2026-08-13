@@ -1,0 +1,135 @@
+{
+  "name": "anxiety-categorical",
+  "source": "https://www.kaggle.com/datasets/natezhang123/social-anxiety-dataset",
+  "license": "CC0: Public Domain",
+  "task": "categorical_dependency_detection",
+  "target": "Anxiety Band",
+  "features_by_order": [
+    "Age Band",
+    "Gender",
+    "Occupation",
+    "Occupation Group",
+    "Sleep Band",
+    "Physical Activity Band",
+    "Caffeine Band",
+    "Alcohol Band",
+    "Smoking",
+    "Family History of Anxiety",
+    "Stress Band",
+    "Heart Rate Band",
+    "Breathing Rate Band",
+    "Sweating Band",
+    "Dizziness",
+    "Medication",
+    "Therapy Band",
+    "Recent Major Life Event",
+    "Diet Quality Band",
+    "Anxiety Band"
+  ],
+  "shape": [
+    11000,
+    20
+  ],
+  "col_types": {
+    "Age Band": {
+      "type": "cat",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "Gender": {
+      "type": "cat",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "Occupation": {
+      "type": "cat",
+      "unique_values": 13,
+      "missing_values": 0
+    },
+    "Occupation Group": {
+      "type": "cat",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "Sleep Band": {
+      "type": "cat",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "Physical Activity Band": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Caffeine Band": {
+      "type": "cat",
+      "unique_values": 4,
+      "missing_values": 0
+    },
+    "Alcohol Band": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Smoking": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Family History of Anxiety": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Stress Band": {
+      "type": "cat",
+      "unique_values": 4,
+      "missing_values": 0
+    },
+    "Heart Rate Band": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Breathing Rate Band": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Sweating Band": {
+      "type": "cat",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "Dizziness": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Medication": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Therapy Band": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Recent Major Life Event": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "Diet Quality Band": {
+      "type": "cat",
+      "unique_values": 3,
+      "missing_values": 0
+    },
+    "Anxiety Band": {
+      "type": "cat",
+      "unique_values": 4,
+      "missing_values": 0
+    }
+  }
+}

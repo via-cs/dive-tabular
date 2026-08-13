@@ -1,0 +1,339 @@
+{
+  "paths": {
+    "experiment_dir": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw",
+    "synthetic_files": [
+      "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_0.csv",
+      "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_1.csv",
+      "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_2.csv"
+    ],
+    "metrics": [
+      "constraint",
+      "quality",
+      "utility"
+    ],
+    "constraints_expert": "experiments_multirun/flights/splits/split_01_seed_43/constraints",
+    "utility_regimes": [
+      "trtr",
+      "tstr"
+    ]
+  },
+  "per_file": [
+    {
+      "path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_0.csv",
+      "quality": {
+        "score": 0.8541307637035831,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9149327122153209
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.7933288151918452
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.6683607318849416,
+              "rmse": 31.07595267392112
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.25398433208465576,
+              "rmse": 46.6085342909429
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_0.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.29172162393066253,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.996765306122449,
+        "categorical_dependency_cvr": 0.8488809523809524,
+        "categorical_dependency_scvc": 0.468515873015873,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    },
+    {
+      "path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_1.csv",
+      "quality": {
+        "score": 0.8527158564200247,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9143426501035199
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.7910890627365295
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.689352576151503,
+              "rmse": 30.076365615576723
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.24843400716781616,
+              "rmse": 46.78159704697591
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_1.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.2931774709601556,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9966700680272109,
+        "categorical_dependency_cvr": 0.8501190476190477,
+        "categorical_dependency_scvc": 0.47145238095238096,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    },
+    {
+      "path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_2.csv",
+      "quality": {
+        "score": 0.8516966881312427,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9151966873706002
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.7881966888918852
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "linear_regression": {
+            "tstr": {
+              "r2": 0.7038900157132135,
+              "rmse": 29.364188478061767
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "r2": 0.2874922752380371,
+              "rmse": 45.54977745897887
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_2.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.2851262624647796,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9966972789115647,
+        "categorical_dependency_cvr": 0.8504047619047619,
+        "categorical_dependency_scvc": 0.4702301587301587,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    }
+  ],
+  "utility_columns": {
+    "target": "ARR_DELAY",
+    "categorical_feature_columns": [
+      "YEAR",
+      "MONTH",
+      "DAY",
+      "AIRLINE",
+      "AIRLINE_CODE",
+      "ORIGIN",
+      "ORIGIN_CITY",
+      "DEST",
+      "DEST_CITY"
+    ],
+    "numerical_feature_columns": [
+      "DEP_TIME_UTC_MIN",
+      "TAXI_OUT",
+      "DEP_DELAY",
+      "WHEELS_OFF_UTC_MIN",
+      "WHEELS_ON_UTC_MIN",
+      "TAXI_IN",
+      "AIR_TIME",
+      "ARR_TIME_UTC_MIN",
+      "ELAPSED_TIME",
+      "DISTANCE"
+    ]
+  },
+  "quality": {
+    "score": [
+      0.8541307637035831,
+      0.8527158564200247,
+      0.8516966881312427
+    ],
+    "properties": [
+      {
+        "Property": "Column Shapes",
+        "Score": [
+          0.9149327122153209,
+          0.9143426501035199,
+          0.9151966873706002
+        ]
+      },
+      {
+        "Property": "Column Pair Trends",
+        "Score": [
+          0.7933288151918452,
+          0.7910890627365295,
+          0.7881966888918852
+        ]
+      }
+    ]
+  },
+  "utility": {
+    "task": "regression",
+    "models": {
+      "linear_regression": {
+        "trtr": {
+          "r2": 0.9853084920048439,
+          "rmse": 6.540706555941457
+        },
+        "tstr": {
+          "r2": [
+            0.6683607318849416,
+            0.689352576151503,
+            0.7038900157132135
+          ],
+          "rmse": [
+            31.07595267392112,
+            30.076365615576723,
+            29.364188478061767
+          ]
+        }
+      },
+      "xgboost": {
+        "trtr": {
+          "r2": 0.860896110534668,
+          "rmse": 20.126170627832433
+        },
+        "tstr": {
+          "r2": [
+            0.25398433208465576,
+            0.24843400716781616,
+            0.2874922752380371
+          ],
+          "rmse": [
+            46.6085342909429,
+            46.78159704697591,
+            45.54977745897887
+          ]
+        }
+      }
+    }
+  },
+  "constraint": {
+    "available_families": [
+      "categorical_dependency",
+      "equational",
+      "linear"
+    ],
+    "real_train": {
+      "path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/train.csv",
+      "rows": 42000,
+      "average_r2_consistency": 1.0,
+      "equational_cvr": 0.0,
+      "equational_scvc": 0.0,
+      "categorical_dependency_cvr": 0.0,
+      "categorical_dependency_scvc": 0.0,
+      "linear_cvr": 0.0,
+      "linear_scvc": 0.0,
+      "family_status": {
+        "equational": "evaluated",
+        "categorical_dependency": "evaluated",
+        "linear": "evaluated"
+      },
+      "linear_feasibility_distance": 0.0
+    },
+    "synthetic": [
+      {
+        "path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_0.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.29172162393066253,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.996765306122449,
+        "categorical_dependency_cvr": 0.8488809523809524,
+        "categorical_dependency_scvc": 0.468515873015873,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      },
+      {
+        "path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_1.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.2931774709601556,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9966700680272109,
+        "categorical_dependency_cvr": 0.8501190476190477,
+        "categorical_dependency_scvc": 0.47145238095238096,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      },
+      {
+        "path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_2.csv",
+        "rows": 42000,
+        "average_r2_consistency": 0.2851262624647796,
+        "equational_cvr": 1.0,
+        "equational_scvc": 0.9966972789115647,
+        "categorical_dependency_cvr": 0.8504047619047619,
+        "categorical_dependency_scvc": 0.4702301587301587,
+        "linear_cvr": 0.0,
+        "linear_scvc": 0.0,
+        "family_status": {
+          "equational": "evaluated",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.0
+      }
+    ],
+    "details_path": "experiments_multirun/flights/splits/split_01_seed_43/generators/ctgan/raw/constraint_evaluation_details.json"
+  }
+}

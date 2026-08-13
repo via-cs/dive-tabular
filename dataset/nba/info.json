@@ -1,0 +1,387 @@
+{
+    "name": "nba",
+    "source": null,
+    "features_by_order": [
+        "Points",
+        "FG2M",
+        "FG2A",
+        "Fg2Pct",
+        "FG3M",
+        "FG3A",
+        "Fg3Pct",
+        "NonHeaveFg3Pct",
+        "FtPoints",
+        "PtsAssisted2s",
+        "PtsUnassisted2s",
+        "PtsAssisted3s",
+        "PtsUnassisted3s",
+        "Assisted2sPct",
+        "NonPutbacksAssisted2sPct",
+        "Assisted3sPct",
+        "FG3APct",
+        "ShotQualityAvg",
+        "EfgPct",
+        "TsPct",
+        "PtsPutbacks",
+        "Fg2aBlocked",
+        "FG2APctBlocked",
+        "Fg3aBlocked",
+        "FG3APctBlocked",
+        "Usage"
+    ],
+    "shape": [
+        14062,
+        26
+    ],
+    "col_types": {
+        "Points": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 12693,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 90.9090909090909
+        },
+        "FG2M": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 11964,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 36.36363636363637
+        },
+        "FG2A": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 12502,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 47.36842105263158
+        },
+        "Fg2Pct": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 7292,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "FG3M": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 9396,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 18.181818181818183
+        },
+        "FG3A": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 11213,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 20.0
+        },
+        "Fg3Pct": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 3689,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "NonHeaveFg3Pct": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 3681,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "FtPoints": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 11584,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 33.333333333333336
+        },
+        "PtsAssisted2s": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 11598,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 37.5
+        },
+        "PtsUnassisted2s": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 11322,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 66.66666666666667
+        },
+        "PtsAssisted3s": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 9251,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 54.54545454545455
+        },
+        "PtsUnassisted3s": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 6465,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 50.0
+        },
+        "Assisted2sPct": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 6267,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "NonPutbacksAssisted2sPct": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 6231,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "Assisted3sPct": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 2171,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "FG3APct": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 9225,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "ShotQualityAvg": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 14023,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 0.8037
+        },
+        "EfgPct": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 9460,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.5
+        },
+        "TsPct": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 9994,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.25
+        },
+        "PtsPutbacks": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 9577,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 66.66666666666667
+        },
+        "Fg2aBlocked": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 10318,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 20.0
+        },
+        "FG2APctBlocked": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 6006,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "Fg3aBlocked": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 4296,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 2.4390243902439024
+        },
+        "FG3APctBlocked": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 1321,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "Usage": {
+            "type": "num",
+            "sdtype": "numerical",
+            "dtype": "float64",
+            "unique_values": 12905,
+            "missing_values": 0,
+            "missing_ratio": 0.0,
+            "min": 0.0,
+            "max": 66.66666666666667
+        }
+    },
+    "sdv_metadata": {
+        "tables": {
+            "table": {
+                "columns": {
+                    "Points": {
+                        "sdtype": "numerical"
+                    },
+                    "FG2M": {
+                        "sdtype": "numerical"
+                    },
+                    "FG2A": {
+                        "sdtype": "numerical"
+                    },
+                    "Fg2Pct": {
+                        "sdtype": "numerical"
+                    },
+                    "FG3M": {
+                        "sdtype": "numerical"
+                    },
+                    "FG3A": {
+                        "sdtype": "numerical"
+                    },
+                    "Fg3Pct": {
+                        "sdtype": "numerical"
+                    },
+                    "NonHeaveFg3Pct": {
+                        "sdtype": "numerical"
+                    },
+                    "FtPoints": {
+                        "sdtype": "numerical"
+                    },
+                    "PtsAssisted2s": {
+                        "sdtype": "numerical"
+                    },
+                    "PtsUnassisted2s": {
+                        "sdtype": "numerical"
+                    },
+                    "PtsAssisted3s": {
+                        "sdtype": "numerical"
+                    },
+                    "PtsUnassisted3s": {
+                        "sdtype": "numerical"
+                    },
+                    "Assisted2sPct": {
+                        "sdtype": "numerical"
+                    },
+                    "NonPutbacksAssisted2sPct": {
+                        "sdtype": "numerical"
+                    },
+                    "Assisted3sPct": {
+                        "sdtype": "numerical"
+                    },
+                    "FG3APct": {
+                        "sdtype": "numerical"
+                    },
+                    "ShotQualityAvg": {
+                        "sdtype": "numerical"
+                    },
+                    "EfgPct": {
+                        "sdtype": "numerical"
+                    },
+                    "TsPct": {
+                        "sdtype": "numerical"
+                    },
+                    "PtsPutbacks": {
+                        "sdtype": "numerical"
+                    },
+                    "Fg2aBlocked": {
+                        "sdtype": "numerical"
+                    },
+                    "FG2APctBlocked": {
+                        "sdtype": "numerical"
+                    },
+                    "Fg3aBlocked": {
+                        "sdtype": "numerical"
+                    },
+                    "FG3APctBlocked": {
+                        "sdtype": "numerical"
+                    },
+                    "Usage": {
+                        "sdtype": "numerical"
+                    }
+                }
+            }
+        },
+        "relationships": [],
+        "METADATA_SPEC_VERSION": "V1"
+    },
+    "warnings": []
+}

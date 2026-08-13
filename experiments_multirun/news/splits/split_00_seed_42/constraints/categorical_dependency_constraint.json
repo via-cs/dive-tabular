@@ -1,0 +1,250 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "entertainment_excludes_business",
+      "description": "An Entertainment article is not simultaneously marked Business.",
+      "rationale": "The retained data-channel indicators are mutually exclusive; Entertainment=1 requires Business=0.",
+      "determinants": [
+        "data_channel_is_entertainment"
+      ],
+      "dependent": "data_channel_is_bus",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        }
+      ],
+      "support": 0.17815750371471026,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "entertainment_excludes_social_media",
+      "description": "An Entertainment article is not simultaneously marked Social Media.",
+      "rationale": "The retained data-channel indicators are mutually exclusive; Entertainment=1 requires Social Media=0.",
+      "determinants": [
+        "data_channel_is_entertainment"
+      ],
+      "dependent": "data_channel_is_socmed",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        }
+      ],
+      "support": 0.17815750371471026,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "entertainment_excludes_tech",
+      "description": "An Entertainment article is not simultaneously marked Tech.",
+      "rationale": "The retained data-channel indicators are mutually exclusive; Entertainment=1 requires Tech=0.",
+      "determinants": [
+        "data_channel_is_entertainment"
+      ],
+      "dependent": "data_channel_is_tech",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        }
+      ],
+      "support": 0.17815750371471026,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "entertainment_excludes_world",
+      "description": "An Entertainment article is not simultaneously marked World.",
+      "rationale": "The retained data-channel indicators are mutually exclusive; Entertainment=1 requires World=0.",
+      "determinants": [
+        "data_channel_is_entertainment"
+      ],
+      "dependent": "data_channel_is_world",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        }
+      ],
+      "support": 0.17815750371471026,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "lifestyle_excludes_business",
+      "description": "A Lifestyle article is not simultaneously marked Business.",
+      "rationale": "The retained data-channel indicators are mutually exclusive; Lifestyle=1 requires Business=0.",
+      "determinants": [
+        "data_channel_is_lifestyle"
+      ],
+      "dependent": "data_channel_is_bus",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        }
+      ],
+      "support": 0.05397473997028232,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "lifestyle_excludes_entertainment",
+      "description": "A Lifestyle article is not simultaneously marked Entertainment.",
+      "rationale": "The six retained data-channel indicators are mutually exclusive; when Lifestyle is 1, Entertainment must be 0.",
+      "determinants": [
+        "data_channel_is_lifestyle"
+      ],
+      "dependent": "data_channel_is_entertainment",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        }
+      ],
+      "support": 0.05397473997028232,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "lifestyle_excludes_social_media",
+      "description": "A Lifestyle article is not simultaneously marked Social Media.",
+      "rationale": "The retained data-channel indicators are mutually exclusive; Lifestyle=1 requires Social Media=0.",
+      "determinants": [
+        "data_channel_is_lifestyle"
+      ],
+      "dependent": "data_channel_is_socmed",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        }
+      ],
+      "support": 0.05397473997028232,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "lifestyle_excludes_tech",
+      "description": "A Lifestyle article is not simultaneously marked Tech.",
+      "rationale": "The retained data-channel indicators are mutually exclusive; Lifestyle=1 requires Tech=0.",
+      "determinants": [
+        "data_channel_is_lifestyle"
+      ],
+      "dependent": "data_channel_is_tech",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        }
+      ],
+      "support": 0.05397473997028232,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "lifestyle_excludes_world",
+      "description": "A Lifestyle article is not simultaneously marked World.",
+      "rationale": "The retained data-channel indicators are mutually exclusive; Lifestyle=1 requires World=0.",
+      "determinants": [
+        "data_channel_is_lifestyle"
+      ],
+      "dependent": "data_channel_is_world",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        }
+      ],
+      "support": 0.05397473997028232,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "weekday_determines_weekend",
+      "description": "Publication weekday deterministically determines the weekend indicator.",
+      "rationale": "is_weekend is defined as 1 exactly for Saturday and Sunday and 0 for Monday through Friday.",
+      "determinants": [
+        "week_day"
+      ],
+      "dependent": "is_weekend",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              "friday",
+              "monday",
+              "thursday",
+              "tuesday",
+              "wednesday"
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              "saturday",
+              "sunday"
+            ]
+          ],
+          "dependent_values": [
+            1
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "name": "heloc",
+  "source": "https://huggingface.co/datasets/mstz/heloc",
+  "task": "binary_classification",
+  "target": "is_at_risk",
+  "features_by_order": [
+    "estimate_of_risk",
+    "months_since_first_trade",
+    "months_since_last_trade",
+    "average_duration_of_resolution",
+    "number_of_satisfactory_trades",
+    "nr_trades_insolvent_for_over_60_days",
+    "nr_trades_insolvent_for_over_90_days",
+    "percentage_of_legal_trades",
+    "months_since_last_illegal_trade",
+    "maximum_illegal_trades_over_last_year",
+    "maximum_illegal_trades",
+    "nr_total_trades",
+    "nr_trades_initiated_in_last_year",
+    "percentage_of_installment_trades",
+    "months_since_last_inquiry_not_recent",
+    "nr_inquiries_in_last_6_months",
+    "nr_inquiries_in_last_6_months_not_recent",
+    "net_fraction_of_revolving_burden",
+    "net_fraction_of_installment_burden",
+    "nr_revolving_trades_with_balance",
+    "nr_installment_trades_with_balance",
+    "nr_banks_with_high_ratio",
+    "percentage_trades_with_balance",
+    "is_at_risk"
+  ],
+  "shape": [
+    9084,
+    24
+  ],
+  "col_types": {
+    "estimate_of_risk": {
+      "type": "num",
+      "unique_values": 61,
+      "missing_values": 0
+    },
+    "months_since_first_trade": {
+      "type": "num",
+      "unique_values": 520,
+      "missing_values": 0
+    },
+    "months_since_last_trade": {
+      "type": "num",
+      "unique_values": 111,
+      "missing_values": 0
+    },
+    "average_duration_of_resolution": {
+      "type": "num",
+      "unique_values": 233,
+      "missing_values": 0
+    },
+    "number_of_satisfactory_trades": {
+      "type": "num",
+      "unique_values": 73,
+      "missing_values": 0
+    },
+    "nr_trades_insolvent_for_over_60_days": {
+      "type": "num",
+      "unique_values": 18,
+      "missing_values": 0
+    },
+    "nr_trades_insolvent_for_over_90_days": {
+      "type": "num",
+      "unique_values": 16,
+      "missing_values": 0
+    },
+    "percentage_of_legal_trades": {
+      "type": "num",
+      "unique_values": 70,
+      "missing_values": 0
+    },
+    "months_since_last_illegal_trade": {
+      "type": "num",
+      "unique_values": 86,
+      "missing_values": 0
+    },
+    "maximum_illegal_trades_over_last_year": {
+      "type": "num",
+      "unique_values": 9,
+      "missing_values": 0
+    },
+    "maximum_illegal_trades": {
+      "type": "num",
+      "unique_values": 7,
+      "missing_values": 0
+    },
+    "nr_total_trades": {
+      "type": "num",
+      "unique_values": 86,
+      "missing_values": 0
+    },
+    "nr_trades_initiated_in_last_year": {
+      "type": "num",
+      "unique_values": 18,
+      "missing_values": 0
+    },
+    "percentage_of_installment_trades": {
+      "type": "num",
+      "unique_values": 95,
+      "missing_values": 0
+    },
+    "months_since_last_inquiry_not_recent": {
+      "type": "num",
+      "unique_values": 27,
+      "missing_values": 0
+    },
+    "nr_inquiries_in_last_6_months": {
+      "type": "num",
+      "unique_values": 26,
+      "missing_values": 0
+    },
+    "nr_inquiries_in_last_6_months_not_recent": {
+      "type": "num",
+      "unique_values": 26,
+      "missing_values": 0
+    },
+    "net_fraction_of_revolving_burden": {
+      "type": "num",
+      "unique_values": 127,
+      "missing_values": 0
+    },
+    "net_fraction_of_installment_burden": {
+      "type": "num",
+      "unique_values": 138,
+      "missing_values": 0
+    },
+    "nr_revolving_trades_with_balance": {
+      "type": "num",
+      "unique_values": 30,
+      "missing_values": 0
+    },
+    "nr_installment_trades_with_balance": {
+      "type": "num",
+      "unique_values": 19,
+      "missing_values": 0
+    },
+    "nr_banks_with_high_ratio": {
+      "type": "num",
+      "unique_values": 18,
+      "missing_values": 0
+    },
+    "percentage_trades_with_balance": {
+      "type": "num",
+      "unique_values": 93,
+      "missing_values": 0
+    },
+    "is_at_risk": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    }
+  },
+  "sdv_metadata": {
+    "tables": {
+      "table": {
+        "columns": {
+          "estimate_of_risk": {
+            "sdtype": "numerical"
+          },
+          "months_since_first_trade": {
+            "sdtype": "numerical"
+          },
+          "months_since_last_trade": {
+            "sdtype": "numerical"
+          },
+          "average_duration_of_resolution": {
+            "sdtype": "numerical"
+          },
+          "number_of_satisfactory_trades": {
+            "sdtype": "numerical"
+          },
+          "nr_trades_insolvent_for_over_60_days": {
+            "sdtype": "numerical"
+          },
+          "nr_trades_insolvent_for_over_90_days": {
+            "sdtype": "numerical"
+          },
+          "percentage_of_legal_trades": {
+            "sdtype": "numerical"
+          },
+          "months_since_last_illegal_trade": {
+            "sdtype": "numerical"
+          },
+          "maximum_illegal_trades_over_last_year": {
+            "sdtype": "numerical"
+          },
+          "maximum_illegal_trades": {
+            "sdtype": "numerical"
+          },
+          "nr_total_trades": {
+            "sdtype": "numerical"
+          },
+          "nr_trades_initiated_in_last_year": {
+            "sdtype": "numerical"
+          },
+          "percentage_of_installment_trades": {
+            "sdtype": "numerical"
+          },
+          "months_since_last_inquiry_not_recent": {
+            "sdtype": "numerical"
+          },
+          "nr_inquiries_in_last_6_months": {
+            "sdtype": "numerical"
+          },
+          "nr_inquiries_in_last_6_months_not_recent": {
+            "sdtype": "numerical"
+          },
+          "net_fraction_of_revolving_burden": {
+            "sdtype": "numerical"
+          },
+          "net_fraction_of_installment_burden": {
+            "sdtype": "numerical"
+          },
+          "nr_revolving_trades_with_balance": {
+            "sdtype": "numerical"
+          },
+          "nr_installment_trades_with_balance": {
+            "sdtype": "numerical"
+          },
+          "nr_banks_with_high_ratio": {
+            "sdtype": "numerical"
+          },
+          "percentage_trades_with_balance": {
+            "sdtype": "numerical"
+          },
+          "is_at_risk": {
+            "sdtype": "categorical"
+          }
+        }
+      }
+    },
+    "relationships": [],
+    "METADATA_SPEC_VERSION": "V1"
+  },
+  "preprocessing": {
+    "download": {
+      "provider": "Hugging Face",
+      "dataset_handle": "mstz/heloc",
+      "file": "heloc_dataset_v1.csv"
+    },
+    "all_sentinel_rule": "Remove a row when every one of its 23 predictors equals -9.",
+    "total_trade_rules": [
+      "nr_total_trades >= number_of_satisfactory_trades",
+      "nr_total_trades >= nr_trades_initiated_in_last_year",
+      "nr_total_trades >= nr_revolving_trades_with_balance",
+      "nr_total_trades >= nr_installment_trades_with_balance"
+    ],
+    "row_counts": {
+      "input_rows": 10459,
+      "removed_all_predictors_minus_9": 588,
+      "constraint_violations": {
+        "number_of_satisfactory_trades": 786,
+        "nr_trades_initiated_in_last_year": 125,
+        "nr_revolving_trades_with_balance": 219,
+        "nr_installment_trades_with_balance": 145
+      },
+      "removed_total_trade_constraint_union": 787,
+      "output_rows": 9084,
+      "remaining_rows_with_any_sentinel": 6710,
+      "remaining_sentinel_cells": 11392
+    }
+  },
+  "preprocessing_note": "Removed rows whose 23 predictors all equal -9, then removed rows violating any selected total-trade constraint. Other -9, -8, and -7 sentinel values are preserved."
+}

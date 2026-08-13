@@ -1,0 +1,177 @@
+[
+  {
+    "id": "actual_departure_delay_clock_balance",
+    "description": "Actual gate-departure UTC minute equals scheduled gate-departure UTC minute plus signed departure delay modulo 1440.",
+    "rationale": "Departure delay is defined as the signed difference between actual and scheduled gate-departure times, while both clock columns store minute-of-day values and therefore require modulo-1440 arithmetic across midnight.",
+    "columns": [
+      "CRS_DEP_TIME_UTC_MIN",
+      "DEP_TIME_UTC_MIN",
+      "DEP_DELAY"
+    ],
+    "check_code": "def check(df):\n    expected = np.mod(df[\"CRS_DEP_TIME_UTC_MIN\"] + df[\"DEP_DELAY\"], 1440)\n    return df[\"DEP_TIME_UTC_MIN\"] == expected",
+    "fix_code": [
+      {
+        "column": "CRS_DEP_TIME_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['DEP_TIME_UTC_MIN'] - df['DEP_DELAY'], 1440)"
+      },
+      {
+        "column": "DEP_TIME_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['CRS_DEP_TIME_UTC_MIN'] + df['DEP_DELAY'], 1440)"
+      },
+      {
+        "column": "DEP_DELAY",
+        "code": "def fix(df):\n    return np.mod(df['DEP_TIME_UTC_MIN'] - df['CRS_DEP_TIME_UTC_MIN'] + 720, 1440) - 720"
+      }
+    ]
+  },
+  {
+    "id": "gate_to_takeoff_clock_balance",
+    "description": "Wheels-off UTC minute equals actual gate-departure UTC minute plus taxi-out duration modulo 1440.",
+    "rationale": "TAXI_OUT is the elapsed time from gate departure to wheels off, so the two event clocks differ by that duration, including flights crossing midnight.",
+    "columns": [
+      "DEP_TIME_UTC_MIN",
+      "TAXI_OUT",
+      "WHEELS_OFF_UTC_MIN"
+    ],
+    "check_code": "def check(df):\n    expected = np.mod(df[\"DEP_TIME_UTC_MIN\"] + df[\"TAXI_OUT\"], 1440)\n    return df[\"WHEELS_OFF_UTC_MIN\"] == expected",
+    "fix_code": [
+      {
+        "column": "DEP_TIME_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['WHEELS_OFF_UTC_MIN'] - df['TAXI_OUT'], 1440)"
+      },
+      {
+        "column": "TAXI_OUT",
+        "code": "def fix(df):\n    return np.mod(df['WHEELS_OFF_UTC_MIN'] - df['DEP_TIME_UTC_MIN'], 1440)"
+      },
+      {
+        "column": "WHEELS_OFF_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['DEP_TIME_UTC_MIN'] + df['TAXI_OUT'], 1440)"
+      }
+    ]
+  },
+  {
+    "id": "airborne_clock_balance",
+    "description": "Wheels-on UTC minute equals wheels-off UTC minute plus airborne time modulo 1440.",
+    "rationale": "AIR_TIME is explicitly the elapsed duration from takeoff to landing, so it determines the modulo-1440 clock displacement between the wheels-off and wheels-on events.",
+    "columns": [
+      "WHEELS_OFF_UTC_MIN",
+      "AIR_TIME",
+      "WHEELS_ON_UTC_MIN"
+    ],
+    "check_code": "def check(df):\n    expected = np.mod(df[\"WHEELS_OFF_UTC_MIN\"] + df[\"AIR_TIME\"], 1440)\n    return df[\"WHEELS_ON_UTC_MIN\"] == expected",
+    "fix_code": [
+      {
+        "column": "WHEELS_OFF_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['WHEELS_ON_UTC_MIN'] - df['AIR_TIME'], 1440)"
+      },
+      {
+        "column": "AIR_TIME",
+        "code": "def fix(df):\n    return np.mod(df['WHEELS_ON_UTC_MIN'] - df['WHEELS_OFF_UTC_MIN'], 1440)"
+      },
+      {
+        "column": "WHEELS_ON_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['WHEELS_OFF_UTC_MIN'] + df['AIR_TIME'], 1440)"
+      }
+    ]
+  },
+  {
+    "id": "landing_to_gate_clock_balance",
+    "description": "Actual gate-arrival UTC minute equals wheels-on UTC minute plus taxi-in duration modulo 1440.",
+    "rationale": "TAXI_IN is the elapsed time from destination landing to gate arrival, so it fixes the modulo-1440 relationship between these two event clocks.",
+    "columns": [
+      "WHEELS_ON_UTC_MIN",
+      "TAXI_IN",
+      "ARR_TIME_UTC_MIN"
+    ],
+    "check_code": "def check(df):\n    expected = np.mod(df[\"WHEELS_ON_UTC_MIN\"] + df[\"TAXI_IN\"], 1440)\n    return df[\"ARR_TIME_UTC_MIN\"] == expected",
+    "fix_code": [
+      {
+        "column": "WHEELS_ON_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['ARR_TIME_UTC_MIN'] - df['TAXI_IN'], 1440)"
+      },
+      {
+        "column": "TAXI_IN",
+        "code": "def fix(df):\n    return np.mod(df['ARR_TIME_UTC_MIN'] - df['WHEELS_ON_UTC_MIN'], 1440)"
+      },
+      {
+        "column": "ARR_TIME_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['WHEELS_ON_UTC_MIN'] + df['TAXI_IN'], 1440)"
+      }
+    ]
+  },
+  {
+    "id": "scheduled_arrival_clock_balance",
+    "description": "Scheduled arrival UTC minute equals scheduled departure UTC minute plus scheduled elapsed time modulo 1440.",
+    "rationale": "CRS_ELAPSED_TIME is the scheduled gate-to-gate duration, so the scheduled origin and destination clock values must differ by that duration modulo the 24-hour clock.",
+    "columns": [
+      "CRS_DEP_TIME_UTC_MIN",
+      "CRS_ELAPSED_TIME",
+      "CRS_ARR_TIME_UTC_MIN"
+    ],
+    "check_code": "def check(df):\n    expected = np.mod(df[\"CRS_DEP_TIME_UTC_MIN\"] + df[\"CRS_ELAPSED_TIME\"], 1440)\n    return df[\"CRS_ARR_TIME_UTC_MIN\"] == expected",
+    "fix_code": [
+      {
+        "column": "CRS_DEP_TIME_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['CRS_ARR_TIME_UTC_MIN'] - df['CRS_ELAPSED_TIME'], 1440)"
+      },
+      {
+        "column": "CRS_ELAPSED_TIME",
+        "code": "def fix(df):\n    return np.mod(df['CRS_ARR_TIME_UTC_MIN'] - df['CRS_DEP_TIME_UTC_MIN'], 1440)"
+      },
+      {
+        "column": "CRS_ARR_TIME_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['CRS_DEP_TIME_UTC_MIN'] + df['CRS_ELAPSED_TIME'], 1440)"
+      }
+    ]
+  },
+  {
+    "id": "actual_gate_elapsed_clock_balance",
+    "description": "Actual gate-arrival UTC minute equals actual gate-departure UTC minute plus actual elapsed time modulo 1440.",
+    "rationale": "ELAPSED_TIME covers the complete actual gate-to-gate journey, so it determines the event-clock displacement even when the flight crosses midnight.",
+    "columns": [
+      "DEP_TIME_UTC_MIN",
+      "ELAPSED_TIME",
+      "ARR_TIME_UTC_MIN"
+    ],
+    "check_code": "def check(df):\n    expected = np.mod(df[\"DEP_TIME_UTC_MIN\"] + df[\"ELAPSED_TIME\"], 1440)\n    return df[\"ARR_TIME_UTC_MIN\"] == expected",
+    "fix_code": [
+      {
+        "column": "DEP_TIME_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['ARR_TIME_UTC_MIN'] - df['ELAPSED_TIME'], 1440)\n"
+      },
+      {
+        "column": "ELAPSED_TIME",
+        "code": "def fix(df):\n    return np.mod(df['ARR_TIME_UTC_MIN'] - df['DEP_TIME_UTC_MIN'], 1440)"
+      },
+      {
+        "column": "ARR_TIME_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['DEP_TIME_UTC_MIN'] + df['ELAPSED_TIME'], 1440)"
+      }
+    ]
+  },
+  {
+    "id": "actual_arrival_delay_clock_balance",
+    "description": "Actual gate-arrival UTC minute equals scheduled gate-arrival UTC minute plus signed arrival delay modulo 1440.",
+    "rationale": "ARR_DELAY is the signed difference between actual and scheduled destination gate-arrival times, while both event columns are minute-of-day clocks; modulo-1440 arithmetic handles flights whose arrival clock crosses midnight.",
+    "columns": [
+      "CRS_ARR_TIME_UTC_MIN",
+      "ARR_TIME_UTC_MIN",
+      "ARR_DELAY"
+    ],
+    "check_code": "def check(df):\n    expected = np.mod(df[\"CRS_ARR_TIME_UTC_MIN\"] + df[\"ARR_DELAY\"], 1440)\n    return df[\"ARR_TIME_UTC_MIN\"] == expected",
+    "fix_code": [
+      {
+        "column": "CRS_ARR_TIME_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['ARR_TIME_UTC_MIN'] - df['ARR_DELAY'], 1440)"
+      },
+      {
+        "column": "ARR_TIME_UTC_MIN",
+        "code": "def fix(df):\n    return np.mod(df['CRS_ARR_TIME_UTC_MIN'] + df['ARR_DELAY'], 1440)"
+      },
+      {
+        "column": "ARR_DELAY",
+        "code": null
+      }
+    ]
+  }
+]

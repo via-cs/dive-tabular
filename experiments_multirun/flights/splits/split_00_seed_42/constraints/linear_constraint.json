@@ -1,0 +1,107 @@
+[
+  {
+    "id": "distance_air_time_nonnegative",
+    "description": "Route distance plus airborne duration is nonnegative.",
+    "formula": "DISTANCE + AIR_TIME >= 0",
+    "columns": [
+      "DISTANCE",
+      "AIR_TIME"
+    ],
+    "coefficients": {
+      "DISTANCE": 1,
+      "AIR_TIME": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "DISTANCE",
+      "AIR_TIME"
+    ],
+    "explanation": "DISTANCE is a nonnegative published route length and AIR_TIME is a nonnegative physical duration, so their sum is universally nonnegative.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "distance_plus_taxi_out_nonnegative",
+    "description": "Published route distance plus taxi-out duration is nonnegative.",
+    "formula": "DISTANCE + TAXI_OUT >= 0",
+    "columns": [
+      "DISTANCE",
+      "TAXI_OUT"
+    ],
+    "coefficients": {
+      "DISTANCE": 1,
+      "TAXI_OUT": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "DISTANCE",
+      "TAXI_OUT"
+    ],
+    "explanation": "DISTANCE is a nonnegative route length and TAXI_OUT is a nonnegative elapsed duration, so their sum is universally nonnegative.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "distance_plus_taxi_in_nonnegative",
+    "description": "Published route distance plus taxi-in duration is nonnegative.",
+    "formula": "DISTANCE + TAXI_IN >= 0",
+    "columns": [
+      "DISTANCE",
+      "TAXI_IN"
+    ],
+    "coefficients": {
+      "DISTANCE": 1,
+      "TAXI_IN": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "DISTANCE",
+      "TAXI_IN"
+    ],
+    "explanation": "DISTANCE is nonnegative by its definition as a route length, while TAXI_IN is a nonnegative elapsed duration.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "distance_plus_elapsed_nonnegative",
+    "description": "Published route distance plus actual gate-to-gate elapsed time is nonnegative.",
+    "formula": "DISTANCE + ELAPSED_TIME >= 0",
+    "columns": [
+      "DISTANCE",
+      "ELAPSED_TIME"
+    ],
+    "coefficients": {
+      "DISTANCE": 1,
+      "ELAPSED_TIME": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "DISTANCE",
+      "ELAPSED_TIME"
+    ],
+    "explanation": "The route length and completed-flight gate-to-gate duration are both nonnegative quantities.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "distance_plus_scheduled_elapsed_nonnegative",
+    "description": "Published route distance plus scheduled gate-to-gate elapsed time is nonnegative.",
+    "formula": "DISTANCE + CRS_ELAPSED_TIME >= 0",
+    "columns": [
+      "DISTANCE",
+      "CRS_ELAPSED_TIME"
+    ],
+    "coefficients": {
+      "DISTANCE": 1,
+      "CRS_ELAPSED_TIME": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "DISTANCE",
+      "CRS_ELAPSED_TIME"
+    ],
+    "explanation": "DISTANCE is a nonnegative route length and CRS_ELAPSED_TIME is a nonnegative scheduled duration.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

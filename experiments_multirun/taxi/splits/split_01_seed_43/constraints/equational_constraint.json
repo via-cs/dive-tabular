@@ -1,0 +1,72 @@
+[
+  {
+    "id": "trip_charge_component_balance",
+    "description": "Total amount equals the sum of fare, extra, MTA tax, tip, tolls, and improvement surcharge.",
+    "rationale": "The metadata explicitly defines total_amount as the rebuilt sum of these six retained monetary components, so this is a row-wise accounting identity.",
+    "columns": [
+      "fare_amount",
+      "extra",
+      "mta_tax",
+      "tip_amount",
+      "tolls_amount",
+      "improvement_surcharge",
+      "total_amount"
+    ],
+    "check_code": "def check(df):\n    expected = (df[\"fare_amount\"] + df[\"extra\"] + df[\"mta_tax\"] + df[\"tip_amount\"] + df[\"tolls_amount\"] + df[\"improvement_surcharge\"])\n    return (df[\"total_amount\"] - expected).abs() <= 1e-9",
+    "fix_code": [
+      {
+        "column": "fare_amount",
+        "code": "def fix(df):\n    return (df['total_amount'] - df['extra'] - df['mta_tax'] - df['tip_amount'] - df['tolls_amount'] - df['improvement_surcharge']).astype(float)"
+      },
+      {
+        "column": "extra",
+        "code": "def fix(df):\n    return (df['total_amount'] - df['fare_amount'] - df['mta_tax'] - df['tip_amount'] - df['tolls_amount'] - df['improvement_surcharge']).astype(float)"
+      },
+      {
+        "column": "mta_tax",
+        "code": "def fix(df):\n    return (\n        df['total_amount']\n        - df['fare_amount']\n        - df['extra']\n        - df['tip_amount']\n        - df['tolls_amount']\n        - df['improvement_surcharge']\n    )"
+      },
+      {
+        "column": "tip_amount",
+        "code": "def fix(df):\n    return df['total_amount'] - (df['fare_amount'] + df['extra'] + df['mta_tax'] + df['tolls_amount'] + df['improvement_surcharge'])"
+      },
+      {
+        "column": "tolls_amount",
+        "code": "def fix(df):\n    return (\n        df['total_amount']\n        - df['fare_amount']\n        - df['extra']\n        - df['mta_tax']\n        - df['tip_amount']\n        - df['improvement_surcharge']\n    )"
+      },
+      {
+        "column": "improvement_surcharge",
+        "code": "def fix(df):\n    return (df['total_amount'] - df['fare_amount'] - df['extra'] - df['mta_tax'] - df['tip_amount'] - df['tolls_amount']).astype(float)\n"
+      },
+      {
+        "column": "total_amount",
+        "code": "def fix(df):\n    return (df['fare_amount'] + df['extra'] + df['mta_tax'] + df['tip_amount'] + df['tolls_amount'] + df['improvement_surcharge']).astype(float)"
+      }
+    ]
+  },
+  {
+    "id": "clock_time_duration_wrap_balance",
+    "description": "Drop-off minute of day equals pickup minute of day plus elapsed duration, reduced modulo 1,440 minutes.",
+    "rationale": "The metadata explicitly states that dropoff_minute_of_day is derived from pickup_minute_of_day plus duration with a midnight wrap, making this a deterministic clock-time identity for every trip.",
+    "columns": [
+      "pickup_minute_of_day",
+      "dropoff_minute_of_day",
+      "duration"
+    ],
+    "check_code": "def check(df):\n    expected = (df[\"pickup_minute_of_day\"] + df[\"duration\"]) % 1440.0\n    delta = (df[\"dropoff_minute_of_day\"] - expected).abs()\n    return delta <= 1e-7",
+    "fix_code": [
+      {
+        "column": "pickup_minute_of_day",
+        "code": "def fix(df):\n    return (df['dropoff_minute_of_day'] - df['duration']) % 1440.0"
+      },
+      {
+        "column": "dropoff_minute_of_day",
+        "code": "def fix(df):\n    return (df['pickup_minute_of_day'] + df['duration']) % 1440.0"
+      },
+      {
+        "column": "duration",
+        "code": "def fix(df):\n    return np.mod(df['dropoff_minute_of_day'] - df['pickup_minute_of_day'], 1440.0)"
+      }
+    ]
+  }
+]

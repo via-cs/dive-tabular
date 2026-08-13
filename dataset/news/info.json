@@ -1,0 +1,513 @@
+{
+  "name": "news",
+  "source": "https://archive.ics.uci.edu/dataset/332/online+news+popularity",
+  "doi": "https://doi.org/10.24432/C5NS3V",
+  "license": "CC BY 4.0",
+  "task": "binary_classification",
+  "target": "is_popular",
+  "features_by_order": [
+    "timedelta",
+    "n_tokens_title",
+    "n_tokens_content",
+    "n_unique_tokens",
+    "n_non_stop_words",
+    "n_non_stop_unique_tokens",
+    "num_hrefs",
+    "num_self_hrefs",
+    "num_imgs",
+    "num_videos",
+    "average_token_length",
+    "num_keywords",
+    "data_channel_is_lifestyle",
+    "data_channel_is_entertainment",
+    "data_channel_is_bus",
+    "data_channel_is_socmed",
+    "data_channel_is_tech",
+    "data_channel_is_world",
+    "kw_min_min",
+    "kw_max_min",
+    "kw_avg_min",
+    "kw_min_max",
+    "kw_max_max",
+    "kw_avg_max",
+    "kw_min_avg",
+    "kw_max_avg",
+    "kw_avg_avg",
+    "self_reference_min_shares",
+    "self_reference_max_shares",
+    "self_reference_avg_sharess",
+    "week_day",
+    "is_weekend",
+    "LDA_00",
+    "LDA_01",
+    "LDA_02",
+    "LDA_03",
+    "LDA_04",
+    "global_subjectivity",
+    "global_sentiment_polarity",
+    "global_rate_positive_words",
+    "global_rate_negative_words",
+    "rate_positive_words",
+    "rate_negative_words",
+    "avg_positive_polarity",
+    "min_positive_polarity",
+    "max_positive_polarity",
+    "avg_negative_polarity",
+    "min_negative_polarity",
+    "max_negative_polarity",
+    "title_subjectivity",
+    "title_sentiment_polarity",
+    "abs_title_subjectivity",
+    "abs_title_sentiment_polarity",
+    "is_popular"
+  ],
+  "shape": [
+    38458,
+    54
+  ],
+  "col_types": {
+    "timedelta": {
+      "type": "num",
+      "unique_values": 724,
+      "missing_values": 0
+    },
+    "n_tokens_title": {
+      "type": "num",
+      "unique_values": 20,
+      "missing_values": 0
+    },
+    "n_tokens_content": {
+      "type": "num",
+      "unique_values": 2405,
+      "missing_values": 0
+    },
+    "n_unique_tokens": {
+      "type": "num",
+      "unique_values": 27278,
+      "missing_values": 0
+    },
+    "n_non_stop_words": {
+      "type": "num",
+      "unique_values": 1449,
+      "missing_values": 0
+    },
+    "n_non_stop_unique_tokens": {
+      "type": "num",
+      "unique_values": 22927,
+      "missing_values": 0
+    },
+    "num_hrefs": {
+      "type": "num",
+      "unique_values": 133,
+      "missing_values": 0
+    },
+    "num_self_hrefs": {
+      "type": "num",
+      "unique_values": 59,
+      "missing_values": 0
+    },
+    "num_imgs": {
+      "type": "num",
+      "unique_values": 91,
+      "missing_values": 0
+    },
+    "num_videos": {
+      "type": "num",
+      "unique_values": 53,
+      "missing_values": 0
+    },
+    "average_token_length": {
+      "type": "num",
+      "unique_values": 30134,
+      "missing_values": 0
+    },
+    "num_keywords": {
+      "type": "num",
+      "unique_values": 10,
+      "missing_values": 0
+    },
+    "data_channel_is_lifestyle": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "data_channel_is_entertainment": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "data_channel_is_bus": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "data_channel_is_socmed": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "data_channel_is_tech": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "data_channel_is_world": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "kw_min_min": {
+      "type": "num",
+      "unique_values": 26,
+      "missing_values": 0
+    },
+    "kw_max_min": {
+      "type": "num",
+      "unique_values": 1068,
+      "missing_values": 0
+    },
+    "kw_avg_min": {
+      "type": "num",
+      "unique_values": 16470,
+      "missing_values": 0
+    },
+    "kw_min_max": {
+      "type": "num",
+      "unique_values": 1004,
+      "missing_values": 0
+    },
+    "kw_max_max": {
+      "type": "num",
+      "unique_values": 34,
+      "missing_values": 0
+    },
+    "kw_avg_max": {
+      "type": "num",
+      "unique_values": 29969,
+      "missing_values": 0
+    },
+    "kw_min_avg": {
+      "type": "num",
+      "unique_values": 15645,
+      "missing_values": 0
+    },
+    "kw_max_avg": {
+      "type": "num",
+      "unique_values": 18987,
+      "missing_values": 0
+    },
+    "kw_avg_avg": {
+      "type": "num",
+      "unique_values": 38126,
+      "missing_values": 0
+    },
+    "self_reference_min_shares": {
+      "type": "num",
+      "unique_values": 1255,
+      "missing_values": 0
+    },
+    "self_reference_max_shares": {
+      "type": "num",
+      "unique_values": 1137,
+      "missing_values": 0
+    },
+    "self_reference_avg_sharess": {
+      "type": "num",
+      "unique_values": 8625,
+      "missing_values": 0
+    },
+    "week_day": {
+      "type": "cat",
+      "unique_values": 7,
+      "missing_values": 0
+    },
+    "is_weekend": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    },
+    "LDA_00": {
+      "type": "num",
+      "unique_values": 38160,
+      "missing_values": 0
+    },
+    "LDA_01": {
+      "type": "num",
+      "unique_values": 37931,
+      "missing_values": 0
+    },
+    "LDA_02": {
+      "type": "num",
+      "unique_values": 38343,
+      "missing_values": 0
+    },
+    "LDA_03": {
+      "type": "num",
+      "unique_values": 37798,
+      "missing_values": 0
+    },
+    "LDA_04": {
+      "type": "num",
+      "unique_values": 38189,
+      "missing_values": 0
+    },
+    "global_subjectivity": {
+      "type": "num",
+      "unique_values": 34499,
+      "missing_values": 0
+    },
+    "global_sentiment_polarity": {
+      "type": "num",
+      "unique_values": 34695,
+      "missing_values": 0
+    },
+    "global_rate_positive_words": {
+      "type": "num",
+      "unique_values": 13159,
+      "missing_values": 0
+    },
+    "global_rate_negative_words": {
+      "type": "num",
+      "unique_values": 10271,
+      "missing_values": 0
+    },
+    "rate_positive_words": {
+      "type": "num",
+      "unique_values": 2284,
+      "missing_values": 0
+    },
+    "rate_negative_words": {
+      "type": "num",
+      "unique_values": 2284,
+      "missing_values": 0
+    },
+    "avg_positive_polarity": {
+      "type": "num",
+      "unique_values": 27301,
+      "missing_values": 0
+    },
+    "min_positive_polarity": {
+      "type": "num",
+      "unique_values": 33,
+      "missing_values": 0
+    },
+    "max_positive_polarity": {
+      "type": "num",
+      "unique_values": 38,
+      "missing_values": 0
+    },
+    "avg_negative_polarity": {
+      "type": "num",
+      "unique_values": 13841,
+      "missing_values": 0
+    },
+    "min_negative_polarity": {
+      "type": "num",
+      "unique_values": 54,
+      "missing_values": 0
+    },
+    "max_negative_polarity": {
+      "type": "num",
+      "unique_values": 49,
+      "missing_values": 0
+    },
+    "title_subjectivity": {
+      "type": "num",
+      "unique_values": 657,
+      "missing_values": 0
+    },
+    "title_sentiment_polarity": {
+      "type": "num",
+      "unique_values": 791,
+      "missing_values": 0
+    },
+    "abs_title_subjectivity": {
+      "type": "num",
+      "unique_values": 520,
+      "missing_values": 0
+    },
+    "abs_title_sentiment_polarity": {
+      "type": "num",
+      "unique_values": 634,
+      "missing_values": 0
+    },
+    "is_popular": {
+      "type": "cat",
+      "unique_values": 2,
+      "missing_values": 0
+    }
+  },
+  "sdv_metadata": {
+    "tables": {
+      "table": {
+        "columns": {
+          "timedelta": {
+            "sdtype": "numerical"
+          },
+          "n_tokens_title": {
+            "sdtype": "numerical"
+          },
+          "n_tokens_content": {
+            "sdtype": "numerical"
+          },
+          "n_unique_tokens": {
+            "sdtype": "numerical"
+          },
+          "n_non_stop_words": {
+            "sdtype": "numerical"
+          },
+          "n_non_stop_unique_tokens": {
+            "sdtype": "numerical"
+          },
+          "num_hrefs": {
+            "sdtype": "numerical"
+          },
+          "num_self_hrefs": {
+            "sdtype": "numerical"
+          },
+          "num_imgs": {
+            "sdtype": "numerical"
+          },
+          "num_videos": {
+            "sdtype": "numerical"
+          },
+          "average_token_length": {
+            "sdtype": "numerical"
+          },
+          "num_keywords": {
+            "sdtype": "numerical"
+          },
+          "data_channel_is_lifestyle": {
+            "sdtype": "categorical"
+          },
+          "data_channel_is_entertainment": {
+            "sdtype": "categorical"
+          },
+          "data_channel_is_bus": {
+            "sdtype": "categorical"
+          },
+          "data_channel_is_socmed": {
+            "sdtype": "categorical"
+          },
+          "data_channel_is_tech": {
+            "sdtype": "categorical"
+          },
+          "data_channel_is_world": {
+            "sdtype": "categorical"
+          },
+          "kw_min_min": {
+            "sdtype": "numerical"
+          },
+          "kw_max_min": {
+            "sdtype": "numerical"
+          },
+          "kw_avg_min": {
+            "sdtype": "numerical"
+          },
+          "kw_min_max": {
+            "sdtype": "numerical"
+          },
+          "kw_max_max": {
+            "sdtype": "numerical"
+          },
+          "kw_avg_max": {
+            "sdtype": "numerical"
+          },
+          "kw_min_avg": {
+            "sdtype": "numerical"
+          },
+          "kw_max_avg": {
+            "sdtype": "numerical"
+          },
+          "kw_avg_avg": {
+            "sdtype": "numerical"
+          },
+          "self_reference_min_shares": {
+            "sdtype": "numerical"
+          },
+          "self_reference_max_shares": {
+            "sdtype": "numerical"
+          },
+          "self_reference_avg_sharess": {
+            "sdtype": "numerical"
+          },
+          "week_day": {
+            "sdtype": "categorical"
+          },
+          "is_weekend": {
+            "sdtype": "categorical"
+          },
+          "LDA_00": {
+            "sdtype": "numerical"
+          },
+          "LDA_01": {
+            "sdtype": "numerical"
+          },
+          "LDA_02": {
+            "sdtype": "numerical"
+          },
+          "LDA_03": {
+            "sdtype": "numerical"
+          },
+          "LDA_04": {
+            "sdtype": "numerical"
+          },
+          "global_subjectivity": {
+            "sdtype": "numerical"
+          },
+          "global_sentiment_polarity": {
+            "sdtype": "numerical"
+          },
+          "global_rate_positive_words": {
+            "sdtype": "numerical"
+          },
+          "global_rate_negative_words": {
+            "sdtype": "numerical"
+          },
+          "rate_positive_words": {
+            "sdtype": "numerical"
+          },
+          "rate_negative_words": {
+            "sdtype": "numerical"
+          },
+          "avg_positive_polarity": {
+            "sdtype": "numerical"
+          },
+          "min_positive_polarity": {
+            "sdtype": "numerical"
+          },
+          "max_positive_polarity": {
+            "sdtype": "numerical"
+          },
+          "avg_negative_polarity": {
+            "sdtype": "numerical"
+          },
+          "min_negative_polarity": {
+            "sdtype": "numerical"
+          },
+          "max_negative_polarity": {
+            "sdtype": "numerical"
+          },
+          "title_subjectivity": {
+            "sdtype": "numerical"
+          },
+          "title_sentiment_polarity": {
+            "sdtype": "numerical"
+          },
+          "abs_title_subjectivity": {
+            "sdtype": "numerical"
+          },
+          "abs_title_sentiment_polarity": {
+            "sdtype": "numerical"
+          },
+          "is_popular": {
+            "sdtype": "categorical"
+          }
+        }
+      }
+    },
+    "relationships": [],
+    "METADATA_SPEC_VERSION": "V1"
+  },
+  "preprocessing_note": "Downloaded from UCI; dropped the URL identifier; collapsed the seven weekday indicators into categorical week_day; removed rows where both positive and negative non-neutral-token rates were zero; retained is_weekend and the six data-channel indicators as categorical columns. derived categorical is_popular from shares >= 1400 and removed raw shares to prevent leakage. num_keywords remains numerical because it is a count. See raw/preprocessing_info.json for the full audit."
+}

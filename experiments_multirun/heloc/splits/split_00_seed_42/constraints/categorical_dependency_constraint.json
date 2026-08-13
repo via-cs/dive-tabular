@@ -1,0 +1,30 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "recent_status_7_historical_status_set",
+      "description": "Recent coded delinquency/public-record status 7 permits only historical-ever status codes 8, 6, or 2.",
+      "rationale": "The two fields encode related worst-status concepts over different time horizons; this high-support admissible mapping captures a stable compatibility rule without treating the numeric codes as literal counts.",
+      "determinants": [
+        "maximum_illegal_trades_over_last_year"
+      ],
+      "dependent": "maximum_illegal_trades",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              7
+            ]
+          ],
+          "dependent_values": [
+            2,
+            6,
+            8
+          ]
+        }
+      ],
+      "support": 0.4290657439446367,
+      "violation_rate": 0.0
+    }
+  ]
+}

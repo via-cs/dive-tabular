@@ -1,0 +1,44 @@
+[
+  {
+    "id": "air_time_and_distance_nonnegative",
+    "description": "Airborne duration plus route distance is nonnegative.",
+    "formula": "AIR_TIME + DISTANCE >= 0",
+    "columns": [
+      "AIR_TIME",
+      "DISTANCE"
+    ],
+    "coefficients": {
+      "AIR_TIME": 1,
+      "DISTANCE": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "AIR_TIME",
+      "DISTANCE"
+    ],
+    "explanation": "Airborne duration and published route distance are both nonnegative physical quantities.",
+    "source": "Agentic discovery with full-data verification."
+  },
+  {
+    "id": "distance_and_elapsed_time_nonnegative",
+    "description": "Published route distance plus actual elapsed time is nonnegative.",
+    "formula": "DISTANCE + ELAPSED_TIME >= 0",
+    "columns": [
+      "DISTANCE",
+      "ELAPSED_TIME"
+    ],
+    "coefficients": {
+      "DISTANCE": 1,
+      "ELAPSED_TIME": 1
+    },
+    "sense": ">=",
+    "rhs": 0,
+    "mutable_columns": [
+      "DISTANCE",
+      "ELAPSED_TIME"
+    ],
+    "explanation": "Route distance and complete gate-to-gate elapsed time are nonnegative quantities for a completed flight.",
+    "source": "Agentic discovery with full-data verification."
+  }
+]

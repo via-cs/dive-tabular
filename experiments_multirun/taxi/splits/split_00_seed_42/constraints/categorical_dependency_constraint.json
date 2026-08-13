@@ -1,0 +1,79 @@
+{
+  "dsl_version": "2.0",
+  "constraints": [
+    {
+      "id": "pickup_day_determines_weekend",
+      "description": "Pickup weekday determines the weekend indicator.",
+      "rationale": "is_weekend is explicitly derived from pickup_day_of_week: Saturday and Sunday map to 1, while Monday through Friday map to 0.",
+      "determinants": [
+        "pickup_day_of_week"
+      ],
+      "dependent": "is_weekend",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          ],
+          "dependent_values": [
+            0
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              5,
+              6
+            ]
+          ],
+          "dependent_values": [
+            1
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0
+    },
+    {
+      "id": "rate_code_predicts_trip_type",
+      "description": "Rate code strongly determines the recorded trip-origin type.",
+      "rationale": "Green-taxi trip_type is automatically assigned from the metered rate, although the documentation permits driver alteration; the observed mapping is therefore nearly deterministic, with rare documented exceptions.",
+      "determinants": [
+        "rate_code"
+      ],
+      "dependent": "trip_type",
+      "value_table": [
+        {
+          "determinant_values": [
+            [
+              1,
+              2,
+              3,
+              4
+            ]
+          ],
+          "dependent_values": [
+            1
+          ]
+        },
+        {
+          "determinant_values": [
+            [
+              5
+            ]
+          ],
+          "dependent_values": [
+            2
+          ]
+        }
+      ],
+      "support": 1.0,
+      "violation_rate": 0.0008572040860061433
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+{
+  "paths": {
+    "experiment_dir": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw",
+    "synthetic_files": [
+      "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_0.csv",
+      "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_1.csv",
+      "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_2.csv"
+    ],
+    "metrics": [
+      "constraint",
+      "quality",
+      "utility"
+    ],
+    "constraints_expert": "experiments_multirun/heloc/splits/split_01_seed_43/constraints",
+    "utility_regimes": [
+      "trtr",
+      "tstr"
+    ]
+  },
+  "per_file": [
+    {
+      "path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_0.csv",
+      "quality": {
+        "score": 0.8905286639745477,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9149037957428959
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.8661535322061994
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "logistic_regression": {
+            "tstr": {
+              "accuracy": 0.6654438738077769,
+              "f1": 0.7044718081659106,
+              "roc_auc": 0.7214104181137468
+            }
+          },
+          "decision_tree": {
+            "tstr": {
+              "accuracy": 0.5799706529713866,
+              "f1": 0.6014618865297598,
+              "roc_auc": 0.5787276380575206
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "accuracy": 0.6327953044754219,
+              "f1": 0.6651053864168618,
+              "roc_auc": 0.6917342780304491
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_0.csv",
+        "rows": 6358,
+        "average_r2_consistency": null,
+        "equational_cvr": null,
+        "equational_scvc": null,
+        "categorical_dependency_cvr": 0.01368354828562441,
+        "categorical_dependency_scvc": 0.01368354828562441,
+        "linear_cvr": 0.726643598615917,
+        "linear_scvc": 0.09938802939746633,
+        "family_status": {
+          "equational": "not_available",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.7219763310900918
+      }
+    },
+    {
+      "path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_1.csv",
+      "quality": {
+        "score": 0.8898055911262659,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9133768480654294
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.8662343341871024
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "logistic_regression": {
+            "tstr": {
+              "accuracy": 0.6687454145267792,
+              "f1": 0.6944162436548224,
+              "roc_auc": 0.7158028981001894
+            }
+          },
+          "decision_tree": {
+            "tstr": {
+              "accuracy": 0.5832721936903889,
+              "f1": 0.6149152542372881,
+              "roc_auc": 0.5805834087569062
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "accuracy": 0.6518708730741013,
+              "f1": 0.6856575024842663,
+              "roc_auc": 0.7012864913817436
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_1.csv",
+        "rows": 6358,
+        "average_r2_consistency": null,
+        "equational_cvr": null,
+        "equational_scvc": null,
+        "categorical_dependency_cvr": 0.015885498584460523,
+        "categorical_dependency_scvc": 0.015885498584460523,
+        "linear_cvr": 0.726643598615917,
+        "linear_scvc": 0.100088649947096,
+        "family_status": {
+          "equational": "not_available",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.7216163398831155
+      }
+    },
+    {
+      "path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_2.csv",
+      "quality": {
+        "score": 0.8944960982886772,
+        "properties": [
+          {
+            "Property": "Column Shapes",
+            "Score": 0.9157688476460103
+          },
+          {
+            "Property": "Column Pair Trends",
+            "Score": 0.8732233489313439
+          }
+        ]
+      },
+      "utility": {
+        "models": {
+          "logistic_regression": {
+            "tstr": {
+              "accuracy": 0.6661775495231108,
+              "f1": 0.7066408768536429,
+              "roc_auc": 0.7264550273116988
+            }
+          },
+          "decision_tree": {
+            "tstr": {
+              "accuracy": 0.578136463683052,
+              "f1": 0.6023513139695712,
+              "roc_auc": 0.5765296952995597
+            }
+          },
+          "xgboost": {
+            "tstr": {
+              "accuracy": 0.66507703595011,
+              "f1": 0.6961730449251248,
+              "roc_auc": 0.7134816330782155
+            }
+          }
+        }
+      },
+      "constraint": {
+        "path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_2.csv",
+        "rows": 6358,
+        "average_r2_consistency": null,
+        "equational_cvr": null,
+        "equational_scvc": null,
+        "categorical_dependency_cvr": 0.012897137464611514,
+        "categorical_dependency_scvc": 0.012897137464611514,
+        "linear_cvr": 0.7351368354828562,
+        "linear_scvc": 0.09993136778289342,
+        "family_status": {
+          "equational": "not_available",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.7376368285381867
+      }
+    }
+  ],
+  "utility_columns": {
+    "target": "is_at_risk",
+    "categorical_feature_columns": [
+      "maximum_illegal_trades_over_last_year",
+      "maximum_illegal_trades"
+    ],
+    "numerical_feature_columns": [
+      "estimate_of_risk",
+      "months_since_first_trade",
+      "months_since_last_trade",
+      "average_duration_of_resolution",
+      "number_of_satisfactory_trades",
+      "nr_trades_insolvent_for_over_60_days",
+      "nr_trades_insolvent_for_over_90_days",
+      "percentage_of_legal_trades",
+      "months_since_last_illegal_trade",
+      "nr_total_trades",
+      "nr_trades_initiated_in_last_year",
+      "percentage_of_installment_trades",
+      "months_since_last_inquiry_not_recent",
+      "nr_inquiries_in_last_6_months",
+      "nr_inquiries_in_last_6_months_not_recent",
+      "net_fraction_of_revolving_burden",
+      "net_fraction_of_installment_burden",
+      "nr_revolving_trades_with_balance",
+      "nr_installment_trades_with_balance",
+      "nr_banks_with_high_ratio",
+      "percentage_trades_with_balance"
+    ]
+  },
+  "quality": {
+    "score": [
+      0.8905286639745477,
+      0.8898055911262659,
+      0.8944960982886772
+    ],
+    "properties": [
+      {
+        "Property": "Column Shapes",
+        "Score": [
+          0.9149037957428959,
+          0.9133768480654294,
+          0.9157688476460103
+        ]
+      },
+      {
+        "Property": "Column Pair Trends",
+        "Score": [
+          0.8661535322061994,
+          0.8662343341871024,
+          0.8732233489313439
+        ]
+      }
+    ]
+  },
+  "utility": {
+    "task": "binary_classification",
+    "models": {
+      "logistic_regression": {
+        "trtr": {
+          "accuracy": 0.7322083639031548,
+          "f1": 0.7523744911804613,
+          "roc_auc": 0.7997111506533922
+        },
+        "tstr": {
+          "accuracy": [
+            0.6654438738077769,
+            0.6687454145267792,
+            0.6661775495231108
+          ],
+          "f1": [
+            0.7044718081659106,
+            0.6944162436548224,
+            0.7066408768536429
+          ],
+          "roc_auc": [
+            0.7214104181137468,
+            0.7158028981001894,
+            0.7264550273116988
+          ]
+        }
+      },
+      "decision_tree": {
+        "trtr": {
+          "accuracy": 0.6331621423330888,
+          "f1": 0.6515679442508711,
+          "roc_auc": 0.632116463711142
+        },
+        "tstr": {
+          "accuracy": [
+            0.5799706529713866,
+            0.5832721936903889,
+            0.578136463683052
+          ],
+          "f1": [
+            0.6014618865297598,
+            0.6149152542372881,
+            0.6023513139695712
+          ],
+          "roc_auc": [
+            0.5787276380575206,
+            0.5805834087569062,
+            0.5765296952995597
+          ]
+        }
+      },
+      "xgboost": {
+        "trtr": {
+          "accuracy": 0.7164343360234776,
+          "f1": 0.734819897084048,
+          "roc_auc": 0.777011218817952
+        },
+        "tstr": {
+          "accuracy": [
+            0.6327953044754219,
+            0.6518708730741013,
+            0.66507703595011
+          ],
+          "f1": [
+            0.6651053864168618,
+            0.6856575024842663,
+            0.6961730449251248
+          ],
+          "roc_auc": [
+            0.6917342780304491,
+            0.7012864913817436,
+            0.7134816330782155
+          ]
+        }
+      }
+    },
+    "classes": [
+      "0",
+      "1"
+    ]
+  },
+  "constraint": {
+    "available_families": [
+      "categorical_dependency",
+      "equational",
+      "linear"
+    ],
+    "real_train": {
+      "path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/train.csv",
+      "rows": 6358,
+      "average_r2_consistency": null,
+      "equational_cvr": null,
+      "equational_scvc": null,
+      "categorical_dependency_cvr": 0.0004718464926077383,
+      "categorical_dependency_scvc": 0.0004718464926077383,
+      "linear_cvr": 0.0,
+      "linear_scvc": 0.0,
+      "family_status": {
+        "equational": "not_available",
+        "categorical_dependency": "evaluated",
+        "linear": "evaluated"
+      },
+      "linear_feasibility_distance": 0.0
+    },
+    "synthetic": [
+      {
+        "path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_0.csv",
+        "rows": 6358,
+        "average_r2_consistency": null,
+        "equational_cvr": null,
+        "equational_scvc": null,
+        "categorical_dependency_cvr": 0.01368354828562441,
+        "categorical_dependency_scvc": 0.01368354828562441,
+        "linear_cvr": 0.726643598615917,
+        "linear_scvc": 0.09938802939746633,
+        "family_status": {
+          "equational": "not_available",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.7219763310900918
+      },
+      {
+        "path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_1.csv",
+        "rows": 6358,
+        "average_r2_consistency": null,
+        "equational_cvr": null,
+        "equational_scvc": null,
+        "categorical_dependency_cvr": 0.015885498584460523,
+        "categorical_dependency_scvc": 0.015885498584460523,
+        "linear_cvr": 0.726643598615917,
+        "linear_scvc": 0.100088649947096,
+        "family_status": {
+          "equational": "not_available",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.7216163398831155
+      },
+      {
+        "path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/synthetic/synthetic_2.csv",
+        "rows": 6358,
+        "average_r2_consistency": null,
+        "equational_cvr": null,
+        "equational_scvc": null,
+        "categorical_dependency_cvr": 0.012897137464611514,
+        "categorical_dependency_scvc": 0.012897137464611514,
+        "linear_cvr": 0.7351368354828562,
+        "linear_scvc": 0.09993136778289342,
+        "family_status": {
+          "equational": "not_available",
+          "categorical_dependency": "evaluated",
+          "linear": "evaluated"
+        },
+        "linear_feasibility_distance": 0.7376368285381867
+      }
+    ],
+    "details_path": "experiments_multirun/heloc/splits/split_01_seed_43/generators/ctgan/raw/constraint_evaluation_details.json"
+  }
+}
