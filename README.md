@@ -1,8 +1,7 @@
 # DIVE: Discovery, Inter-Column Constraint, Validation, and Enforcement
 
 This repository contains the code and experiment artifacts for the paper
-[XXX](https://arxiv.org/abs/XXXX.XXXXX). The arXiv URL is a placeholder and
-will be updated when the preprint is available.
+[_Constraint-Aware Synthetic Tabular Data Generation via Inter-Column Constraint Discovery with LLM Agents_](https://arxiv.org/abs/2608.15109).
 
 **DIVE** stands for **D**iscovery, **I**nter-column constraint,
 **V**alidation, and **E**nforcement. The codebase supports the paper’s workflow
